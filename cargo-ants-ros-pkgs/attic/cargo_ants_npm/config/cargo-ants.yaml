@@ -1,0 +1,118 @@
+- World:
+    name: world
+    lines:
+      - [   0.0,   0.0,  18.3,   0.0 ]
+      - [  18.3,   0.0,  18.3,   2.5 ]
+      - [  18.3,   2.5,  30.5,   2.5 ]
+      - [  30.5,   2.5,  30.5,  12.5 ]
+      - [  30.5,  12.5,  24.4,  12.5 ]
+      - [  24.4,  12.5,  24.4,  10.0 ]
+      - [  24.4,  10.0,  18.3,  10.0 ]
+      - [  18.3,  10.0,  18.3,  12.5 ]
+      - [  18.3,  12.5,   6.1,  12.5 ]
+      - [   6.1,  12.5,   6.1,   5.0 ]
+      - [   6.1,   5.0,   0.0,   5.0 ]
+      - [   0.0,   5.0,   0.0,   0.0 ]
+      - [ -10.0, -10.0,  50.0, -10.0 ]
+      - [ -10.0,  50.0,  50.0,  50.0 ]
+
+- Plugin:
+    name: cargo-ants
+    spec: cargo-ants-plugin
+
+- CargoANTsMockupGlue:
+    name: mockup_glue
+    site_map_topic: site_map
+    task_topic: task
+    msg_queue_size: 10
+
+- CargoANTsMockupRobot:
+    name: alice
+    pose: [ -5.0, -5.0,  0.1 ]
+    width: 3.5
+    length: 7.5
+    color: [1.0, 0.5, 0.5 ]
+    align_distance: 3.0
+    align_heading: 0.8
+    vrot: 0.2
+    vtrans: 2.5
+    trajectory_topic: alice/trajectory
+    vehicle_state_topic: alice/vehicle_state
+    travmap_topic: alice/travmap
+    estar_topic: alice/estar
+    path_topic: alice/path
+    msg_queue_size: 10
+
+- CargoANTsMockupRobot:
+    name: bob
+    pose: [  5.0, -5.0, -0.1 ]
+    width: 2.5
+    length: 8.5
+    color: [0.5, 1.0, 0.5 ]
+    align_distance: 2.0
+    align_heading: 0.1
+    vrot: 0.3
+    vtrans: 2.0
+    trajectory_topic: bob/trajectory
+    vehicle_state_topic: bob/vehicle_state
+    travmap_topic: bob/travmap
+    estar_topic: bob/estar
+    path_topic: bob/path
+    msg_queue_size: 10
+
+- View:
+    name: ground-truth
+    camera:  world
+    drawings:
+      - world
+      - alice_path
+      - bob_path
+      - mockup_glue_task_drawing
+      - alice_true_drawing
+      - bob_true_drawing
+    window: [ 0.0,  0.0,  0.5,  1.0 ]
+    border:  0
+
+- View:
+    name: alice_travmap
+    camera:  alice_travmap
+    drawings:
+      - alice_travmap
+      - world
+      - alice_true_drawing
+      - bob_true_drawing
+    window: [ 0.5,  0.5,  0.75,  1.0 ]
+    border:  2
+
+- View:
+    name: alice_estar
+    camera:  world
+    drawings:
+      - alice_estar
+      - world
+      - alice_true_drawing
+      - bob_true_drawing
+    window: [ 0.75,  0.5,  1.0,  1.0 ]
+    border:  2
+
+- View:
+    name: bob_travmap
+    camera:  bob_travmap
+    drawings:
+      - bob_travmap
+      - world
+      - alice_true_drawing
+      - bob_true_drawing
+    window: [ 0.5,  0.0,  0.75,  0.5 ]
+    border:  2
+
+- View:
+    name: bob_estar
+    camera:  world
+    drawings:
+      - bob_estar
+      - world
+      - alice_true_drawing
+      - bob_true_drawing
+    window: [ 0.75,  0.0,  1.0,  0.5 ]
+    border:  2

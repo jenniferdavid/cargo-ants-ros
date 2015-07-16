@@ -1,0 +1,29 @@
+NOTE: terminology has changed since this early draft, but the general idea
+still holds.  In particular, route_planner was renamed to task_scheduler (or
+maybe by now something else), and not everything may have detailed status
+feedback information.
+
+--------------------
+
+One centralized Route Planner for all the vehicles on the site:
+
+/route_request         -> route_planner  -> /route
+/route_request_status <-                <-  /route_status
+
+
+Each vehicle is identified by name (denoted $VN below) and has the following motion generation stack.  Note that, in the publish and subscribe calls, the /$VN/ portion
+of the topic name must be omitted so that we can rely on ROS namespace mechanisms.
+Also, at the lowest level (probably even before vehicle control) we will not use ROS
+messages anymore anyway, as the industry partners have their own systems there.
+
+/route         -> path_planner  -> /$VN/path
+/route_status <-               <-  /$VN/path_status
+
+/$VN/path         -> path_adaptor  -> /$VN/trajectory
+/$VN/path_status <-               <-  /$VN/trajectory_status
+
+/$VN/trajectory         -> vehicle_control  -> ...
+/$VN/trajectory_status <-                  <-  ...
+
+
+We also need to sketch some kind of handshake process, for trucks entering or leaving the site.

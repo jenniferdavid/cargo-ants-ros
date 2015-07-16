@@ -1,0 +1,182 @@
+- World:
+    lines:
+      - [  4,  8, 12,  8 ]
+      - [  4, 12, 12, 12 ]
+      - [  4, 16, 12, 16 ]
+      - [ 18,  4, 26,  4 ]
+      - [ 18,  8, 26,  8 ]
+      - [ 18, 12, 26, 12 ]
+
+- Object:
+    name: cnt00
+    parent: world
+    mount: [ 15, 20,  0 ]
+    lines:
+      - [ -1.0, -0.9,  1.0, -0.9 ]
+      - [ -1.0,  0.9,  1.0,  0.9 ]
+      - [ -1.0, -0.9, -1.0,  0.9 ]
+      - [  1.0, -0.9,  1.0,  0.9 ]
+- Object:
+    name: cnt01
+    parent: world
+    mount: [ 16, 20,  0 ]
+    lines:
+      - [ -1.0, -0.9,  1.0, -0.9 ]
+      - [ -1.0,  0.9,  1.0,  0.9 ]
+      - [ -1.0, -0.9, -1.0,  0.9 ]
+      - [  1.0, -0.9,  1.0,  0.9 ]
+- Object:
+    name: cnt02
+    parent: world
+    mount: [ 17, 20,  0 ]
+    lines:
+      - [ -1.0, -0.9,  1.0, -0.9 ]
+      - [ -1.0,  0.9,  1.0,  0.9 ]
+      - [ -1.0, -0.9, -1.0,  0.9 ]
+      - [  1.0, -0.9,  1.0,  0.9 ]
+- Object:
+    name: cnt03
+    parent: world
+    mount: [ 18, 20,  0 ]
+    lines:
+      - [ -1.0, -0.9,  1.0, -0.9 ]
+      - [ -1.0,  0.9,  1.0,  0.9 ]
+      - [ -1.0, -0.9, -1.0,  0.9 ]
+      - [  1.0, -0.9,  1.0,  0.9 ]
+- Object:
+    name: cnt04
+    parent: world
+    mount: [ 19, 20,  0 ]
+    lines:
+      - [ -1.0, -0.9,  1.0, -0.9 ]
+      - [ -1.0,  0.9,  1.0,  0.9 ]
+      - [ -1.0, -0.9, -1.0,  0.9 ]
+      - [  1.0, -0.9,  1.0,  0.9 ]
+- Object:
+    name: cnt05
+    parent: world
+    mount: [ 20, 20,  0 ]
+    lines:
+      - [ -1.0, -0.9,  1.0, -0.9 ]
+      - [ -1.0,  0.9,  1.0,  0.9 ]
+      - [ -1.0, -0.9, -1.0,  0.9 ]
+      - [  1.0, -0.9,  1.0,  0.9 ]
+
+- Object:
+    name: agv1
+    parent: world
+    mount: [  2,  2,  0]
+    lines:
+      - [ -1.3, -1.1,  1.3, -1.1 ]
+      - [ -1.3,  1.1,  1.3,  1.1 ]
+      - [ -1.3, -1.1, -1.3,  1.1 ]
+      - [  1.3, -1.1,  1.3,  1.1 ]
+- GenericDrive:
+    name: drive1
+    parent: agv1
+- KinematicControl:
+    name: ctrl1
+    drive: drive1
+    vtrans_max: 2
+    vrot_max: 0.2
+
+- Object:
+    name: agv2
+    parent: world
+    mount: [  6,  2,  0]
+    lines:
+      - [ -1.3, -1.1,  1.3, -1.1 ]
+      - [ -1.3,  1.1,  1.3,  1.1 ]
+      - [ -1.3, -1.1, -1.3,  1.1 ]
+      - [  1.3, -1.1,  1.3,  1.1 ]
+- GenericDrive:
+    name: drive2
+    parent: agv2
+- KinematicControl:
+    name: ctrl2
+    drive: drive2
+    vtrans_max: 2
+    vrot_max: 0.2
+
+- Object:
+    name: agv3
+    parent: world
+    mount: [ 10,  2,  0]
+    lines:
+      - [ -1.3, -1.1,  1.3, -1.1 ]
+      - [ -1.3,  1.1,  1.3,  1.1 ]
+      - [ -1.3, -1.1, -1.3,  1.1 ]
+      - [  1.3, -1.1,  1.3,  1.1 ]
+- GenericDrive:
+    name: drive3
+    parent: agv3
+- KinematicControl:
+    name: ctrl3
+    drive: drive3
+    vtrans_max: 2
+    vrot_max: 0.2
+
+- Plugin:
+    name: npm2-containersim
+    search: npm2-containersim
+- ContainerTeleport:
+    name: ct
+    wait: 50.0
+    containers:
+      - cnt00
+      - cnt01
+      - cnt02
+      - cnt03
+      - cnt04
+      - cnt05
+    pickups:
+      - [ 10, 20, 0 ]
+      - [ 15, 20, 0 ]
+      - [ 20, 20, 0 ]
+      - [ 10, 23, 0 ]
+      - [ 15, 23, 0 ]
+      - [ 20, 23, 0 ]
+      - [ 10, 26, 0 ]
+      - [ 15, 26, 0 ]
+      - [ 20, 26, 0 ]
+    placedowns:
+      - [  3,  6, 0 ]
+      - [  3, 10, 0 ]
+      - [  3, 14, 0 ]
+      - [ 10,  6, 0 ]
+      - [ 10, 10, 0 ]
+      - [ 10, 14, 0 ]
+      - [ 19,  6, 0 ]
+      - [ 19, 10, 0 ]
+      - [ 19, 14, 0 ]
+      - [ 24,  6, 0 ]
+      - [ 24, 10, 0 ]
+      - [ 24, 14, 0 ]
+- PickPlaceTaskProcess:
+    name: ppp1
+    container_manager: ct
+    control: ctrl1
+- PickPlaceTaskProcess:
+    name: ppp2
+    container_manager: ct
+    control: ctrl2
+- PickPlaceTaskProcess:
+    name: ppp3
+    control: ctrl3
+    container_manager: ct
+
+- Simulator:
+    timestep: 0.1
+    state: pause
+
+- FixedCamera:
+    name: world_camera
+    bounds: [ 0, 0, 30, 30 ]
+- ObjectDrawing:
+    name: world_drawing
+    object: world
+- View:
+    name: world_view
+    camera: world_camera
+    drawings:
+      - world_drawing

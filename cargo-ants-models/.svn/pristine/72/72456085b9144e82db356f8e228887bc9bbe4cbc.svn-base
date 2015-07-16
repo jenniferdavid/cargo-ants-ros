@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<model>
+  <name>volvo_at</name>
+  <version>1.0</version>
+  <sdf version='1.4'>model.sdf</sdf>
+
+  <author>
+   <name>jenniferdavid</name>
+   <email>jendav@hh.se</email>
+  </author>
+
+  <description>
+ volvo truck fh-16
+  </description>
+</model>

@@ -1,0 +1,11 @@
+float64 gx
+float64 gy
+float64 gth
+float64 delta
+int64 xbegin
+int64 xend
+int64 ybegin
+int64 yend
+int64 freespace
+int64 obstacle
+int64[] grid

@@ -1,0 +1,96 @@
+#ifndef iri_laser_corners_node_H
+#define iri_laser_corners_node_H
+
+//Eigen includes
+#include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/Geometry>
+
+//std includes
+#include <iostream>
+
+//ROS includes
+#include <ros/ros.h>
+#include <nav_msgs/Odometry.h>
+#include <sensor_msgs/LaserScan.h>
+#include <nav_msgs/OccupancyGrid.h>
+#include <visualization_msgs/MarkerArray.h>
+
+//this package includes
+#include "grid_2d.h"
+
+/** \brief Wrapper class to Wolf library objects
+ *
+ * Wrapper class to Wolf library objects
+ * 
+ */
+class LocalMapNode
+{
+    protected: 
+        //ros node handle
+        ros::NodeHandle nh_;
+               
+        //odometry subscriber
+        ros::Subscriber odometry_subscriber_;
+        
+        //front laser subscriber
+        ros::Subscriber front_laser_subscriber_;
+        
+        //Occupancy grid publisher and message 
+        ros::Publisher grid_publisher_;      
+        nav_msgs::OccupancyGrid grid_msg_;
+        
+        //marker publisher and message
+        ros::Publisher marker_publisher_;   
+        visualization_msgs::MarkerArray marker_msg_;
+        
+        //grid object
+        Grid2D grid_;
+        
+        //wished update rate at the main loop, [hz]        
+        double rate_;
+        
+    public:
+        /** \brief Default constructor
+        * 
+        * This constructor initializes the node. 
+        * 
+        */
+        LocalMapNode();
+
+        /** \brief Destructor
+        * 
+        * This destructor frees all necessary dynamic memory allocated within this class.
+        */
+        ~LocalMapNode();
+        
+        /** \brief Returns rate_
+         * 
+         * Returns rate_
+         * 
+         **/
+        double getRate() const; 
+
+        /** \brief Main process 
+        * 
+        * Main process flow
+        * 
+        **/
+        void process();
+                    
+        /** \brief Fill output messages
+        * 
+        * Fills main output and debug messages
+        */
+        void publish();
+        
+    protected: 
+        // odometry subscriber callback
+        void odometryCallback(const nav_msgs::Odometry::ConstPtr& _msg);
+        
+        // lidar subscriber callback
+        void laserCallback(const sensor_msgs::LaserScan::ConstPtr& _msg);        
+        
+};
+#endif
+
+

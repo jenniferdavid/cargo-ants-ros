@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>cargo_ants_util</name>
+  <version>0.0.0</version>
+  <description>
+    Utilities for the Cargo-ANTs project.
+  </description>
+  <url type="website">http://www.cargo-ants.eu/</url>
+  <author email="roland.philippsen.hh@gmail.com">Roland Philippsen</author>
+  <maintainer email="roland.philippsen.hh@gmail.com">Roland Philippsen</maintainer>
+  <license>BSD</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>cargo_ants_msgs</build_depend>
+  <build_depend>eigen</build_depend>
+  <build_depend>sfl2</build_depend>
+  <build_depend>estar2</build_depend>
+  <build_depend>roscpp</build_depend>
+  
+  <run_depend>cmake_modules</run_depend>
+  <run_depend>cargo_ants_msgs</run_depend>
+  <!-- run_depend>eigen</run_depend -->
+  <run_depend>sfl2</run_depend>
+  <run_depend>estar2</run_depend>
+  <run_depend>roscpp</run_depend>
+</package>

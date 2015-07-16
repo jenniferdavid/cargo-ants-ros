@@ -1,0 +1,59 @@
+@misc{wikipedia:curvature,
+  author = {Wikipedia},
+  title =  {Curvature},
+  year =   2014,
+  month =  nov,
+  howpublished = {\url{http://en.wikipedia.org/wiki/Curvature}}
+}
+
+@misc{wikipedia:b-spline,
+  author = {Wikipedia},
+  title =  {B-spline},
+  year =   2014,
+  month =  nov,
+  howpublished = {\url{http://en.wikipedia.org/wiki/B-spline}}
+}
+
+@misc{wikipedia:euler-spiral,
+  author = {Wikipedia},
+  title =  {Euler spiral},
+  year =   2014,
+  month =  nov,
+  howpublished = {\url{http://en.wikipedia.org/wiki/Euler_spiral}}
+}
+
+@misc{wikipedia:differential-geometry-of-curves,
+  author = {Wikipedia},
+  title =  {Differential geometry of curves (section Reparametrization and equivalence relation)},
+  year =   2014,
+  month =  nov,
+  howpublished = {\url{http://en.wikipedia.org/wiki/Differential_geometry_of_curves}}
+}
+
+@article{chomp,
+   author = {Matthew Zucker and Nathan Ratliff and Anca Dragan and Mihail Pivtoraiko and Matthew Klingensmith and Christopher Dellin and J.\ Andrew Bagnell and Siddhartha Srinivasa},
+   title = {{CHOMP}: Covariant Hamiltonian Optimization for Motion Planning},
+   journal = {Int.\ J.\ Robotics Research},
+   month = {May},
+   year = 2013
+}
+
+@article{state-lattice,
+  author    = {Mihail Pivtoraiko and Ross A.~Knepper and Alonzo Kelly},
+  title     = {Differentially constrained mobile robot motion planning in state lattices},
+  journal   = {J.\ Field Robotics},
+  volume    = 26,
+  number    = 3,
+  year      = 2009,
+  pages     = {308--333}
+}
+
+@article{fraichard,
+  author  = {Thierry Fraichard and Alexis Scheuer},
+  title   = {From Reeds and Shepp's to Continuous-Curvature Paths},
+  journal = {{IEEE} Trans. Robotics and Automation},
+  volume  = 20,
+  number  = 6,
+  month   = Dec,
+  year    = 2004
+}

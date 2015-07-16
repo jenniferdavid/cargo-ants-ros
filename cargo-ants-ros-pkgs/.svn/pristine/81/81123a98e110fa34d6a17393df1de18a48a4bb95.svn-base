@@ -1,0 +1,27 @@
+<!-- Displays AT coordinate frames-->
+
+<launch>
+
+    <!-- user arguments -->
+    <arg name="rviz"  default="True" />
+
+    <!-- model arguments -->
+    <arg name="model" default="$(find at_description)/urdf/at.xacro"/>
+    
+    <!-- Set robot_description parameter in the parameter server-->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />    
+    
+    <!-- Run joint state publisher (Gets robot_description from parameter server)-->
+    <node pkg="joint_state_publisher"
+          type="joint_state_publisher"
+          name="at_joint_state_publisher" >
+    </node>
+
+    <!-- Run state publisher (Gets robot_description from parameter server)-->
+    <node pkg="robot_state_publisher"
+          type="robot_state_publisher"
+          name="at_state_publisher" >
+          <param name="~publish_frequency" value="10" />
+    </node>
+    
+ </launch>

@@ -1,0 +1,297 @@
+<?xml version='1.0'?>
+    
+<sdf version='1.4'>
+    <model name="agv_tno">
+        <static>false</static>
+        
+        <!-- Main vehicle Body -->
+        <link name='chassis'>
+            
+            <!-- pose of the vehicle wrt model origin -->
+            <pose>0 0 1.25 0 0 0</pose>
+            
+            <!-- Inertia of a box: http://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
+            <inertial>
+                <mass>1000.0</mass>
+                <inertia>  
+                    <ixx>937.5</ixx>  <!-- for a box: ixx = 0.083 * mass * (y*y + z*z) -->
+                    <ixy>0.0</ixy>    <!-- for a box: ixy = 0 -->
+                    <ixz>0.0</ixz>    <!-- for a box: ixz = 0 -->
+                    <iyy>8520.8</iyy>  <!-- for a box: iyy = 0.083 * mass * (x*x + z*z) -->
+                    <iyz>0.0</iyz>    <!-- for a box: iyz = 0 -->
+                    <izz>9083.3</izz>  <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
+                </inertia>
+            </inertial>
+            
+            <!-- Collision box -->
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>10. 3. 1.5</size>
+                    </box>
+                </geometry>
+            </collision>
+            
+            <!-- Appearence box -->
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>10. 3. 1.5</size>
+                    </box>
+                </geometry>
+            </visual>
+            
+        </link>
+        
+        <!-- Front left wheel -->
+        <link name="front_left_wheel">
+            
+            <pose>3 1.7 0.7 0 1.5707 1.5707</pose>
+            
+            <inertial> <!-- Inertia of a cylinder: http://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
+                <mass>50.0</mass>
+                <inertia>  
+                    <ixx>6.5</ixx>  <!-- for a cylinder: ixx = 0.083 * mass * (3*radius^2 + height) -->
+                    <ixy>0.0</ixy>    <!-- for a cylinder: ixy = 0 -->
+                    <ixz>0.0</ixz>    <!-- for a cylinder: ixz = 0 -->
+                    <iyy>6.5</iyy> <!-- for a cylinder: iyy = 0.083 * mass * (3*radius^2 + height) -->
+                    <iyz>0.0</iyz>    <!-- for a cylinder: iyz = 0 -->
+                    <izz>12.25</izz>  <!-- for a cylinder: izz = 0.5 * mass * radius^2 -->
+                </inertia>
+            </inertial>
+            
+            <collision name="collision">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+
+        <!-- Front right wheel -->
+        <link name="front_right_wheel">
+            
+            <pose>3 -1.7 0.7 0 1.5707 1.5707</pose>
+            
+            <inertial> <!-- Inertia of a cylinder: http://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
+                <mass>50.0</mass>
+                <inertia>  
+                    <ixx>6.5</ixx>  <!-- for a cylinder: ixx = 0.083 * mass * (3*radius^2 + height) -->
+                    <ixy>0.0</ixy>    <!-- for a cylinder: ixy = 0 -->
+                    <ixz>0.0</ixz>    <!-- for a cylinder: ixz = 0 -->
+                    <iyy>6.5</iyy> <!-- for a cylinder: iyy = 0.083 * mass * (3*radius^2 + height) -->
+                    <iyz>0.0</iyz>    <!-- for a cylinder: iyz = 0 -->
+                    <izz>12.25</izz>  <!-- for a cylinder: izz = 0.5 * mass * radius^2 -->
+                </inertia>
+            </inertial>
+
+            <collision name="collision">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+
+        <!-- Rear left wheel -->
+        <link name="rear_left_wheel">
+            
+            <pose>-3 1.7 0.7 0 1.5707 1.5707</pose>
+            
+            <inertial> <!-- Inertia of a cylinder: http://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
+                <mass>50.0</mass>
+                <inertia>  
+                    <ixx>6.5</ixx>  <!-- for a cylinder: ixx = 0.083 * mass * (3*radius^2 + height) -->
+                    <ixy>0.0</ixy>    <!-- for a cylinder: ixy = 0 -->
+                    <ixz>0.0</ixz>    <!-- for a cylinder: ixz = 0 -->
+                    <iyy>6.5</iyy> <!-- for a cylinder: iyy = 0.083 * mass * (3*radius^2 + height) -->
+                    <iyz>0.0</iyz>    <!-- for a cylinder: iyz = 0 -->
+                    <izz>12.25</izz>  <!-- for a cylinder: izz = 0.5 * mass * radius^2 -->
+                </inertia>
+            </inertial>
+            
+            <collision name="collision">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+
+        <!-- Rear right wheel -->
+        <link name="rear_right_wheel">
+            
+            <pose>-3 -1.7 0.7 0 1.5707 1.5707</pose>
+            
+            <inertial> <!-- Inertia of a cylinder: http://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
+                <mass>50.0</mass>
+                <inertia>  
+                    <ixx>6.5</ixx>  <!-- for a cylinder: ixx = 0.083 * mass * (3*radius^2 + height) -->
+                    <ixy>0.0</ixy>    <!-- for a cylinder: ixy = 0 -->
+                    <ixz>0.0</ixz>    <!-- for a cylinder: ixz = 0 -->
+                    <iyy>6.5</iyy> <!-- for a cylinder: iyy = 0.083 * mass * (3*radius^2 + height) -->
+                    <iyz>0.0</iyz>    <!-- for a cylinder: iyz = 0 -->
+                    <izz>12.25</izz>  <!-- for a cylinder: izz = 0.5 * mass * radius^2 -->
+                </inertia>
+            </inertial>
+            
+            <collision name="collision">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </collision>
+            <visual name="visual">
+                <geometry>
+                    <cylinder>
+                    <radius>0.7</radius>
+                    <length>0.3</length>
+                    </cylinder>
+                </geometry>
+            </visual>
+        </link>
+           
+        <joint name="front_left_wheel_hinge" type="revolute">
+            <pose>0 0 -0.05 0 0 0</pose>
+            <child>front_left_wheel</child>
+            <parent>chassis</parent>
+                <axis>
+                    <xyz>0 1 0</xyz>
+                </axis>
+        </joint>
+        
+        <joint name="front_right_wheel_hinge" type="revolute">
+            <pose>0 0 0.05 0 0 0</pose>
+            <child>front_right_wheel</child>
+            <parent>chassis</parent>
+                <axis>
+                    <xyz>0 1 0</xyz>
+                </axis>
+        </joint>
+        
+        <joint name="rear_left_wheel_hinge" type="revolute">
+            <pose>0 0 -0.05 0 0 0</pose>
+            <child>rear_left_wheel</child>
+            <parent>chassis</parent>
+                <axis>
+                    <xyz>0 1 0</xyz>
+                </axis>
+        </joint>
+        
+        <joint name="rear_right_wheel_hinge" type="revolute">
+            <pose>0 0 0.05 0 0 0</pose>
+            <child>rear_right_wheel</child>
+            <parent>chassis</parent>
+                <axis>
+                    <xyz>0 1 0</xyz>
+                </axis>
+        </joint>
+        
+        <include>
+            <uri>model://hokuyo</uri>
+            <name>front_left_lidar</name>
+            <pose>5.1 1.6 1.0 0 0 0</pose> <!-- pose in global coordinate frame -->
+        </include>
+        
+        <include>
+            <uri>model://hokuyo</uri>
+            <name>front_right_lidar</name>
+            <pose>5.1 -1.6 1.0 0 0 0</pose> <!-- pose in global coordinate frame -->
+        </include>
+        
+        <include>
+            <uri>model://hokuyo</uri>
+            <name>side_left_lidar</name>
+            <pose>0 1.6 1.0 0 0 1.5707</pose> <!-- pose in global coordinate frame -->
+        </include>
+        
+        <include>
+            <uri>model://hokuyo</uri>
+            <name>side_right_lidar</name>
+            <pose>0 -1.6 1.0 0 0 -1.5707</pose> <!-- pose in global coordinate frame -->
+        </include>
+                  
+        <joint name="front_left_lidar_joint" type="revolute">
+            <child>front_left_lidar::link</child>
+            <parent>chassis</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <upper>0</upper>
+                    <lower>0</lower>
+                </limit>
+            </axis>
+        </joint>   
+
+        <joint name="front_right_lidar_joint" type="revolute">
+            <child>front_right_lidar::link</child>
+            <parent>chassis</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <upper>0</upper>
+                    <lower>0</lower>
+                </limit>
+            </axis>
+        </joint>   
+
+        <joint name="side_left_lidar_joint" type="revolute">
+            <child>side_left_lidar::link</child>
+            <parent>chassis</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <upper>0</upper>
+                    <lower>0</lower>
+                </limit>
+            </axis>
+        </joint>   
+        
+        <joint name="side_right_lidar_joint" type="revolute">
+            <child>side_right_lidar::link</child>
+            <parent>chassis</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <upper>0</upper>
+                    <lower>0</lower>
+                </limit>
+            </axis>
+        </joint>   
+        
+        
+    </model>
+    
+</sdf>

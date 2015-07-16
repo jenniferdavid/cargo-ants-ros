@@ -1,0 +1,77 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(cargo_ants_msgs)
+
+find_package(catkin REQUIRED COMPONENTS
+    message_generation
+    std_msgs
+    geometry_msgs
+    nav_msgs
+    sensor_msgs
+)
+
+add_message_files(
+  DIRECTORY msg
+  FILES
+  ContainerInfo.msg
+  Goal.msg
+  Path.msg
+  Task.msg
+  VehicleInfo.msg
+  VehicleState.msg
+  Obstacle.msg
+  Origin.msg
+  Point.msg
+  Polyline.msg
+  ObstacleMap.msg
+  ReferenceTrajectory.msg
+  ReferenceTrajectoryPoint.msg
+  ArtsMeasurement.msg
+  ArtsArray.msg
+  RadarCluster209.msg
+  RadarObject309.msg
+  RadarObject209.msg
+  LaserDetection.msg
+  LaserDetectionsArray.msg
+  RadarDetection.msg
+  RadarDetectionsArray.msg
+  ObjectTrack.msg
+  ObjectTrackArray.msg
+	MovingBaseX.msg
+	MovingBaseY.msg
+	MovingBasePSI.msg
+	MovingBaseXdot.msg
+	MovingBaseYdot.msg
+	MovingBasePSIdot.msg
+	MovingBaseXddot.msg
+	MovingBaseYddot.msg
+	MovingBasePSIddot.msg
+)
+
+generate_messages(
+  DEPENDENCIES 
+    std_msgs 
+    geometry_msgs
+    nav_msgs
+    sensor_msgs
+)
+
+###################################
+## catkin specific configuration ##
+###################################
+## The catkin_package macro generates cmake config files for your package
+## Declare things to be passed to dependent projects
+## INCLUDE_DIRS: uncomment this if you package contains header files
+## LIBRARIES: libraries you create in this project that dependent projects also need
+## CATKIN_DEPENDS: catkin_packages dependent projects also need
+## DEPENDS: system dependencies of this project that dependent projects also need
+catkin_package(
+  #  INCLUDE_DIRS include
+  #  LIBRARIES cargo_ants_msgs
+  CATKIN_DEPENDS 
+    message_runtime  
+    std_msgs
+    geometry_msgs
+    nav_msgs
+    sensor_msgs
+  #  DEPENDS system_lib
+)

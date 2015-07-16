@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>cargo_ants_monitor</name>
+  <version>0.0.0</version>
+  <description>
+    Utility for monitoring the messages between Cargo-ANTs module and
+    displaying the state of the various subsystems.
+  </description>
+  <url type="website">http://www.cargo-ants.eu/</url>
+  <author email="roland.philippsen.hh@gmail.com">Roland Philippsen</author>
+  <maintainer email="roland.philippsen.hh@gmail.com">Roland Philippsen</maintainer>
+  <license>BSD</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>cargo_ants_msgs</build_depend>
+  <build_depend>cargo_ants_util</build_depend>
+  <build_depend>roscpp</build_depend>
+
+  <run_depend>cargo_ants_msgs</run_depend>
+  <run_depend>cargo_ants_util</run_depend>
+  <run_depend>roscpp</run_depend>
+</package>

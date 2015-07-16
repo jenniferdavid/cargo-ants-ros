@@ -1,0 +1,36 @@
+Cargo-ANTs architecture terminologies
+=====================================
+
+Only from a motion generation point of view (for now). Frankly, I (Rolo) don't think it makes much sense to spend too much time deliberating conceptual architectures: we will discover what works during development, and it will be fairly close to established hybrid architectures in robotics.
+
+Functional architecture to/from SW architecture
+-----------------------------------------------
+
+Navigation layer terms (roughly left to right):
+
+* map database
+** permanent static
+** transient global
+** transient local
+* host positioning
+* object route prediction
+* host route prediction
+* spatial and importance filtering (pending discussion IRI/Volvo)
+
+Application layer terms (strictly top to bottom):
+
+* site plan - gives the task
+** should not be called "plan" and should use plural tasks
+** ROS package *cargo_ants_operator_interface* (to be drafted)
+* route generation & management (should be called task scheduling or so, this may have made it into the deliverables)
+** ROS package *cargo_ants_task_scheduler*
+* path generator & management
+** should use consistent -ator or -ation throughout
+** ROS package *cargo_ants_path_planner*
+* situation assessment
+** not sure what was meant by this...
+** ROS package *cargo_ants_path_adaptor*
+* IWI manager
+** fold this into some other module (path adaptor and/or vehicle_control)
+* vehicle control
+** no corresponding ROS package (for now at least)

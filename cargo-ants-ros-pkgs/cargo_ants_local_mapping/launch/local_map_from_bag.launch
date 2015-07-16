@@ -1,0 +1,47 @@
+<!-- Launches local map from rosbag-->
+
+<launch>
+    <!-- Rosbag: laser + odometry -->
+    <node   
+        pkg="rosbag"
+        type="play"
+        name="rosbag"
+        args="-l --clock /home/acoromin/Desktop/TNO-bags/106_all.bag">
+    </node>
+        
+    <!-- rviz configurated for local map -->
+    <node   
+        name="rviz" 
+        pkg="rviz" 
+        type="rviz"
+        args="-d $(find local_map)/rviz/local_map.rviz">
+        <param name="~tf_prefix" value="/$(env ROBOT)" type="str"/>
+    </node>
+        
+
+    <!--    Launch people_tracking_rai node -->
+    <group ns="$(env ROBOT)">
+        <node   
+            pkg="cargo_ants_local_mapping"
+            type="local_mapping"
+            name="local_mapping"
+            args=""
+            output="screen">
+            <remap 
+                from="/$(env ROBOT)/local_map/odometry"
+                to="/iri_ibeo_pointcloud_2_laserscan/odom_rel" />
+            <remap 
+                from="/$(env ROBOT)/local_map/front_laser"
+                to="/iri_ibeo_pointcloud_2_laserscan/ibeo_1b_laserscan" />
+<!--            <rosparam 
+                command="load" 
+                file="$(find local_map)/config/local_map_params.yaml"/>-->
+            <param 
+                name="~tf_prefix" 
+                value="/$(env ROBOT)" 
+                type="str"/>
+        </node>
+    </group>
+
+</launch>
+

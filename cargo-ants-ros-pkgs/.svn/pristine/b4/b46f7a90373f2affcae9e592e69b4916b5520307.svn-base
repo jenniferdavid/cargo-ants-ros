@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>cargo_ants_npm2</name>
+  <version>0.0.0</version>
+  <description>
+    Cargo-ANTs simulation setup for the Nepumuk v2 mobile robot simulator.
+  </description>
+  <url type="website">http://www.cargo-ants.eu/</url>
+  <author email="roland.philippsen.hh@gmail.com">Roland Philippsen</author>
+  <maintainer email="roland.philippsen.hh@gmail.com">Roland Philippsen</maintainer>
+  <license>BSD</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>cargo_ants_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sfl2</build_depend>
+
+  <run_depend>cargo_ants_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>sfl2</run_depend>
+  
+</package>

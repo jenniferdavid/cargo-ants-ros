@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>cargo_ants_task_scheduler</name>
+  <version>0.0.0</version>
+  <description>
+    Multi-vehicle planner (sometimes called Route Generation and
+    Management) which operates on a site-wide connectivity graph (or
+    maybe a traversability representation if this turns out to be more
+    effective).  It basically just decides which vehicle should
+    perform which task(s), but may rely on path planning algorithms to
+    provide the necessary information (e.g. cost estimates of
+    candidate task assignments).
+  </description>
+  <url type="website">http://www.cargo-ants.eu/</url>
+  <author email="roland.philippsen.hh@gmail.com">Roland Philippsen</author>
+  <maintainer email="roland.philippsen.hh@gmail.com">Roland Philippsen</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>cargo_ants_msgs</build_depend>
+  <build_depend>sfl2</build_depend>
+  <build_depend>estar2</build_depend>
+  <build_depend>roscpp</build_depend>
+  <!-- <build_depend>message_generation</build_depend> -->
+
+  <run_depend>cargo_ants_msgs</run_depend>
+  <run_depend>sfl2</run_depend>
+  <run_depend>estar2</run_depend>
+  <run_depend>roscpp</run_depend>
+  <!-- <run_depend>message_runtime</run_depend> -->
+</package>

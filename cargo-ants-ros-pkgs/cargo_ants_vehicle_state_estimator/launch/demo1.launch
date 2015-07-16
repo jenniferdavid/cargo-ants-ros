@@ -1,0 +1,9 @@
+<launch>
+<node 
+	name="vehicle_state_estimator_node" 
+	pkg="vehicle_state_estimator" 
+	type="vehicle_state_estimator_node"
+	output="screen">
+	<!-- comentari -->
+</node>
+</launch>
