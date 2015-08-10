@@ -15,8 +15,7 @@
 #include <geometry_msgs/Twist.h>
 
 //cargo ants ROS 
-#include <cargo_ants_msgs/ReferenceTrajectory.h>
-
+#include "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/devel/include/cargo_ants_msgs/ReferenceTrajectory.h"
 /** \brief Implementation of AGV inverse kinematics
  *
  * This package implements a ROS node which receives platform velocity commands (dot(x), dot(theta)) and translates them

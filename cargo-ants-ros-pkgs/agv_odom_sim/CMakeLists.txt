@@ -31,6 +31,8 @@ SET(SRCS_ROS_NODE
 #dynamic reconfigure cfg file
 generate_dynamic_reconfigure_options(cfg/agv_odom_sim.cfg)
 
+catkin_package()
+
 ## The catkin_package macro generates cmake config files for your package
 catkin_package ( CATKIN_DEPENDS 
         roscpp 

@@ -1,0 +1,31 @@
+<!-- Starts at simulated environment, controllers and drive node -->
+
+<launch>
+
+    <!-- Enable/disable visualization -->
+    <arg name="plots" default="False" />
+    <arg name="rviz" default="False" />
+    
+    <!-- Simulated environment -->
+    <include file="$(find at_gazebo)/launch/at_on_ground_with_barrel.launch"/>
+    
+    <!-- at controllers -->
+    <include file="$(find at_control)/launch/at_control.launch"/>
+    
+    <!-- at drive -->
+    <include file="$(find at_drive_sim)/launch/at_drive_sim.launch"/>
+
+    <!-- at odometry -->
+    <include file="$(find at_odom_sim)/launch/at_odom_sim.launch"/>
+    
+    <!-- Run rviz node -->
+    <group if="$(arg rviz)">
+        <node   
+            pkg="rviz" 
+            type="rviz"
+            name="rviz"         
+            args="-d $(find at_tests_sim)/rviz/at_sim_01.rviz">
+        </node>
+    </group>
+    
+</launch>

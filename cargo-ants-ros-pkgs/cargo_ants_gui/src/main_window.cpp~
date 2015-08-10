@@ -1,0 +1,108 @@
+#include <QtGui>
+#include <algorithm>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QMessageBox>
+#include <iostream>
+#include <algorithm>
+#include "../include/cargo_ants_gui/main_window.hpp"
+
+namespace cargo_ants_gui {
+
+using namespace Qt;
+
+MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
+	: QMainWindow(parent)
+	, qnode(argc,argv)
+{
+    ui.setupUi(this); // Calling this incidentally connects all ui's triggers to on_...() callbacks in this class.
+    setWindowIcon(QIcon(":/images/cargoant_logo.png"));
+    //   ui.view_logging->setModel(qnode.loggingModel());
+    //QObject::connect(&qnode, SIGNAL(loggingUpdated()), this, SLOT(updateLoggingView()));
+    listing();
+    listing2();
+}
+
+    MainWindow::~MainWindow() {}
+
+    void MainWindow::showNoMasterMessage() {
+	QMessageBox msgBox;
+	msgBox.setText("Couldn't find the ros master.");
+	msgBox.exec();
+	//close();
+    }
+
+  //void MainWindow::updateLoggingView() {
+      //   ui.view_logging->scrollToBottom();
+  // }
+    
+    void MainWindow::showNoContainerMessage() {
+	QMessageBox msgBox;
+	msgBox.setText("No Containers selected.");
+	msgBox.exec();
+	// close();
+    }
+
+    void MainWindow::showNoSchedulingMessage() {
+	QMessageBox msgBox;
+	msgBox.setText("No Task Scheduling required. One Container selected.");
+	msgBox.exec();
+	// close();
+    }
+ 
+    void MainWindow::on_TaskSchedule_clicked(bool check ) {
+      if (!qnode.init()){
+	showNoMasterMessage();
+      } else {
+	containertoschedule();
+     }
+    }
+    void MainWindow::containertoschedule() {
+      if (ui.listWidget->selectedItems().isEmpty()){
+      showNoContainerMessage();
+      ui.TaskSchedule->setEnabled(true);
+
+	  }
+     else if (ui.listWidget->selectedItems().count() == 1){
+      showNoSchedulingMessage();
+      ui.TaskSchedule->setEnabled(true);
+	
+     }
+     else {
+        QList<QListWidgetItem *> items = ui.listWidget->selectedItems();
+       qnode.run(items);
+       }
+     }
+   
+    void MainWindow::listing() {
+
+      //qnode.list(listcontainers,listvehicles);
+      // ui.listWidget->addItems(
+      // ui.listWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+      // ui.listWidget_2->addItems(
+      // ui.listWidget_2->setSelectionMode(QAbstractItemView::ExtendedSelection);
+
+    for (int i = 0; i < 7; i++)
+	{
+	  ui.listWidget->addItem("Container" + QString::number(i));
+	  ui.listWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	}
+     }
+
+   
+    void MainWindow::listing2() {
+
+      //qnode.list(listcontainers,listvehicles);
+      // ui.listWidget->addItems(
+      // ui.listWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+      // ui.listWidget_2->addItems(
+      // ui.listWidget_2->setSelectionMode(QAbstractItemView::ExtendedSelection);
+
+    for (int i = 0; i < 7; i+=2)
+	{
+	  ui.listWidget_3->addItem("Vehicle" + QString::number(i));
+	  ui.listWidget_3->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	}
+     }
+}  // namespace cargo_ants_gui
+

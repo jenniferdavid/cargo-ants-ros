@@ -15,6 +15,8 @@ else()
         message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+catkin_package()
+
 ## Find catkin macros and libraries
 find_package( catkin REQUIRED COMPONENTS 
     roscpp
@@ -30,7 +32,7 @@ SET(SRCS_ROS_NODE
 # generate_dynamic_reconfigure_options(cfg/my_config_file.cfg)
 
 ## The catkin_package macro generates cmake config files for your package
-catkin_package ( CATKIN_DEPENDS 
+catkin_package (CATKIN_DEPENDS 
         roscpp 
         rospy 
         std_msgs)
