@@ -96,7 +96,7 @@ int resolvehelper(const char* hostname, int family, const char* service, sockadd
 	std::cout << ".............................." << std::endl;
     }
     
-    //  double array1[648] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,53,212,72,55,89,6,6,3,4,5,6,7,8,9,12,14,23}; 
+    double array1[648] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,53,212,72,55,89,6,6,3,4,5,6,7,8,9,12,14,23}; 
     //  double const *msg = array;
     //  size_t msg_length = sizeof(array);
 

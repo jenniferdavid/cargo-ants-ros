@@ -35,7 +35,7 @@ generate_messages(
    cargo_ants_msgs # Or other packages containing msgs
  )
     
-add_dependencies(arts_driver ${catkin_EXPORTED_TARGETS})
+
 
 ## Find here Library dependencies. System dependencies are found with CMake's conventions
 # find_package(my_library REQUIRED)
@@ -61,6 +61,7 @@ include_directories(${catkin_INCLUDE_DIRS})
 # build executable and link with libraries 
 add_executable(arts_driver ${SRCS_ROS_NODE})
 target_link_libraries(arts_driver ${catkin_LIBRARIES})
+add_dependencies(arts_driver ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(arts_driver ${my_library_LIBRARY} ${catkin_LIBRARIES})
 
 

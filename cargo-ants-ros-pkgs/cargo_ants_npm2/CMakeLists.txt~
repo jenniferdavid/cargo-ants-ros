@@ -23,10 +23,10 @@ find_package(catkin REQUIRED COMPONENTS
 #  FILES
 #)
 
-#generate_messages(
-#  DEPENDENCIES
-#  cargo_ants_msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  cargo_ants_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
