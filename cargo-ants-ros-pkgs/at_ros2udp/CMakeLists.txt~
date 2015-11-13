@@ -10,7 +10,7 @@ if (COMMAND cmake_policy)
   endif (POLICY CMP0042)
 endif (COMMAND cmake_policy)
 
-project (udp_volvo)
+project (at_ros2udp)
 set (CMAKE_VERBOSE_MAKEFILE ON)
 
 find_package (catkin REQUIRED COMPONENTS

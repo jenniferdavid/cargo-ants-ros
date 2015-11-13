@@ -7,7 +7,6 @@ project(cargo_ants_path_adaptor)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  cargo_ants_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -84,7 +83,7 @@ catkin_package(
    INCLUDE_DIRS include
 #  INCLUDE_DIRS include
 #  LIBRARIES ros_chomp
-   CATKIN_DEPENDS roscpp std_msgs cargo_ants_msgs
+#  CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
    DEPENDS Eigen
 )

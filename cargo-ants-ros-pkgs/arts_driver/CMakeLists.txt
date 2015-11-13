@@ -29,12 +29,14 @@ find_package( catkin REQUIRED COMPONENTS
 # )
 
 # Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+   DEPENDENCIES
+   std_msgs 
+   cargo_ants_msgs # Or other packages containing msgs
+ )
     
-    
+
+
 ## Find here Library dependencies. System dependencies are found with CMake's conventions
 # find_package(my_library REQUIRED)
 
@@ -59,6 +61,7 @@ include_directories(${catkin_INCLUDE_DIRS})
 # build executable and link with libraries 
 add_executable(arts_driver ${SRCS_ROS_NODE})
 target_link_libraries(arts_driver ${catkin_LIBRARIES})
+add_dependencies(arts_driver ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(arts_driver ${my_library_LIBRARY} ${catkin_LIBRARIES})
 
 

@@ -33,3 +33,4 @@ include_directories (
 
 add_executable (at_ros2udp src/at_ros2udp.cpp)
 target_link_libraries (at_ros2udp ${catkin_LIBRARIES})
+add_dependencies(at_ros2udp ${catkin_EXPORTED_TARGETS})
