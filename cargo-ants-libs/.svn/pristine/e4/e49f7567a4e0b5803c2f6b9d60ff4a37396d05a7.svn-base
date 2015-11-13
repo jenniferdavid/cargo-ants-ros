@@ -1,0 +1,79 @@
+View world
+     Camera  world
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_carrot
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Drawing Ter_mapper_free
+     Drawing Ter_mapper_obst
+     Drawing Ter_mapper_check
+     Drawing Ter_mapper_hole
+     Drawing Ter_mapper_repair
+     Drawing Ter_lidar_0
+     Window  0.0  0.0  0.5  0.8
+     Border  1
+
+View travmap
+     Camera  Ter_true_zoom_camera
+     Drawing Ter_travmap
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_true_drawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Drawing Ter_mapper_free
+     Drawing Ter_mapper_obst
+     Drawing Ter_mapper_check
+     Drawing Ter_mapper_hole
+     Drawing Ter_mapper_repair
+     Drawing Ter_lidar_0
+     Window  0.5  0.0  1.0  0.8
+     Border  1
+
+View mapper_free
+     Camera  Ter_true_zoom_camera
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_true_drawing
+     Drawing Ter_mapper_free
+     Window  0.0  0.8  0.2  1.0
+     Border  1
+
+View mapper_obst
+     Camera  Ter_true_zoom_camera
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_true_drawing
+     Drawing Ter_mapper_obst
+     Window  0.2  0.8  0.4  1.0
+     Border  1
+
+View mapper_check
+     Camera  Ter_true_zoom_camera
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_true_drawing
+     Drawing Ter_mapper_check
+     Window  0.4  0.8  0.6  1.0
+     Border  1
+
+View mapper_hole
+     Camera  Ter_true_zoom_camera
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_true_drawing
+     Drawing Ter_mapper_hole
+     Window  0.6  0.8  0.8  1.0
+     Border  1
+
+View mapper_repair
+     Camera  Ter_true_zoom_camera
+     Drawing world
+     Drawing visitor0_true_drawing
+     Drawing Ter_true_drawing
+     Drawing Ter_mapper_repair
+     Window  0.8  0.8  1.0  1.0
+     Border  1

@@ -1,0 +1,33 @@
+SynchronizedClock.Init ~
+SynchronizedClock.Run ~
+
+Sequencer.Init ~
+Sequencer.ClearSequence ~
+
+GUITrajectory.Define 1 ~
+GUITrajectory.AddPose     0    1   1       0     ~
+GUITrajectory.AddPose     1    2   2       3.141 ~
+GUITrajectory.Finalize                           ~
+Sequencer.Add 0 GUITrajectory 1 ~
+
+GUITrajectory.Define 2 ~
+GUITrajectory.AddPose     0    2   2       3.141 ~
+GUITrajectory.AddPose     1    2   3       1.571 ~
+GUITrajectory.AddPose     2    3   3      -1.571 ~
+GUITrajectory.AddPose     3    4   3       1.571 ~
+GUITrajectory.AddPose     4    5   3      -1.571 ~
+GUITrajectory.Finalize                           ~
+Sequencer.Add 2 GUITrajectory 2 ~
+
+GUITrajectory.Define 3 ~
+GUITrajectory.AddPose     0    5   3      -1.571 ~
+GUITrajectory.AddPose     1    6   3       1.571 ~
+GUITrajectory.AddPose     2    7   3      -1.571 ~
+GUITrajectory.AddWaitFor  3   17                 ~
+GUITrajectory.AddPose     4    8   3       1.571 ~
+GUITrajectory.AddPose     5    8   4       1.571 ~
+GUITrajectory.AddPose     6    7   4      -1.571 ~
+GUITrajectory.Finalize                           ~
+Sequencer.Add 6 GUITrajectory 3 ~
+
+Sequencer.Run ~

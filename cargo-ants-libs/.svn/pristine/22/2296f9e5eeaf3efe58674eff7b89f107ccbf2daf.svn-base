@@ -1,0 +1,18 @@
+# tricky but doable
+Goal 50  45  0  5  3.2
+
+# this makes it go into corner:
+# Goal 50  15  0  5  3.2
+
+# this sometimes as well, I guess it depends on the scheduling of the
+# threads coupled with the treatment of STARVED control status
+Goal 60  15  0  5  3.2
+
+Goal 65  35  0  5  3.2
+
+# if you put this goal in, it'll block itself against a wall
+#Goal 65  10  0  5  3.2
+
+Goal 90  70  0  5  3.2
+Goal 10  10  0  5  3.2
+repeat loop

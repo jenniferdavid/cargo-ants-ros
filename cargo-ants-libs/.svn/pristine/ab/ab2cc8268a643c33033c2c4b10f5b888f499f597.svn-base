@@ -1,0 +1,55 @@
+Layout g
+View world
+     Camera  expo
+     Drawing expo
+     Drawing Robox_true_drawing
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Robox_drive
+     Drawing Robox_goaldrawing
+     Drawing Robox_trajectory
+     Drawing Robox_lidar_1
+     Drawing Robox_lidar_0
+     Window  0.0  0.0  1.0  1.0
+     Border  0
+
+Layout r
+View robox
+     Camera  Robox_true_zoom_camera
+     Drawing expo
+     Drawing Robox_true_drawing
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Robox_drive
+     Drawing Robox_goaldrawing
+     Drawing Robox_trajectory
+     Drawing Robox_lidar_1
+     Drawing Robox_lidar_0
+     Window  0.0  0.0  1.0  1.0
+     Border  0

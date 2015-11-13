@@ -1,0 +1,14 @@
+<hr size="1">
+<div align="right" valign="center">
+<a href="http://www.doxygen.org/index.html"><img
+   src="doxylogo.png" width="110" height="37" border="0" alt="doxygen"></a>
+<a href="http://sourceforge.net"><img
+   src="http://sflogo.sourceforge.net/sflogo.php?group_id=162011&amp;type=2"
+   width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
+<br>
+<small>
+<a href="http://libsunflower.sourceforge.net/">$projectname</a> $datetime
+</small>
+</div>
+</body>
+</html>

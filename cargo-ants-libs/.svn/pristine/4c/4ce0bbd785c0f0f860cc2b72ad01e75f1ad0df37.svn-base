@@ -1,0 +1,18 @@
+The core sunflower library and SCons description files are
+Copyright (C) 2004, Autonomous Systems Lab,
+                    Ecole Polytechnique Federale de Lausanne
+		    (Swiss Federal Institute of Technology).
+		    All rights reserved.
+
+The C-wrapper code and autotools build files are
+Copyright (C) 2005, LAAS/CNRS. All rights reserved.
+
+Maintainer: Roland Philippsen <roland dot philippsen at gmx dot net>
+Authors:    Viet Nguyen <viet dot nguyen at mavt dot ethz dot ch>
+            Frederic Pont <frederic dot pont at mavt dot ethz dot ch>
+            Agostino Martinelli <agostino dot martinelli at inrialpes dot fr>
+
+The sunflower library is released under the GNU General Public
+License. The C-wrapper and autotools files are released under the new
+BSD license. See the COPYRIGHT, LICENSE.GPL, and LICENSE.BSD files for
+more information.

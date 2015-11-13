@@ -1,0 +1,57 @@
+View global_value
+     Camera  Borox_estar_cspace
+     Drawing Borox_estar_value
+     Drawing Borox_estar_queue
+     Drawing expo
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Drawing Borox_goaldrawing
+     Drawing Borox_trajectory
+     Drawing Borox_carrot
+     Drawing Borox_lidar_1
+     Drawing Borox_lidar_0
+     Window  0.0  0.0  0.5  0.7
+     Border  2
+
+View local_travmap
+     Camera  Borox_true_zoom_camera
+     Drawing Borox_travmap
+     Drawing Borox_estar_queue
+     Drawing expo
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Drawing Borox_goaldrawing
+     Drawing Borox_trajectory
+     Drawing Borox_carrot
+     Drawing Borox_lidar_1
+     Drawing Borox_lidar_0
+     Window  0.5  0.0  1.0  0.7
+     Border  2
+
+View global_travmap
+     Camera  Borox_travmap
+     Drawing Borox_travmap
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Window  0.0  0.7  0.25  1.0
+     Border  2
+
+View global_meta
+     Camera  Borox_estar_cspace
+     Drawing Borox_estar_meta
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Window  0.25  0.7  0.5  1.0
+     Border  2
+
+View dwa_collision
+     Camera  Borox_collisioncamera
+     Drawing Borox_collisiondrawing
+     Window  0.5  0.7  0.75  1.0
+     Border  2
+
+View dwa
+     Camera Borox_dwcamera
+     Drawing Borox_dwdrawing
+     Window 0.75  0.7  1.0  1.0
+     Border 2

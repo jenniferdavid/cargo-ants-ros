@@ -1,0 +1,321 @@
+Robot robox Robox
+	Pose 15  12  3.2
+	Goal  9  15  3.2  0.5  3.2
+	Goal 10  18  3.2  0.5  3.2
+	Goal 18  21  3.2  0.5  3.2
+	Goal 12  21  3.2  0.5  3.2
+	Goal  6  15  3.2  0.5  3.2
+	Goal 15  10  3.2  0.5  3.2
+	Option camera_zoom 4
+
+        Option dwa_use_tobi_distobj true
+
+##################################################
+# The full set of parameters that can be tweaked for the Expo.02
+# system in libsunflower is represented by robox/expoparams.hpp.
+# The default values are defined in sfl/expo/expo_parameters.
+# Note that the symbolic and mathematical expressions used here
+# can not be used as such in Option values, when you overwrite them
+# they must be numeric.
+#
+#    front_channel       0
+#    front_nscans        181
+#    front_mount_x       0.15
+#    front_mount_y       0
+#    front_mount_theta   0
+#    front_rhomax        8
+#    front_phi0          -M_PI/2
+#    front_phirange      M_PI
+#
+#    rear_channel        1
+#    rear_nscans         181
+#    rear_mount_x        -0.15
+#    rear_mount_y        0
+#    rear_mount_theta    M_PI
+#    rear_rhomax         8
+#    rear_phi0           -M_PI/2
+#    rear_phirange       M_PI
+#
+#    model_security_distance   0.02
+#    model_wheelbase           0.521
+#    model_wheelradius         0.088
+#    model_qd_max              6.5
+#    model_qdd_max             6.5
+#    model_sd_max              0.5
+#    model_thetad_max          2.0
+#    model_sdd_max      0.75 * wheelradius * qd_max
+#    model_thetadd_max   1.5 * wheelradius * qd_max / wheelbase
+#
+#    dwa_dimension         41
+#    dwa_grid_width        2.3
+#    dwa_grid_height       1.7
+#    dwa_grid_resolution   0.03
+#    dwa_alpha_distance    0.6
+#    dwa_alpha_heading     0.3
+#    dwa_alpha_speed       0.1
+#
+#    bband_enabled             true
+#    bband_shortpath           2
+#    bband_longpath            10
+#    bband_maxignoredistance   4
+#
+#    mp_strict_dwa           false
+#    mp_auto_adapt_dwa       false
+#    mp_dtheta_starthoming   10 * M_PI / 180
+#    mp_dtheta_startaiming   45 * M_PI / 180
+
+##################################################
+# Override these default like this:
+     Option dwa_dimension           31
+     Option dwa_grid_resolution      0.05
+     Option model_security_distance  0.03
+
+
+##################################################
+# You can simulate noise in the wheel encoders
+# by switching on 'Option noisy_odometry'. See
+# common/NoiseModel.hpp for comments about the
+# parameters.
+#
+#        Option noisy_odometry true
+#          Option odometry_noise_min_factor  0.8
+#          Option odometry_noise_max_factor  1.2
+#          Option odometry_noise_min_offset -0.01
+#          Option odometry_noise_max_offset  0.01
+
+##################################################
+# You can simulate measurement noise in the laser
+# scanners by setting 'Option noisy_scanners'. See
+# common/NoiseModel.hpp for comments about the
+# parameters.
+#
+#        Option noisy_scanners true
+#          Option scanner_noise_min_factor  0.9
+#          Option scanner_noise_max_factor  1.1
+#          Option scanner_noise_min_offset -0.2
+#          Option scanner_noise_max_offset  0.2
+
+##################################################
+# These experimental threading options allow you to run
+# some things as separate POSIX threads: front and rear
+# scanner acquisition, and updates of the motion controller,
+# odometry, and bubble band. Search for the corresponding
+# strings in robox/Robox.cpp to get an idea of what these
+# options do.
+#
+#	Option front_thread 1000
+#	Option rear_thread 1000
+#       Option mc_thread 1000
+#       Option odo_thread 1000
+#	Option bband_thread 100000
+
+Robot visitor visitor0
+	Pose  7  5.5  0
+	Goal  10  4.5  0   0.1  3.2
+	Goal  13  7  0   0.1  3.2
+	Goal  14  8  0   0.1  3.2
+	Goal  13  13  0   0.1  3.2
+	Goal  9  13  0   0.1  3.2
+	Goal  7  13  0   0.1  3.2
+	Goal  6  14  0   0.1  3.2
+	Goal  7  19  0   0.1  3.2
+	Goal  10  20  0   0.1  3.2
+	Goal  15  19  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+
+Robot visitor visitor1
+	Pose  11  4.5  0
+	Goal  14  7  0   0.1  3.2
+	Goal  15  8  0   0.1  3.2
+	Goal  14  13  0   0.1  3.2
+	Goal  10  13  0   0.1  3.2
+	Goal  8  13  0   0.1  3.2
+	Goal  7  14  0   0.1  3.2
+	Goal  8  19  0   0.1  3.2
+	Goal  11  20  0   0.1  3.2
+	Goal  16  19  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  8  5.5  0   0.1  3.2
+
+Robot visitor visitor2
+	Pose  15  7  0
+	Goal  16  8  0   0.1  3.2
+	Goal  15  13  0   0.1  3.2
+	Goal  11  13  0   0.1  3.2
+	Goal  9  13  0   0.1  3.2
+	Goal  8  14  0   0.1  3.2
+	Goal  9  19  0   0.1  3.2
+	Goal  12  20  0   0.1  3.2
+	Goal  17  19  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  5.5  0   0.1  3.2
+	Goal  12  4.5  0   0.1  3.2
+
+Robot visitor visitor3
+	Pose  14  8.5  0
+	Goal  13  13.5  0   0.1  3.2
+	Goal  9  13.5  0   0.1  3.2
+	Goal  7  13.5  0   0.1  3.2
+	Goal  6  14.5  0   0.1  3.2
+	Goal  7  19.5  0   0.1  3.2
+	Goal  10  20.5  0   0.1  3.2
+	Goal  15  19.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  7  6  0   0.1  3.2
+	Goal  10  5  0   0.1  3.2
+	Goal  13  7.5  0   0.1  3.2
+
+Robot visitor visitor4
+	Pose  14  13.5  0
+	Goal  10  13.5  0   0.1  3.2
+	Goal  8  13.5  0   0.1  3.2
+	Goal  7  14.5  0   0.1  3.2
+	Goal  8  19.5  0   0.1  3.2
+	Goal  11  20.5  0   0.1  3.2
+	Goal  16  19.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  8  6  0   0.1  3.2
+	Goal  11  5  0   0.1  3.2
+	Goal  14  7.5  0   0.1  3.2
+	Goal  15  8.5  0   0.1  3.2
+
+Robot visitor visitor5
+	Pose  11  13.5  0
+	Goal  9  13.5  0   0.1  3.2
+	Goal  8  14.5  0   0.1  3.2
+	Goal  9  19.5  0   0.1  3.2
+	Goal  12  20.5  0   0.1  3.2
+	Goal  17  19.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  6  0   0.1  3.2
+	Goal  12  5  0   0.1  3.2
+	Goal  15  7.5  0   0.1  3.2
+	Goal  16  8.5  0   0.1  3.2
+	Goal  15  13.5  0   0.1  3.2
+
+Robot visitor visitor6
+	Pose  7  14  0
+	Goal  6  15  0   0.1  3.2
+	Goal  7  20  0   0.1  3.2
+	Goal  10  21  0   0.1  3.2
+	Goal  15  20  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  7  6.5  0   0.1  3.2
+	Goal  10  5.5  0   0.1  3.2
+	Goal  13  8  0   0.1  3.2
+	Goal  14  9  0   0.1  3.2
+	Goal  13  14  0   0.1  3.2
+	Goal  9  14  0   0.1  3.2
+
+Robot visitor visitor7
+	Pose  7  15  0
+	Goal  8  20  0   0.1  3.2
+	Goal  11  21  0   0.1  3.2
+	Goal  16  20  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  8  6.5  0   0.1  3.2
+	Goal  11  5.5  0   0.1  3.2
+	Goal  14  8  0   0.1  3.2
+	Goal  15  9  0   0.1  3.2
+	Goal  14  14  0   0.1  3.2
+	Goal  10  14  0   0.1  3.2
+	Goal  8  14  0   0.1  3.2
+
+Robot visitor visitor8
+	Pose  9  20  0
+	Goal  12  21  0   0.1  3.2
+	Goal  17  20  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  6.5  0   0.1  3.2
+	Goal  12  5.5  0   0.1  3.2
+	Goal  15  8  0   0.1  3.2
+	Goal  16  9  0   0.1  3.2
+	Goal  15  14  0   0.1  3.2
+	Goal  11  14  0   0.1  3.2
+	Goal  9  14  0   0.1  3.2
+	Goal  8  15  0   0.1  3.2
+
+Robot visitor visitor9
+	Pose  10  21.5  0
+	Goal  15  20.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  7  7  0   0.1  3.2
+	Goal  10  6  0   0.1  3.2
+	Goal  13  8.5  0   0.1  3.2
+	Goal  14  9.5  0   0.1  3.2
+	Goal  13  14.5  0   0.1  3.2
+	Goal  9  14.5  0   0.1  3.2
+	Goal  7  14.5  0   0.1  3.2
+	Goal  6  15.5  0   0.1  3.2
+	Goal  7  20.5  0   0.1  3.2
+
+Robot visitor visitor10
+	Pose  16  20.5  0
+	Goal  16  30  0   0.1  3.2
+	Goal  8  7  0   0.1  3.2
+	Goal  11  6  0   0.1  3.2
+	Goal  14  8.5  0   0.1  3.2
+	Goal  15  9.5  0   0.1  3.2
+	Goal  14  14.5  0   0.1  3.2
+	Goal  10  14.5  0   0.1  3.2
+	Goal  8  14.5  0   0.1  3.2
+	Goal  7  15.5  0   0.1  3.2
+	Goal  8  20.5  0   0.1  3.2
+	Goal  11  21.5  0   0.1  3.2
+
+Robot visitor visitor11
+	Pose  16  30  0
+	Goal  9  7  0   0.1  3.2
+	Goal  12  6  0   0.1  3.2
+	Goal  15  8.5  0   0.1  3.2
+	Goal  16  9.5  0   0.1  3.2
+	Goal  15  14.5  0   0.1  3.2
+	Goal  11  14.5  0   0.1  3.2
+	Goal  9  14.5  0   0.1  3.2
+	Goal  8  15.5  0   0.1  3.2
+	Goal  9  20.5  0   0.1  3.2
+	Goal  12  21.5  0   0.1  3.2
+	Goal  17  20.5  0   0.1  3.2
+
+Robot visitor visitor12
+	Pose  16  30  0
+	Goal  7  7.5  0   0.1  3.2
+	Goal  10  6.5  0   0.1  3.2
+	Goal  13  9  0   0.1  3.2
+	Goal  14  10  0   0.1  3.2
+	Goal  13  15  0   0.1  3.2
+	Goal  9  15  0   0.1  3.2
+	Goal  7  15  0   0.1  3.2
+	Goal  6  16  0   0.1  3.2
+	Goal  7  21  0   0.1  3.2
+	Goal  10  22  0   0.1  3.2
+	Goal  15  21  0   0.1  3.2
+
+Robot visitor visitor13
+	Pose  8  7.5  0
+	Goal  11  6.5  0   0.1  3.2
+	Goal  14  9  0   0.1  3.2
+	Goal  15  10  0   0.1  3.2
+	Goal  14  15  0   0.1  3.2
+	Goal  10  15  0   0.1  3.2
+	Goal  8  15  0   0.1  3.2
+	Goal  7  16  0   0.1  3.2
+	Goal  8  21  0   0.1  3.2
+	Goal  11  22  0   0.1  3.2
+	Goal  16  21  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+
+Robot visitor visitor14
+	Pose  12  6.5  0
+	Goal  15  9  0   0.1  3.2
+	Goal  16  10  0   0.1  3.2
+	Goal  15  15  0   0.1  3.2
+	Goal  11  15  0   0.1  3.2
+	Goal  9  15  0   0.1  3.2
+	Goal  8  16  0   0.1  3.2
+	Goal  9  21  0   0.1  3.2
+	Goal  12  22  0   0.1  3.2
+	Goal  17  21  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  7.5  0   0.1  3.2
+

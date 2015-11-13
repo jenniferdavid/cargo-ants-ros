@@ -1,0 +1,93 @@
+View meta
+     Camera  Ter_travmap
+     Drawing Ter_estar_meta
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_drive
+     Window  0.0  0.0  0.5  0.5
+     Border  1
+
+View concentrics
+     Camera  Ter_travmap
+     Drawing Ter_estar_value_cycle
+     Drawing Ter_estar_queue
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_drive
+     Window  0.0  0.5  0.5  1.0
+     Border  1
+
+View travmap
+     Camera  Ter_travmap
+     Drawing Ter_travmap
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Drawing Ter_lidar_0
+     Window  0.5  0.0  1.0  0.5
+     Border  1
+
+View controller
+     Camera  Ter_true_zoom_camera
+     Drawing Ter_travmap
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_carrot
+     Drawing Ter_drive
+     Drawing Ter_arcs_cached
+     Window  0.5  0.5  1.0  1.0
+     Border  1
+
+Layout 1
+     View meta
+          Camera  Ter_travmap
+          Drawing Ter_estar_meta
+          Drawing world
+          Drawing Ter_true_drawing
+          Drawing Ter_drive
+          Window  0.0  0.0  1.0 1.0
+          Border  0
+
+Layout 2
+     View concentrics
+          Camera  Ter_travmap
+          Drawing Ter_estar_value_cycle
+          Drawing world
+          Drawing Ter_true_drawing
+          Drawing Ter_drive
+          Window  0.0  0.0  1.0 1.0
+          Border  0
+
+Layout 3
+     View planner
+          Camera  Ter_true_zoom_camera
+          Drawing Ter_estar_value
+          Drawing Ter_estar_queue
+          Drawing world
+          Drawing Ter_true_drawing
+          Drawing Ter_goaldrawing
+          Drawing Ter_trajectory
+          Drawing Ter_carrot
+          Drawing Ter_drive
+          Drawing Ter_lidar_0
+          Window  0.0  0.0  1.0 1.0
+          Border  0
+
+Layout 4
+     View controller
+          Camera  Ter_true_zoom_camera
+          Drawing Ter_estar_meta
+          Drawing Ter_estar_queue
+          Drawing world
+          Drawing Ter_true_drawing
+          Drawing Ter_goaldrawing
+          Drawing Ter_trajectory
+          Drawing Ter_carrot
+          Drawing Ter_drive
+          Drawing Ter_arcs_cached
+          Window  0.0  0.0  1.0 1.0
+          Border  0

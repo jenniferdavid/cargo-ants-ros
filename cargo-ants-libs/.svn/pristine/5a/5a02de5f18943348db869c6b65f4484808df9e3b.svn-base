@@ -1,0 +1,257 @@
+Robot borox Borox
+
+	Pose 17  21  3.2
+
+	Goal  3  15  3.2  0.3  3.2
+	Goal 25  16  3.2  0.3  3.2
+
+	Option front_rhomax        4
+	Option rear_rhomax         4
+
+        Option dwa_dimension           21
+        Option dwa_grid_resolution      0.05
+        Option model_security_distance  0.03
+
+	Option camera_zoom 4
+	
+	Option estar_check_upwind false
+	Option estar_check_local_consistency false
+	Option estar_check_queue_key true
+	Option estar_auto_reset false
+	Option estar_auto_flush false
+
+	Option m2d_grow_strategy        always
+	Option estar_grow_grid          true 
+
+### trigger a bug in r950 by setting coarse_grid_ncells to 20!
+### the robot will get stuck because it does not replan even though it
+### has no plan... and in other similar situations it would replan.
+	Option coarse_grid_ncells       30
+
+        Option traversability_file      travmap.borox1
+	Option swiped_map_update   true
+	Option max_swipe_distance  2
+
+        Option carrot_distance      1
+        Option carrot_stepsize      0.1
+        Option carrot_maxnsteps    20
+        Option replan_distance      1
+        Option wavefront_buffer     2
+        Option estar_step         500
+
+        Option slow_drawing_enabled true
+        Option gradplot_frequency   0
+
+        Option planning_usecsleep  -10000
+        Option control_usecsleep    -1000
+        Option thread_statlen          50
+
+Robot visitor visitor0
+	Pose  7  5.5  0
+	Goal  10  4.5  0   0.1  3.2
+	Goal  13  7  0   0.1  3.2
+	Goal  14  8  0   0.1  3.2
+	Goal  13  13  0   0.1  3.2
+	Goal  9  13  0   0.1  3.2
+	Goal  7  13  0   0.1  3.2
+	Goal  6  14  0   0.1  3.2
+	Goal  7  19  0   0.1  3.2
+	Goal  10  20  0   0.1  3.2
+	Goal  15  19  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+
+Robot visitor visitor1
+	Pose  11  4.5  0
+	Goal  14  7  0   0.1  3.2
+	Goal  15  8  0   0.1  3.2
+	Goal  14  13  0   0.1  3.2
+	Goal  10  13  0   0.1  3.2
+	Goal  8  13  0   0.1  3.2
+	Goal  7  14  0   0.1  3.2
+	Goal  8  19  0   0.1  3.2
+	Goal  11  20  0   0.1  3.2
+	Goal  16  19  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  8  5.5  0   0.1  3.2
+
+Robot visitor visitor2
+	Pose  15  7  0
+	Goal  16  8  0   0.1  3.2
+	Goal  15  13  0   0.1  3.2
+	Goal  11  13  0   0.1  3.2
+	Goal  9  13  0   0.1  3.2
+	Goal  8  14  0   0.1  3.2
+	Goal  9  19  0   0.1  3.2
+	Goal  12  20  0   0.1  3.2
+	Goal  17  19  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  5.5  0   0.1  3.2
+	Goal  12  4.5  0   0.1  3.2
+
+Robot visitor visitor3
+	Pose  14  8.5  0
+	Goal  13  13.5  0   0.1  3.2
+	Goal  9  13.5  0   0.1  3.2
+	Goal  7  13.5  0   0.1  3.2
+	Goal  6  14.5  0   0.1  3.2
+	Goal  7  19.5  0   0.1  3.2
+	Goal  10  20.5  0   0.1  3.2
+	Goal  15  19.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  7  6  0   0.1  3.2
+	Goal  10  5  0   0.1  3.2
+	Goal  13  7.5  0   0.1  3.2
+
+Robot visitor visitor4
+	Pose  14  13.5  0
+	Goal  10  13.5  0   0.1  3.2
+	Goal  8  13.5  0   0.1  3.2
+	Goal  7  14.5  0   0.1  3.2
+	Goal  8  19.5  0   0.1  3.2
+	Goal  11  20.5  0   0.1  3.2
+	Goal  16  19.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  8  6  0   0.1  3.2
+	Goal  11  5  0   0.1  3.2
+	Goal  14  7.5  0   0.1  3.2
+	Goal  15  8.5  0   0.1  3.2
+
+Robot visitor visitor5
+	Pose  11  13.5  0
+	Goal  9  13.5  0   0.1  3.2
+	Goal  8  14.5  0   0.1  3.2
+	Goal  9  19.5  0   0.1  3.2
+	Goal  12  20.5  0   0.1  3.2
+	Goal  17  19.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  6  0   0.1  3.2
+	Goal  12  5  0   0.1  3.2
+	Goal  15  7.5  0   0.1  3.2
+	Goal  16  8.5  0   0.1  3.2
+	Goal  15  13.5  0   0.1  3.2
+
+Robot visitor visitor6
+	Pose  7  14  0
+	Goal  6  15  0   0.1  3.2
+	Goal  7  20  0   0.1  3.2
+	Goal  10  21  0   0.1  3.2
+	Goal  15  20  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  7  6.5  0   0.1  3.2
+	Goal  10  5.5  0   0.1  3.2
+	Goal  13  8  0   0.1  3.2
+	Goal  14  9  0   0.1  3.2
+	Goal  13  14  0   0.1  3.2
+	Goal  9  14  0   0.1  3.2
+
+Robot visitor visitor7
+	Pose  7  15  0
+	Goal  8  20  0   0.1  3.2
+	Goal  11  21  0   0.1  3.2
+	Goal  16  20  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  8  6.5  0   0.1  3.2
+	Goal  11  5.5  0   0.1  3.2
+	Goal  14  8  0   0.1  3.2
+	Goal  15  9  0   0.1  3.2
+	Goal  14  14  0   0.1  3.2
+	Goal  10  14  0   0.1  3.2
+	Goal  8  14  0   0.1  3.2
+
+Robot visitor visitor8
+	Pose  9  20  0
+	Goal  12  21  0   0.1  3.2
+	Goal  17  20  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  6.5  0   0.1  3.2
+	Goal  12  5.5  0   0.1  3.2
+	Goal  15  8  0   0.1  3.2
+	Goal  16  9  0   0.1  3.2
+	Goal  15  14  0   0.1  3.2
+	Goal  11  14  0   0.1  3.2
+	Goal  9  14  0   0.1  3.2
+	Goal  8  15  0   0.1  3.2
+
+Robot visitor visitor9
+	Pose  10  21.5  0
+	Goal  15  20.5  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  7  7  0   0.1  3.2
+	Goal  10  6  0   0.1  3.2
+	Goal  13  8.5  0   0.1  3.2
+	Goal  14  9.5  0   0.1  3.2
+	Goal  13  14.5  0   0.1  3.2
+	Goal  9  14.5  0   0.1  3.2
+	Goal  7  14.5  0   0.1  3.2
+	Goal  6  15.5  0   0.1  3.2
+	Goal  7  20.5  0   0.1  3.2
+
+Robot visitor visitor10
+	Pose  16  20.5  0
+	Goal  16  30  0   0.1  3.2
+	Goal  8  7  0   0.1  3.2
+	Goal  11  6  0   0.1  3.2
+	Goal  14  8.5  0   0.1  3.2
+	Goal  15  9.5  0   0.1  3.2
+	Goal  14  14.5  0   0.1  3.2
+	Goal  10  14.5  0   0.1  3.2
+	Goal  8  14.5  0   0.1  3.2
+	Goal  7  15.5  0   0.1  3.2
+	Goal  8  20.5  0   0.1  3.2
+	Goal  11  21.5  0   0.1  3.2
+
+Robot visitor visitor11
+	Pose  16  30  0
+	Goal  9  7  0   0.1  3.2
+	Goal  12  6  0   0.1  3.2
+	Goal  15  8.5  0   0.1  3.2
+	Goal  16  9.5  0   0.1  3.2
+	Goal  15  14.5  0   0.1  3.2
+	Goal  11  14.5  0   0.1  3.2
+	Goal  9  14.5  0   0.1  3.2
+	Goal  8  15.5  0   0.1  3.2
+	Goal  9  20.5  0   0.1  3.2
+	Goal  12  21.5  0   0.1  3.2
+	Goal  17  20.5  0   0.1  3.2
+
+Robot visitor visitor12
+	Pose  16  30  0
+	Goal  7  7.5  0   0.1  3.2
+	Goal  10  6.5  0   0.1  3.2
+	Goal  13  9  0   0.1  3.2
+	Goal  14  10  0   0.1  3.2
+	Goal  13  15  0   0.1  3.2
+	Goal  9  15  0   0.1  3.2
+	Goal  7  15  0   0.1  3.2
+	Goal  6  16  0   0.1  3.2
+	Goal  7  21  0   0.1  3.2
+	Goal  10  22  0   0.1  3.2
+	Goal  15  21  0   0.1  3.2
+
+Robot visitor visitor13
+	Pose  8  7.5  0
+	Goal  11  6.5  0   0.1  3.2
+	Goal  14  9  0   0.1  3.2
+	Goal  15  10  0   0.1  3.2
+	Goal  14  15  0   0.1  3.2
+	Goal  10  15  0   0.1  3.2
+	Goal  8  15  0   0.1  3.2
+	Goal  7  16  0   0.1  3.2
+	Goal  8  21  0   0.1  3.2
+	Goal  11  22  0   0.1  3.2
+	Goal  16  21  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+
+Robot visitor visitor14
+	Pose  12  6.5  0
+	Goal  15  9  0   0.1  3.2
+	Goal  16  10  0   0.1  3.2
+	Goal  15  15  0   0.1  3.2
+	Goal  11  15  0   0.1  3.2
+	Goal  9  15  0   0.1  3.2
+	Goal  8  16  0   0.1  3.2
+	Goal  9  21  0   0.1  3.2
+	Goal  12  22  0   0.1  3.2
+	Goal  17  21  0   0.1  3.2
+	Goal  16  30  0   0.1  3.2
+	Goal  9  7.5  0   0.1  3.2

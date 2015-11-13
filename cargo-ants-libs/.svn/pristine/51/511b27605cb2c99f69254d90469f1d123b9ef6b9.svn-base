@@ -1,0 +1,43 @@
+Robot smart Ter
+	Pose 40  40    0.2
+	Option goalmgr_filename goals.smart6
+
+	Option travmap_grow_margin_low  15
+	Option travmap_grow_margin_high 20
+	Option m2d_grow_strategy        always
+	Option estar_grow_grid          true 
+
+	Option camera_zoom         15
+	Option front_channel       0
+        Option front_mount_x       1.3
+        Option front_mount_y       0.0
+        Option front_mount_theta   0.0
+        Option front_nscans      180
+        Option front_rhomax       80
+
+        Option model_wheelbase     1.812
+        Option model_axlewidth     1.354
+        Option model_wheelradius   0.27
+        Option model_phi_max       0.7
+        Option model_phid_max      1.0
+        Option model_sd_max        10.0
+        Option model_sdd_max       1.0
+
+	Option controller_name      tadpf
+        Option traversability_file  travmap.smart6
+        Option robot_radius         2.0
+        Option buffer_zone          4.5
+
+        Option carrot_distance     30
+        Option carrot_stepsize      0.4
+        Option carrot_maxnsteps   150
+        Option replan_distance      5
+        Option wavefront_buffer   100
+        Option estar_step        4000
+
+        Option slow_drawing_enabled true
+        Option gradplot_frequency   5
+
+        Option planning_usecsleep  -10000
+        Option control_usecsleep    -1000
+        Option thread_statlen          50

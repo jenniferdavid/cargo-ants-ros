@@ -1,0 +1,346 @@
+#---------------------------------------------------------------------------
+# General configuration options
+#---------------------------------------------------------------------------
+
+PROJECT_NAME           = nepumuk
+PROJECT_NUMBER         = 0.0
+OUTPUT_DIRECTORY       = doc
+OUTPUT_LANGUAGE        = English
+
+# If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in 
+# documentation are documented, even if no documentation was available. 
+# Private class members and static file members will be hidden unless 
+# the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
+EXTRACT_ALL            = YES
+
+# If the EXTRACT_PRIVATE tag is set to YES all private members of a class 
+# will be included in the documentation.
+EXTRACT_PRIVATE        = YES
+
+# If the EXTRACT_STATIC tag is set to YES all static members of a file 
+# will be included in the documentation.
+EXTRACT_STATIC         = YES
+
+# If the HIDE_UNDOC_MEMBERS tag is set to YES, Doxygen will hide all 
+# undocumented members of documented classes, files or namespaces. 
+# If set to NO (the default) these members will be included in the 
+# various overviews, but no documentation section is generated. 
+# This option has no effect if EXTRACT_ALL is enabled.
+HIDE_UNDOC_MEMBERS     = NO
+
+# If the HIDE_UNDOC_CLASSES tag is set to YES, Doxygen will hide all 
+# undocumented classes that are normally visible in the class hierarchy. 
+# If set to NO (the default) these class will be included in the various 
+# overviews. This option has no effect if EXTRACT_ALL is enabled.
+HIDE_UNDOC_CLASSES     = NO
+
+# If the BRIEF_MEMBER_DESC tag is set to YES (the default) Doxygen will 
+# include brief member descriptions after the members that are listed in 
+# the file and class documentation (similar to JavaDoc). 
+# Set to NO to disable this.
+BRIEF_MEMBER_DESC      = YES
+
+# If the REPEAT_BRIEF tag is set to YES (the default) Doxygen will
+# prepend the brief description of a member or function before the
+# detailed description.  Note: if both HIDE_UNDOC_MEMBERS and
+# BRIEF_MEMBER_DESC are set to NO, the brief descriptions will be
+# completely suppressed.
+REPEAT_BRIEF           = YES
+
+# If the ALWAYS_DETAILED_SEC and REPEAT_BRIEF tags are both set to YES then 
+# Doxygen will generate a detailed section even if there is only a brief 
+# description.
+ALWAYS_DETAILED_SEC    = NO
+
+# If the FULL_PATH_NAMES tag is set to YES then Doxygen will prepend the full 
+# path before files name in the file list and in the header files. If set 
+# to NO the shortest path that makes the file name unique will be used.
+FULL_PATH_NAMES        = NO
+
+# If the FULL_PATH_NAMES tag is set to YES then the STRIP_FROM_PATH tag 
+# can be used to strip a user defined part of the path. Stripping is 
+# only done if one of the specified strings matches the left-hand part of 
+# the path. It is allowed to use relative paths in the argument list.
+STRIP_FROM_PATH        = 
+
+# The INTERNAL_DOCS tag determines if documentation 
+# that is typed after a \internal command is included. If the tag is set 
+# to NO (the default) then the documentation will be excluded. 
+# Set it to YES to include the internal documentation.
+INTERNAL_DOCS          = NO
+
+# If the CLASS_DIAGRAMS tag is set to YES (the default) Doxygen will 
+# generate a class diagram (in Html and LaTeX) for classes with base or 
+# super classes. Setting the tag to NO turns the diagrams off.
+CLASS_DIAGRAMS         = YES
+
+# If the SOURCE_BROWSER tag is set to YES then a list of source files
+# will be generated. Documented entities will be cross-referenced with
+# these sources.
+SOURCE_BROWSER         = YES
+
+# Setting the INLINE_SOURCES tag to YES will include the body 
+# of functions and classes directly in the documentation.
+INLINE_SOURCES         = NO
+
+# Setting the STRIP_CODE_COMMENTS tag to YES (the default) will instruct 
+# doxygen to hide any special comment blocks from generated source code 
+# fragments. Normal C and C++ comments will always remain visible.
+STRIP_CODE_COMMENTS    = YES
+
+# If the CASE_SENSE_NAMES tag is set to NO then Doxygen will only generate 
+# file names in lower case letters. If set to YES upper case letters are also 
+# allowed. This is useful if you have classes or files whose names only differ 
+# in case and if your file system supports case sensitive file names. Windows 
+# users are adviced to set this option to NO.
+CASE_SENSE_NAMES       = YES
+
+# If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter 
+# (but less readable) file names. This can be useful is your file systems 
+# doesn't support long names like on DOS, Mac, or CD-ROM.
+SHORT_NAMES            = NO
+
+# If the HIDE_SCOPE_NAMES tag is set to NO (the default) then Doxygen 
+# will show members with their full class and namespace scopes in the 
+# documentation. If set to YES the scope will be hidden.
+HIDE_SCOPE_NAMES       = NO
+
+# If the VERBATIM_HEADERS tag is set to YES (the default) then Doxygen 
+# will generate a verbatim copy of the header file for each class for 
+# which an include is specified. Set to NO to disable this.
+VERBATIM_HEADERS       = YES
+
+# If the SHOW_INCLUDE_FILES tag is set to YES (the default) then Doxygen 
+# will put list of the files that are included by a file in the documentation 
+# of that file.
+SHOW_INCLUDE_FILES     = YES
+
+# If the JAVADOC_AUTOBRIEF tag is set to YES then Doxygen 
+# will interpret the first line (until the first dot) of a JavaDoc-style 
+# comment as the brief description. If set to NO, the JavaDoc 
+# comments  will behave just like the Qt-style comments (thus requiring an 
+# explict @brief command for a brief description.
+JAVADOC_AUTOBRIEF      = NO
+
+# If the INHERIT_DOCS tag is set to YES (the default) then an undocumented 
+# member inherits the documentation from any documented member that it 
+# reimplements.
+INHERIT_DOCS           = YES
+
+# If the INLINE_INFO tag is set to YES (the default) then a tag [inline] 
+# is inserted in the documentation for inline members.
+INLINE_INFO            = YES
+
+# If the SORT_MEMBER_DOCS tag is set to YES (the default) then doxygen 
+# will sort the (detailed) documentation of file and class members 
+# alphabetically by member name. If set to NO the members will appear in 
+# declaration order.
+SORT_MEMBER_DOCS       = NO
+
+# If member grouping is used in the documentation and the DISTRIBUTE_GROUP_DOC 
+# tag is set to YES, then doxygen will reuse the documentation of the first 
+# member in the group (if any) for the other members of the group. By default 
+# all members of a group must be documented explicitly.
+DISTRIBUTE_GROUP_DOC   = NO
+
+# The TAB_SIZE tag can be used to set the number of spaces in a tab. 
+# Doxygen uses this value to replace tabs by spaces in code fragments.
+TAB_SIZE               = 8
+
+# The ENABLED_SECTIONS tag can be used to enable conditional 
+# documentation sections, marked by \if sectionname ... \endif.
+ENABLED_SECTIONS       = 
+
+# The GENERATE_TODOLIST tag can be used to enable (YES) or 
+# disable (NO) the todo list. This list is created by putting \todo 
+# commands in the documentation.
+GENERATE_TODOLIST      = YES
+
+# The GENERATE_TESTLIST tag can be used to enable (YES) or 
+# disable (NO) the test list. This list is created by putting \test 
+# commands in the documentation.
+GENERATE_TESTLIST      = YES
+
+# The GENERATE_BUGLIST tag can be used to enable (YES) or 
+# disable (NO) the bug list. This list is created by putting \bug 
+# commands in the documentation.
+GENERATE_BUGLIST       = YES
+
+# This tag can be used to specify a number of aliases that acts 
+# as commands in the documentation. An alias has the form "name=value". 
+# For example adding "sideeffect=\par Side Effects:\n" will allow you to 
+# put the command \sideeffect (or @sideeffect) in the documentation, which 
+# will result in a user defined paragraph with heading "Side Effects:". 
+# You can put \n's in the value part of an alias to insert newlines.
+ALIASES                = 
+
+# The MAX_INITIALIZER_LINES tag determines the maximum number of lines 
+# the initial value of a variable or define consist of for it to appear in 
+# the documentation. If the initializer consists of more lines than specified 
+# here it will be hidden. Use a value of 0 to hide initializers completely. 
+# The appearance of the initializer of individual variables and defines in the 
+# documentation can be controlled using \showinitializer or \hideinitializer 
+# command in the documentation regardless of this setting.
+MAX_INITIALIZER_LINES  = 30
+
+# Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of
+# C sources only. Doxygen will then generate output that is more
+# tailored for C.  For instance some of the names that are used will
+# be different. The list of all members will be omitted, etc.
+OPTIMIZE_OUTPUT_FOR_C  = NO
+
+# Set the SHOW_USED_FILES tag to NO to disable the list of files generated 
+# at the bottom of the documentation of classes and structs. If set to YES the 
+# list will mention the files that were used to generate the documentation.
+SHOW_USED_FILES        = YES
+
+#---------------------------------------------------------------------------
+# configuration options related to warning and progress messages
+#---------------------------------------------------------------------------
+
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = NO
+WARN_FORMAT            = 
+WARN_LOGFILE           = 
+
+#---------------------------------------------------------------------------
+# configuration options related to the input files
+#---------------------------------------------------------------------------
+
+INPUT                  = braitenberg simul common robox visitor
+FILE_PATTERNS          = *.hpp *.cpp
+RECURSIVE              = YES
+EXCLUDE                = 
+EXCLUDE_PATTERNS       = *leftovers* *svn*
+EXAMPLE_PATH           = 
+EXAMPLE_PATTERNS       = 
+IMAGE_PATH             = 
+INPUT_FILTER           = 
+FILTER_SOURCE_FILES    = NO
+
+#---------------------------------------------------------------------------
+# configuration options related to the alphabetical class index
+#---------------------------------------------------------------------------
+
+ALPHABETICAL_INDEX     = YES
+COLS_IN_ALPHA_INDEX    = 5
+IGNORE_PREFIX          = 
+
+#---------------------------------------------------------------------------
+# configuration options related to the HTML output
+#---------------------------------------------------------------------------
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = 
+HTML_HEADER            = 
+HTML_FOOTER            = 
+HTML_STYLESHEET        = 
+HTML_ALIGN_MEMBERS     = YES
+GENERATE_HTMLHELP      = NO
+GENERATE_CHI           = NO
+BINARY_TOC             = NO
+TOC_EXPAND             = NO
+DISABLE_INDEX          = NO
+ENUM_VALUES_PER_LINE   = 4
+GENERATE_TREEVIEW      = NO
+TREEVIEW_WIDTH         = 250
+
+#---------------------------------------------------------------------------
+# configuration options related to the LaTeX output
+#---------------------------------------------------------------------------
+
+GENERATE_LATEX         = NO
+
+#---------------------------------------------------------------------------
+# configuration options related to the RTF output
+#---------------------------------------------------------------------------
+
+GENERATE_RTF           = NO
+
+#---------------------------------------------------------------------------
+# configuration options related to the man page output
+#---------------------------------------------------------------------------
+
+GENERATE_MAN           = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the preprocessor   
+#---------------------------------------------------------------------------
+
+ENABLE_PREPROCESSING   = YES
+
+# If the MACRO_EXPANSION tag is set to YES Doxygen will expand all macro 
+# names in the source code. If set to NO (the default) only conditional 
+# compilation will be performed. Macro expansion can be done in a controlled 
+# way by setting EXPAND_ONLY_PREDEF to YES.
+
+MACRO_EXPANSION        = NO
+
+# If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES 
+# then the macro expansion is limited to the macros specified with the 
+# PREDEFINED and EXPAND_AS_PREDEFINED tags.
+
+EXPAND_ONLY_PREDEF     = NO
+
+# If the SEARCH_INCLUDES tag is set to YES (the default) the includes files 
+# in the INCLUDE_PATH (see below) will be search if a #include is found.
+
+SEARCH_INCLUDES        = YES
+
+# The INCLUDE_PATH tag can be used to specify one or more directories that 
+# contain include files that are not input files but should be processed by 
+# the preprocessor.
+
+INCLUDE_PATH           = 
+
+# You can use the INCLUDE_FILE_PATTERNS tag to specify one or more wildcard 
+# patterns (like *.h and *.hpp) to filter out the header-files in the 
+# directories. If left blank, the patterns specified with FILE_PATTERNS will 
+# be used.
+
+INCLUDE_FILE_PATTERNS  = 
+
+# The PREDEFINED tag can be used to specify one or more macro names that 
+# are defined before the preprocessor is started (similar to the -D option of 
+# gcc). The argument of the tag is a list of macros of the form: name 
+# or name=definition (no spaces). If the definition and the = are 
+# omitted =1 is assumed.
+
+PREDEFINED             = DOXYGEN_DUMMY_STL
+
+# If the MACRO_EXPANSION and EXPAND_PREDEF_ONLY tags are set to YES
+# then this tag can be used to specify a list of macro names that
+# should be expanded.  The macro definition that is found in the
+# sources will be used.  Use the PREDEFINED tag if you want to use a
+# different macro definition.
+
+EXPAND_AS_DEFINED      = 
+
+#---------------------------------------------------------------------------
+# Configuration::addtions related to external references   
+#---------------------------------------------------------------------------
+
+TAGFILES               = 
+
+#---------------------------------------------------------------------------
+# Configuration options related to the dot tool   
+#---------------------------------------------------------------------------
+
+HAVE_DOT               = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+GRAPHICAL_HIERARCHY    = YES
+DOT_PATH               = 
+MAX_DOT_GRAPH_WIDTH    = 1024
+MAX_DOT_GRAPH_HEIGHT   = 1024
+GENERATE_LEGEND        = YES
+DOT_CLEANUP            = YES
+
+#---------------------------------------------------------------------------
+# Configuration::addtions related to the search engine   
+#---------------------------------------------------------------------------
+
+SEARCHENGINE           = NO

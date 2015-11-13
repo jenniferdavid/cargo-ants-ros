@@ -1,0 +1,62 @@
+<!-- Launches udp2ros nodes for odom and ibeo and at model-->
+
+<launch>
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" /> 
+    <!-- TODO change to ..car..2015.xacro -->
+    <arg name="model" default="$(find agv_description)/urdf/toyota_car_oct2014.xacro"/>
+    
+    <group ns="agv">
+        <!-- Set robot_description parameter in the parameter server-->
+        <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />    
+    
+        <!-- Run joint state publisher (Gets robot_description from parameter server)-->
+        <node pkg="joint_state_publisher"
+              type="joint_state_publisher"
+              name="agv_joint_state_publisher" >
+        </node>
+
+        <!-- Run state publisher (Gets robot_description from parameter server)-->
+        <node pkg="robot_state_publisher"
+              type="robot_state_publisher"
+              name="agv_state_publisher" >
+              <param name="~publish_frequency" value="20" />
+        </node>
+
+        <!-- IVSP Bridge -->
+        <include file="$(find agv_ivsp_bridge)/launch/ivsp_bridge.launch">
+            <arg name="ivsp_recv_port" value="9290" />
+            <arg name="ivsp_send_port" value="9291" />
+        </include>
+
+        
+        <!-- transform from world to agv_base -->
+        <node name="agv_to_world_tf_publisher" 
+                pkg="tf"
+                type="static_transform_publisher"
+                args="0 0 0 0 0 0 world odom 100"/>
+    </group>
+
+    <group ns="arts">
+        <include file="$(find arts_description)/launch/arts_world.launch"/>
+
+        <!-- transform from world to arts_base -->
+        <node name="arts_to_world_tf_publisher" 
+                pkg="tf"
+                type="static_transform_publisher"
+                args="0 0 0 0 0 0 world arts_base 100"/>
+    </group>
+
+    <!--RESULTS VISUALIZATION-->
+    <group if="$(arg rviz)">
+        <node name="rviz"
+            pkg="rviz"
+            type="rviz"
+            args="-d $(find agv_tests_real)/config/agv_sensors.rviz" />
+    </group>
+</launch>
+
+<!-- rosbag record command -->
+<!-- rosbag record -a -x "(.*)/compressed(.*)|(.*)/theora(.*)|(.*)/markers" -->
+

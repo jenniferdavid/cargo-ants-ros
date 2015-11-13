@@ -1,0 +1,86 @@
+- Plugin:
+    name: abcd
+    search: abcd-plugin
+
+- World:
+    lines:
+      - [ -5, -5,  5, -5 ]
+      - [  5, -5,  5,  5 ]
+      - [  5,  5, -5,  5 ]
+      - [ -5,  5, -5, -5 ]
+
+- Object:
+    name: charlie_base
+    parent: world
+    mount: [ 0.0, -2.5, 0.2 ]
+    lines:
+      - [ -0.2, -0.4,  0.4, -0.2 ]
+      - [ -0.2,  0.4,  0.4,  0.2 ]
+      - [  0.4, -0.2,  0.4,  0.2 ]
+      - [ -0.2,  0.4, -0.2, -0.4 ]
+- DifferentialDrive:
+    name: charlie_drive
+    parent: charlie_base
+    wheel_radius: 0.2
+    wheel_base: 0.3
+- RayDistanceSensor:
+    name: charlie_left
+    parent: charlie_base
+    mount: [ 0.1, 0.1, 0.35 ]
+    max_distance: 2.5
+- RayDistanceSensor:
+    name: charlie_right
+    parent: charlie_base
+    mount: [ 0.1, -0.1, -0.35 ]
+    max_distance: 2.5
+- CharlieProcess:
+    name: charlie
+    drive: charlie_drive
+    left: charlie_left
+    right: charlie_right
+    gain: 0.3
+
+- Object:
+    name: bob_tractor
+    parent: world
+    mount: [ 0.0, 2.5, 3.142 ]
+    lines:
+      - [ -0.3, -0.3,  0.4, -0.3 ]
+      - [ -0.3,  0.3,  0.4,  0.3 ]
+      - [ -0.3, -0.3, -0.3,  0.3 ]
+      - [  0.4, -0.3,  0.4,  0.3 ]
+- Object:
+    name: bob_trailer
+    parent: bob_tractor
+    lines:
+      - [ -0.3, -0.3,  1.0, -0.3 ]
+      - [ -0.3,  0.3,  1.0,  0.3 ]
+      - [ -0.3, -0.3, -0.3,  0.3 ]
+      - [  1.0, -0.3,  1.0,  0.3 ]
+- DifferentialTrailerDrive:
+    name: bob_drive
+    parent: bob_tractor
+    trailer: bob_trailer
+    wheel_radius: 0.2
+    wheel_base: 0.4
+    hitch_offset: 0.3
+    trailer_arm: 1.0
+- BobProcess:
+    name: bob
+    drive: bob_drive
+    
+- Simulator:
+    timestep: 0.1
+    state: pause
+
+- ObjectCamera:
+    name: world_camera
+    object: world
+- ObjectDrawing:
+    name: world_drawing
+    object: world
+- View:
+    name: world_view
+    camera: world_camera
+    drawings:
+      - world_drawing

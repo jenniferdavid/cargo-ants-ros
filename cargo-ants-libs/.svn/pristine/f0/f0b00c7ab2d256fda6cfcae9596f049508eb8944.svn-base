@@ -1,0 +1,161 @@
+README for http://libsunflower.sourceforge.net/
+
+
+For the impatient:
+ $ ./build-stage.sh -s
+
+By default, this builds the software underneath the build/ directory
+and installs it under the stage/ directory. If you want to install it
+somewhere else, use the -p <prefix> option of ./build-stage.sh. The -s
+parameter makes it skip the GNU Automake step, which should be fine
+for most people.
+
+Documentation (if not included in the tarball you downloaded) can be
+created if you have doxygen installed:
+ $ cd build
+ $ doxygen Doxyfile
+Then open html/index.html in your favorite browser.
+
+If you want to try out libsunflower, check out the Nepumuk simulator
+that is available from the libsunflower home page.
+
+
+------------------------------------------------------------
+The core sunflower library is
+Copyright (C) 2004, Autonomous Systems Lab,
+                    Ecole Polytechnique Federale de Lausanne
+		    (Swiss Federal Institute of Technology).
+		    All rights reserved.
+Copyright (C) 2007, Autonomous Systems Lab,
+                    Eidgenoessische Technische Hochschule Zuerich
+		    (Swiss Federal Institute of Technology).
+		    All rights reserved.
+
+Some stuff (mostly the C-wrapper code) is
+Copyright (C) 2005, LAAS/CNRS. All rights reserved.
+
+Contact: libsunflower-users at lists dot sourceforge dot net
+
+Author: Roland Philippsen
+Contributors: Viet Nguyen, Frederic Pont, Sascha Kolski, Agostino
+              Martinelli, Kristijan Macek, and others
+
+The sunflower library is released under the GNU General Public
+License. The C-wrapper and some other files are released under the new
+BSD license. See the COPYRIGHT, COPYING, and LICENSE.BSD files for
+more information.
+------------------------------------------------------------
+
+
+1. INTRODUCTION
+
+Sunflower is a project that contains mobile robotic programming
+abstractions developed at the Autonomous Systems Lab. It is written in
+C++ and provides a framework of classes and utilities for common tasks
+and patterns in mobile robotics. As a concrete application of those
+abstractions, sunflower contains obstacle avoidance code developed
+during a PhD thesis at the Autonomous Systems Lab. It is described in
+chapter 3 of [1].
+
+
+2. COMPILING
+
+This software has been compiled under Linux, Mac OS X, and OpenBSD. As
+it is relatively pure C++ it should not be hard to port to other POSIX
+platforms. Sunflower requires C and C++ compilers (tested with GCC 3
+and 4), the Boost smart_ptr library [2], and some additional
+components that depend on how you want to build it.
+
+The sunflower library comes with a configure script that will do it's
+best to detect how the build will work on your system. The recommended
+way of building is in a separate directory:
+
+ $ mkdir build
+ $ cd build
+ $ ../configure --prefix=/install/path
+ $ make
+ $ make install
+
+Note that the last command might require root privileges.
+
+Several custom configure options exist:
+  --enable-debug       switches on debug options when you use GCC
+  --enable-pedantic    switches on pedantic warnings when you use GCC
+  --with-boost=PATH    lets you specify a non-standard location of the
+                       required boost library
+  --with-xcf[=PATH]    enables building of optional XCF [4] support (and
+                       you can specify the XCF installation
+                       directory)... however, this is outdated
+  --with-robox[=PATH]  enables building of optional ASL-specific
+                       support for our mobile robots of the Robox
+		       family (typically used when crosscompiling)
+
+
+3. DOCUMENTATION
+
+Sunflower uses Doxygen [3] to provide documentation through comments
+inside the sourcecode. You can either rely on the fact that the vast
+majority of these comments is in the class declarations (ie header
+files), or use the provided Doxyfile to create the HTML version under
+doc/html (Doxygen also supports other formats, just modify the
+Doxyfile accordingly).
+
+
+4. PROJECT LAYOUT
+
+util/
+ Basic classes and other utilities.
+
+api/
+ Mobile robotic abstractions, some with default implementations,
+ others in form of interfaces.
+
+dwa/
+ An implementation of the Dynamic Window Approach to obstacle
+ avoidance, modified for differential drive robots and with
+ pre-calculated lookup-tables for very fast execution.
+
+bband/
+ An implementation of a radically simplified Elastic Band approach to
+ on-line path modification, aimed at keeping computations very
+ lightweight but sacrifycing accuracy.
+
+gplan/
+ An early attempt at generalized grid-based path planners, only useful
+ for it's implementation of the NF1 planner. (The E-Star [5] project
+ provides a more powerful approach but has not been integrated with
+ libsunflower yet.)
+
+expo/
+ The integrated path planning and obstacle avoidance system used
+ during the Swiss National Exhibition expo.02. For 6 months it
+ controlled 10 Robox tour guide robots at the Robotics pavillion.
+
+cwrap/
+ A C-wrapper for the sunflower library that allows to integrate it's
+ obstacle avoidance capavilities in non-C++ code.
+
+contrib/
+ Code that is useful in specific settings, such as on the Biron robot
+ at Bielefeld University or on Robox at the Autonomous Systems Lab.
+
+
+5. REFERENCES
+
+[1] Roland Philippsen. Motion planning and obstacle avoidance for
+    mobile robots in highly cluttered dynamic environments. PhD
+    dissertation thesis EPFL, no 3146 (2004).
+    <http://library.epfl.ch/theses/?nr=3146>
+
+[2] Boost provides free peer-reviewed portable C++ source libraries,
+    smart_ptr is a C++ template library.
+    <http://www.boost.org/libs/smart_ptr/smart_ptr.htm>
+
+[3] Doxygen documentation system for C++, C, Java, Objective-C,
+    Python, IDL (Corba and Microsoft flavors) and to some extent PHP,
+    C#, and D.
+    <http://www.doxygen.org>
+
+[4] XCF Integration Architecture <http://xcf.sourceforge.net/>
+
+[5] E-Star Interpolated Graph Replanner <http://estar.sourceforge.net/>

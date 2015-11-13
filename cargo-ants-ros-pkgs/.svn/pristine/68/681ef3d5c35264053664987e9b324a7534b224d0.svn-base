@@ -1,0 +1,11 @@
+<launch>
+
+    <!-- Launch agv -->
+    <include file="$(find agv_tests_real)/launch/agv_sensors.launch"/>
+
+    <!-- rosbag record command -->
+    <node   name="rosbag_record_agv"
+            pkg="rosbag"
+            type="record"
+            args="-o $(find agv_tests_real)/logs/ --split --size=512 -a"/>
+</launch>

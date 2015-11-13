@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>estar2</name>
+  <version>0.0.0</version>
+  <description>
+    ROS wrapper for the Estar2 interpolated graph replanner.
+  </description>
+  <url type="website">https://github.com/poftwaresatent/estar2</url>
+  <author email="poftwaresatent@gmail.com">Roland Philippsen</author>
+  <maintainer email="poftwaresatent@gmail.com">Roland Philippsen</maintainer>
+  <license>BSD</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+</package>

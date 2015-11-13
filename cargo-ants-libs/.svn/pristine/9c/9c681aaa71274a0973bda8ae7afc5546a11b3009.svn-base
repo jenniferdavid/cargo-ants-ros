@@ -1,0 +1,45 @@
+View ground-truth
+     Camera  expo
+     Drawing Zillian_global_risk
+     Drawing Zillian_fullcarrotdrawing
+     Drawing expo
+     Drawing Zillian_true_drawing
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Zillian_drive
+     Drawing Zillian_goaldrawing
+     Drawing Zillian_trajectory
+     Drawing Zillian_lidar_0
+     Drawing Zillian_lidar_1
+     Window  0.0  0.0  0.6 1.0
+
+View pnf-risk
+     Camera  Zillian_pnfcamera
+     Drawing Zillian_gframe_risk
+     Window  0.6  0.0  1.0 0.33
+     Border  2
+
+View pnf-meta
+     Camera  Zillian_pnfcamera
+     Drawing Zillian_gframe_meta
+     Window  0.6  0.34  1.0 0.66
+     Border  2
+
+View pnf-value
+     Camera  Zillian_pnfcamera
+     Drawing Zillian_gframe_value
+     Window  0.6  0.67  1.0 1.0
+     Border  2

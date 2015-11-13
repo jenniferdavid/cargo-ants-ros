@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="arts_node" params="suffix x y z base_frame">
+	    <link name="arts_node_${suffix}">
+		<visual>
+		    <geometry>
+			<box size="0.3 0.3 0.1"/>
+		    </geometry>
+		    <material name="black">
+			<color rgba="0 0 0 1"/>
+		    </material>
+		</visual>
+		<collision>
+		    <geometry>
+			<box size="0.3 0.3 0.1"/>
+		    </geometry>
+		</collision>
+	    </link>
+	    <joint name="arts_node_${suffix}_location" type="fixed">
+		<parent link="${base_frame}"/>
+		<child link="arts_node_${suffix}"/>
+		<origin xyz="${x} ${y} ${z}" />
+	    </joint>
+	</xacro:macro>
+</robot>

@@ -1,0 +1,55 @@
+View world
+     Camera  world
+     Drawing Ter_estar_value
+     Drawing Ter_estar_queue
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Drawing Ter_lidar_0
+     Window  0.0  0.0  0.4  0.7
+     Border  1
+
+View mapping_thread
+     Camera  Ter_mapping_thread
+     Drawing Ter_mapping_thread
+     Window  0.0  0.7  0.4  0.8
+     Border  1
+
+View planning_thread
+     Camera  Ter_planning_thread
+     Drawing Ter_planning_thread
+     Window  0.0  0.8  0.4  0.9
+     Border  1
+
+View control_thread
+     Camera  Ter_control_thread
+     Drawing Ter_control_thread
+     Window  0.0  0.9  0.4  1.0
+     Border  1
+
+View ter
+     Camera  Ter_true_zoom_camera
+#     Drawing Ter_travmap
+     Drawing Ter_estar_meta
+     Drawing Ter_estar_queue
+     Drawing Ter_carrot
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Drawing Ter_lidar_0
+     Window  0.4  0.0  1.0  0.6
+     Border  1
+
+View arcs_cached
+     Camera  Ter_true_zoom_camera
+     Drawing Ter_travmap
+     Drawing Ter_estar_queue
+     Drawing Ter_arcs_cached
+     Drawing Ter_true_drawing
+     Drawing Ter_drive
+     Window  0.4  0.6  1.0  1.0
+     Border  1

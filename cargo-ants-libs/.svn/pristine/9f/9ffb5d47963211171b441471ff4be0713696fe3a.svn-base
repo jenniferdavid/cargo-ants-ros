@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/estar2/cell.h
+stddef.h
+-
+
+../include/estar2/estar.h
+estar2/grid.h
+-
+estar2/pqueue.h
+-
+
+../include/estar2/grid.h
+estar2/cell.h
+-
+
+../include/estar2/pqueue.h
+estar2/cell.h
+-
+
+/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/cargo-ants-libs/estar2/src/test-pqueue.c
+estar2/estar.h
+-
+math.h
+-
+stdlib.h
+-
+stdio.h
+-
+

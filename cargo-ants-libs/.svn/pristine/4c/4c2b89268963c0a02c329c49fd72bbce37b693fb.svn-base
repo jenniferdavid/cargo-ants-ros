@@ -1,0 +1,61 @@
+View ground-truth
+     Camera  stage
+     Drawing stage
+     Drawing Butler_true_drawing
+     Drawing Butler_drive
+     Drawing Butler_goaldrawing
+     Drawing Butler_lidar_rear
+     Drawing Butler_lidar_front
+     Drawing Butler_trajectory
+     Drawing Butler_sequencer_stage
+     Window  0.0  0.0  0.4  0.6
+     Border  2
+
+View butler
+     Camera  Butler_true_zoom_camera
+     Drawing stage
+     Drawing Butler_true_drawing
+     Drawing Butler_drive
+     Drawing Butler_goaldrawing
+     Drawing Butler_lidar_rear
+     Drawing Butler_lidar_front
+     Drawing Butler_sequencer_stage
+     Drawing Butler_trajectory
+     Window  0.4  0.0  1.0  0.7
+     Border  2
+
+View dwa
+     Camera Butler_dwcamera
+     Drawing Butler_dwdrawing
+     Window 0.0  0.6  0.2  1.0
+     Border 2
+
+View do
+     Camera Butler_ocamera
+     Drawing Butler_dodrawing
+     Window 0.2  0.8  0.3  1.0
+     Border 2
+
+View ho
+     Camera Butler_ocamera
+     Drawing Butler_hodrawing
+     Window 0.2  0.6  0.3  0.8
+     Border 2
+
+View bso
+     Camera Butler_ocamera
+     Drawing Butler_bsodrawing
+     Window 0.3  0.8  0.4  1.0
+     Border 2
+
+View so
+     Camera Butler_ocamera
+     Drawing Butler_sodrawing
+     Window 0.3  0.6  0.4  0.8
+     Border 2
+
+View collision
+     Camera  Butler_collisioncamera
+     Drawing Butler_collisiondrawing
+     Window  0.4  0.7  1.0  1.0
+     Border  2

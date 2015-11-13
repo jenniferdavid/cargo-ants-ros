@@ -1,0 +1,63 @@
+- Plugin:
+    name: pickplace
+    search: pickplace-plugin
+
+- World:
+    lines:
+      - [ -5, -5,  5, -5 ]
+      - [  5, -5,  5,  5 ]
+      - [  5,  5, -5,  5 ]
+      - [ -5,  5, -5, -5 ]
+
+- Object:
+    name: container
+    parent: world
+    lines:
+      - [ -0.3, -0.2,  0.3, -0.2 ]
+      - [ -0.3,  0.2,  0.3,  0.2 ]
+      - [ -0.3, -0.2, -0.3,  0.2 ]
+      - [  0.3, -0.2,  0.3,  0.2 ]
+
+- Object:
+    name: agv
+    parent: world
+    mount: [ 0.0, 2.5, 3.142 ]
+    lines:
+      - [ -0.4, -0.3,  0.4, -0.3 ]
+      - [ -0.4,  0.3,  0.4,  0.3 ]
+      - [ -0.4, -0.3, -0.4,  0.3 ]
+      - [  0.4, -0.3,  0.4,  0.3 ]
+- GenericDrive:
+    name: drive
+    parent: agv
+- KinematicControl:
+    name: ctrl
+    drive: drive
+    vtrans_max: 0.3
+    vrot_max: 0.3
+- PickPlaceProcess:
+    name: ppp
+    control: ctrl
+    container: container
+    goals:
+      - [ -2, -2,  0 ]
+      - [ -1,  2,  0 ]
+      - [  0, -2,  0 ]
+      - [  1,  2,  0 ]
+      - [  2, -2,  0 ]
+    
+- Simulator:
+    timestep: 0.1
+    state: run
+
+- ObjectCamera:
+    name: world_camera
+    object: world
+- ObjectDrawing:
+    name: world_drawing
+    object: world
+- View:
+    name: world_view
+    camera: world_camera
+    drawings:
+      - world_drawing

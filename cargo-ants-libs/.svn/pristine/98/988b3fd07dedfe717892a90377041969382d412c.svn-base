@@ -1,0 +1,92 @@
+View ground-truth
+     Camera  expo
+     Drawing Robox_global_gldrawing
+     Drawing expo
+     Drawing Robox_true_drawing
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Robox_drive
+     Drawing Robox_goaldrawing
+     Drawing Robox_trajectory
+     Drawing Robox_lidar_1
+     Drawing Robox_lidar_0
+     Window  0.0  0.0  0.55  0.55
+     Border  2
+
+View robox
+     Camera  Robox_true_zoom_camera
+     Drawing Robox_bbdrawing
+#     Drawing expo
+     Drawing Robox_true_drawing
+     Drawing Robox_drive
+     Drawing Robox_goaldrawing
+     Drawing Robox_trajectory
+#     Drawing visitor0_true_drawing
+#     Drawing visitor1_true_drawing
+#     Drawing visitor2_true_drawing
+#     Drawing visitor3_true_drawing
+#     Drawing visitor4_true_drawing
+#     Drawing visitor5_true_drawing
+#     Drawing visitor6_true_drawing
+#     Drawing visitor7_true_drawing
+#     Drawing visitor8_true_drawing
+#     Drawing visitor9_true_drawing
+#     Drawing visitor10_true_drawing
+#     Drawing visitor11_true_drawing
+#     Drawing visitor12_true_drawing
+#     Drawing visitor13_true_drawing
+#     Drawing visitor14_true_drawing
+     Drawing Robox_lidar_1
+     Drawing Robox_lidar_0
+     Drawing Robox_odomdrawing
+     Window  0.55  0.0  1.0  0.55
+     Border  2
+
+View collision
+     Camera  Robox_collisioncamera
+     Drawing Robox_collisiondrawing
+     Window  0.55  0.55  1.0  1.0
+     Border  2
+
+#View nf1
+#     Camera Robox_glcamera
+#     Drawing Robox_gldrawing
+#     Window  0.55  0.0  1.0  0.2
+#     Border  2
+
+View dwa
+     Camera Robox_dwcamera
+     Drawing Robox_dwdrawing
+     Window 0.3  0.55  0.55  0.66
+     Border 2
+
+View do
+     Camera Robox_dwcamera
+     Drawing Robox_dodrawing
+     Window 0.0  0.55  0.3  1.0
+     Border 2
+
+View ho
+     Camera Robox_ocamera
+     Drawing Robox_hodrawing
+     Window 0.3  0.66  0.55  0.82
+     Border 2
+
+View so
+     Camera Robox_ocamera
+     Drawing Robox_sodrawing
+     Window 0.3  0.82  0.55  1.0
+     Border 2

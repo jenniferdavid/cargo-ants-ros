@@ -1,0 +1,163 @@
+View global_value
+     Camera  Borox_estar_cspace
+     Drawing Borox_estar_value
+     Drawing Borox_estar_queue
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Drawing Borox_goaldrawing
+     Drawing Borox_trajectory
+     Drawing Borox_carrot
+     Drawing Borox_lidar_1
+     Drawing Borox_lidar_0
+     Window  0.0  0.2  0.5  0.7
+     Border  2
+
+View local_travmap
+     Camera  Borox_true_zoom_camera
+     Drawing Borox_travmap
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+#     Drawing Borox_mapper_free
+#     Drawing Borox_mapper_obst
+#     Drawing Borox_mapper_check
+     Drawing Borox_mapper_hole
+     Drawing Borox_mapper_repair
+     Drawing Borox_lidar_1
+     Drawing Borox_lidar_0
+     Window  0.5  0.2  1.0  0.7
+     Border  2
+
+View global_travmap
+     Camera  Borox_travmap
+     Drawing Borox_travmap
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Window  0.0  0.7  0.25  1.0
+     Border  2
+
+View global_meta
+     Camera  Borox_estar_cspace
+     Drawing Borox_estar_meta
+     Drawing visitor0_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing visitor4_true_drawing
+     Drawing visitor5_true_drawing
+     Drawing visitor6_true_drawing
+     Drawing visitor7_true_drawing
+     Drawing visitor8_true_drawing
+     Drawing visitor9_true_drawing
+     Drawing visitor10_true_drawing
+     Drawing visitor11_true_drawing
+     Drawing visitor12_true_drawing
+     Drawing visitor13_true_drawing
+     Drawing visitor14_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_drive
+     Window  0.25  0.7  0.5  1.0
+     Border  2
+
+View dwa_collision
+     Camera  Borox_collisioncamera
+     Drawing Borox_collisiondrawing
+     Window  0.5  0.7  0.75  1.0
+     Border  2
+
+View dwa
+     Camera Borox_dwcamera
+     Drawing Borox_dwdrawing
+     Window 0.75  0.7  1.0  1.0
+     Border 2
+
+View mapper_free
+     Camera  Borox_true_zoom_camera
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_mapper_free
+     Window  0.0  0.0  0.2  0.2
+     Border  1
+
+View mapper_obst
+     Camera  Borox_true_zoom_camera
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_mapper_obst
+     Window  0.2  0.0  0.4  0.2
+     Border  1
+
+View mapper_check
+     Camera  Borox_true_zoom_camera
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_mapper_check
+     Window  0.4  0.0  0.6  0.2
+     Border  1
+
+View mapper_hole
+     Camera  Borox_true_zoom_camera
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_mapper_hole
+     Window  0.6  0.0  0.8  0.2
+     Border  1
+
+View mapper_repair
+     Camera  Borox_true_zoom_camera
+     Drawing expo
+     Drawing visitor0_true_drawing
+     Drawing Borox_true_drawing
+     Drawing Borox_mapper_repair
+     Window  0.8  0.0  1.0  0.2
+     Border  1

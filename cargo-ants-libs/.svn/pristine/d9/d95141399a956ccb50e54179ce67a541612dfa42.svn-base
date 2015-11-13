@@ -1,0 +1,16 @@
+Robot butler Butler
+      Pose  1  1  0
+      Goal 10  5  0 0.5 3.2
+      Goal  1  1  0 0.5 3.2
+      Option BatchFilename test_sequence.batch
+      Option alpha_distance 0.1
+      Option alpha_heading  0.0
+      Option alpha_speed    0.3
+      Option alpha_bspline  0.6
+      Option k_rho_bspline      0.2
+      Option lambda_rho_bspline 1.0
+      Option mu_rho_bspline     1.0
+      Option k_phi_bspline      0.8
+      Option lambda_phi_bspline 0.5
+      Option mu_phi_bspline     2.5
+      Option dwa_mode coarse

@@ -1,0 +1,56 @@
+View world
+     Camera  world
+     Drawing SimpleRoundRobot_global_gldrawing
+     Drawing world
+     Drawing SimpleRoundRobot_true_drawing
+     Drawing SimpleRoundRobot_drive
+     Drawing SimpleRoundRobot_goaldrawing
+     Drawing SimpleRoundRobot_trajectory
+#     Drawing SimpleRoundRobot_lidar_1
+     Drawing SimpleRoundRobot_lidar_0
+     Window  0.0  0.0  0.55  0.55
+     Border  2
+
+View robot-zoom
+     Camera  SimpleRoundRobot_true_zoom_camera
+     Drawing SimpleRoundRobot_bbdrawing
+     Drawing world
+     Drawing SimpleRoundRobot_true_drawing
+     Drawing SimpleRoundRobot_drive
+     Drawing SimpleRoundRobot_goaldrawing
+     Drawing SimpleRoundRobot_trajectory
+#     Drawing SimpleRoundRobot_lidar_1
+     Drawing SimpleRoundRobot_lidar_0
+     Drawing SimpleRoundRobot_odomdrawing
+     Window  0.55  0.0  1.0  0.55
+     Border  2
+
+View collision
+     Camera  SimpleRoundRobot_collisioncamera
+     Drawing SimpleRoundRobot_collisiondrawing
+     Window  0.55  0.55  1.0  1.0
+     Border  2
+
+View dwa
+     Camera SimpleRoundRobot_dwcamera
+     Drawing SimpleRoundRobot_dwdrawing
+     Window 0.0  0.55  0.3  1.0
+     Border 2
+
+View distobj
+     Camera SimpleRoundRobot_ocamera
+     Drawing SimpleRoundRobot_dodrawing
+     Window 0.3  0.55  0.55  0.66
+     Border 2
+
+View headobj
+     Camera SimpleRoundRobot_ocamera
+     Drawing SimpleRoundRobot_hodrawing
+     Window 0.3  0.66  0.55  0.82
+     Border 2
+
+View speedobj
+     Camera SimpleRoundRobot_ocamera
+     Drawing SimpleRoundRobot_sodrawing
+     Window 0.3  0.82  0.55  1.0
+     Border 2

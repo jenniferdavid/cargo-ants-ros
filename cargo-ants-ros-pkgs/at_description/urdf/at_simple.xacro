@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<robot name="at" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    AGV MODEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Partner: Institut de Robotica i Informatica Industrial (IRI) UPC-CSIC
+    authors:  acoromin, mmorta
+    Description: This file describes sensor mounting points for the Toyota car used by TNO to get the dataset of October 2014.
+
+    Units: [m], [rad] (SI)
+    Tutorials on urdf description: http://wiki.ros.org/urdf/Tutorials
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+<xacro:property name="robot" value="at" />
+<xacro:property name="pi"    value="3.141592" />
+
+<!-- AGV Base Footprint-->
+<link name="${robot}_footprint">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.01 0.01 0.01"/>
+        </geometry>
+    </visual>
+</link>
+
+<!-- AGV Base Link-->
+<link name="${robot}_base_link">
+    <visual>
+		<origin xyz="${3.5-0.84} 0 0.4" rpy="0 0 0"/>
+        <geometry>
+            <box size="7 2.2 1.4"/>
+        </geometry>
+        <material name="reddish">
+            <color rgba="1 0.2 0.2 0.3"/>
+        </material>
+    </visual>
+</link>
+<joint name="${robot}_footprint_2_base_link" type="fixed" >
+    <parent link="${robot}_footprint"/>
+    <child link="${robot}_base_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+</joint>
+
+<!-- Lidar Macro-->
+<xacro:macro name="ibeo" params="parent suffix *origin">
+    <link name="${suffix}">
+        <visual>
+            <origin xyz="-0.075 -0.075 -0.075" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.15 0.15 0.15"/>
+            </geometry>
+            <material name="blue_navy">
+                <color rgba="0.0 0.2 0.25 0.5"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="${parent}_2_${suffix}" type="fixed" >
+        <parent link="${parent}"/>
+        <child link="${suffix}"/>
+        <xacro:insert_block name="origin" />
+    </joint>   
+</xacro:macro>
+
+<!-- ibeo mounting points. Metric tape measurement + Mail from Peter(Volvo)-->
+<xacro:ibeo parent="${robot}_base_link" suffix="${robot}_front_ibeo">
+    <origin xyz="6.16 0.1 0.125" rpy="0 0 0"/>
+</xacro:ibeo>
+
+<!-- ibeo layers -->
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer0">
+    <origin xyz="0 0 0" rpy="0 ${2.8*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer1">
+    <origin xyz="0 0 0" rpy="0 ${2.0*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer2">
+    <origin xyz="0 0 0" rpy="0 ${1.2*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer3">
+    <origin xyz="0 0 0" rpy="0 ${0.4*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer4">
+    <origin xyz="0 0 0" rpy="0 ${-0.4*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer5">
+    <origin xyz="0 0 0" rpy="0 ${-1.2*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer6">
+    <origin xyz="0 0 0" rpy="0 ${-2.0*pi/180} 0"/>
+</xacro:ibeo>
+<xacro:ibeo parent="${robot}_front_ibeo" suffix="${robot}_front_ibeo_layer7">
+    <origin xyz="0 0 0" rpy="0 ${-2.8*pi/180} 0"/>
+</xacro:ibeo>
+
+<!-- webcam x=0, y=-0.14, z=2.27  , wrt ibeo footprint. Metric tape measurement-->
+<link name="${robot}_webcam">
+    <visual>
+        <geometry>
+            <box size="0.3 0.1 0.1"/>
+        </geometry>
+		<material name="blue_navy">
+			<color rgba="0.0 0.2 0.25 0.5"/>
+		</material>
+    </visual>
+</link>
+<joint name="${robot}_ibeo_2_camera" type="fixed" >
+    <parent link="${robot}_front_ibeo"/>
+    <child link="${robot}_webcam"/>
+	<origin xyz="0 -0.14 1.645" rpy="0 ${pi/10} 0"/> <!-- pitch value very approximated, not measured-->
+</joint>
+
+<!-- Left radar. Mail from Wilhelm (Volvo)-->
+<link name="${robot}_radar_left">
+    <visual>
+        <geometry>
+            <box size="0.04 0.1 0.1"/>
+        </geometry>
+		<material name="blue_navy">
+			<color rgba="0.0 0.2 0.25 0.5"/>
+		</material>
+    </visual>
+</link>
+<joint name="${robot}_base_link_2_radar_left" type="fixed" >
+    <parent link="${robot}_base_link"/>
+    <child link="${robot}_radar_left"/>
+	<origin xyz="${6.16+0.05-1.94} 1.2 0.5" rpy="0 0 ${pi/2}"/> <!-- xy wrt front plate. z TBC !-->
+</joint>
+
+<!-- Right radar. Mail from Wilhelm (Volvo)-->
+<link name="${robot}_radar_right">
+    <visual>
+        <geometry>
+            <box size="0.04 0.1 0.1"/>
+        </geometry>
+		<material name="blue_navy">
+			<color rgba="0.0 0.2 0.25 0.5"/>
+		</material>
+    </visual>
+</link>
+<joint name="${robot}_base_link_2_radar_right" type="fixed" >
+    <parent link="${robot}_base_link"/>
+    <child link="${robot}_radar_right"/>
+	<origin xyz="${6.16+0.05-1.94} -1.18 0.5" rpy="0 0 ${-pi/2}"/> <!-- xy wrt front plate. z TBC !-->
+</joint>
+
+
+</robot>
+

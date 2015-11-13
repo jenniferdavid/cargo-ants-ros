@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC -g   -shared -Wl,-soname,libestar2.so -o libestar2.so CMakeFiles/estar2.dir/src/cell.c.o CMakeFiles/estar2.dir/src/estar.c.o CMakeFiles/estar2.dir/src/grid.c.o CMakeFiles/estar2.dir/src/pqueue.c.o -lm 

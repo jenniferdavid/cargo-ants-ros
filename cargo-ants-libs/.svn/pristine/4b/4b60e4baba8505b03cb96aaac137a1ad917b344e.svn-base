@@ -1,0 +1,215 @@
+\documentclass[twocolumn]{article}
+
+\usepackage[noend]{algorithmic}
+\usepackage{algorithm,amsmath,booktabs}
+
+\floatname{algorithm}{Procedure}
+\renewcommand{\thealgorithm}{}
+
+\newcommand{\rhs}{\text{rhs}}
+\newcommand{\key}{\text{key}}
+
+
+\begin{document}
+
+\title{E$^\ast$ v2}
+\author{Roland Philippsen, Halmstad University}
+\maketitle
+
+\begin{algorithm}
+  \caption{Main}
+  \begin{algorithmic}
+    \STATE Initialize($g$)
+    \LOOP
+      \STATE ProcessChanges()
+      \STATE Propagate()
+      \IF { Empty($Q$) }
+        \IF { $v(r) \ne \infty$ }
+          \STATE status $\leftarrow$ \textsc{Success}
+        \ELSE
+          \STATE status $\leftarrow$ \textsc{Failure}
+        \ENDIF
+      \ELSE
+        \IF { TopKey($Q$) $> v(r)$ }
+          \STATE status $\leftarrow$ \textsc{Success}
+        \ELSE
+          \STATE status $\leftarrow$ \textsc{Pending}
+        \ENDIF
+      \ENDIF
+    \ENDLOOP
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Propagate}
+  \begin{algorithmic}
+    \IF { $\neg$ Empty($Q$) }
+      \STATE $x \leftarrow$ Extract($Q$)
+      \IF { $v(x) > \rhs(x)$ }
+        \STATE $v(x) \leftarrow \rhs(x)$
+        \FORALL { $n \in N(x)$ }
+          \STATE Update($n$)
+        \ENDFOR
+      \ELSE
+        \STATE $v(x) \leftarrow \infty$
+        \FORALL { $n \in N(x)$ }
+          \STATE Update($n$)
+        \ENDFOR
+        \STATE Update($x$)
+      \ENDIF
+    \ENDIF
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Update($x$)}
+  \begin{algorithmic}
+    \IF { $x \in O$ or $x = g$ }
+      \STATE Remove($Q, x$)
+    \ELSE
+      \STATE $\rhs(x) \leftarrow \min_{\{a,b\} \in P(x)} T(v(a),v(b))$
+      \IF { $v(x) \ne \rhs(x)$ }
+        \STATE Insert($Q, x$)
+      \ELSE
+        \STATE Remove($Q, x$)
+      \ENDIF
+    \ENDIF
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{ProcessChanges()}
+  \begin{algorithmic}
+    \IF { goal should be changed to $g'$ }
+      \STATE SetGoal($g'$)
+    \ENDIF
+    \FORALL { $x$ with changed speed T }
+      \STATE SetSpeed($x$, F)
+    \ENDFOR
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Initialize($g$)}
+  \begin{algorithmic}
+    \FORALL { $x \in$ grid }
+      \STATE $c(x) \leftarrow 1$
+      \STATE $v(x), \rhs(x) \leftarrow \infty$
+%%%      \STATE $key(x) \leftarrow \infty$
+    \ENDFOR
+    \STATE $Q \leftarrow \{\}$
+    \STATE $\rhs(g) \leftarrow 0$
+    \STATE Insert($Q,g$)
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{SetGoal($x$)}
+  \begin{algorithmic}
+    \STATE $g \leftarrow x$
+    \FORALL { $x \in$ grid }
+%%%      \STATE [note that $c(x)$ remains unchanged]
+      \STATE $v(x), \rhs(x) \leftarrow \infty$
+%%%      \STATE $key(x) \leftarrow \infty$
+    \ENDFOR
+    \STATE $Q \leftarrow \{\}$
+    \STATE $\rhs(g) \leftarrow 0$
+    \STATE Insert($Q,g$)
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{SetSpeed($x$, F)}
+  \begin{algorithmic}
+    \IF { $x \neq g$ }
+      \IF { $F = 0$ }
+%%%        \STATE $c(x) \leftarrow \infty$
+%%%        \STATE $v(x) \leftarrow \infty$
+%%%        \STATE $\rhs(x) \leftarrow \infty$
+        \STATE $O \leftarrow O \cup \{x\}$
+      \ELSE
+        \STATE $c(x) \leftarrow 1/F$
+        \STATE $O \leftarrow O \backslash \{x\}$
+      \ENDIF
+      \STATE Update($x$)
+      \FORALL { $n \in N(x)$ }
+        \STATE Update($n$)
+      \ENDFOR
+    \ENDIF
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{equation}
+  \label{eq:interpolation}
+  T(A,B) =
+  \begin{cases}
+    A + h/F                                & \Leftarrow h/F \leq B-A \\
+    \big(\beta + \sqrt{\beta^2 - 2\gamma}\big) / 2 & \text{otherwise}
+  \end{cases}
+\end{equation}
+
+\noindent where
+
+\begin{subequations}
+  \begin{align}
+    \beta &= A + B \\
+    \gamma &= A^2 + B^2 - h^2/F^2
+  \end{align}
+\end{subequations}
+
+Note that for convenience we use $h=1$ and store $c=1/T$.
+
+In the computation of $\rhs(x)$ in Update($x$), $P(x)$ denotes the set of candidate interpolation stencils.
+It contains pairs of cells $\{a,b\}$ satisfying the constraints
+
+\begin{subequations}
+  \begin{align}
+    &a, b \notin O \\
+    &a, b \notin Q \\
+    &\begin{cases}
+      v(a) \ne \infty            &\Leftarrow \text{Empty}(Q) \\
+      v(a) \leq \text{TopKey}(Q) &\text{otherwise}
+    \end{cases} \\
+    &v(a) \leq v(b)
+  \end{align}
+\end{subequations}
+
+By extension, if only one cell of a stencil candidate satisfies these constraints,
+it is treated treated as case $h/F \leq B-A$ in \eqref{eq:interpolation}.
+
+\begin{table}
+  \centering
+  \begin{tabular}{@{}p{0.29\columnwidth}p{0.67\columnwidth}@{}}
+    \toprule
+    Procedure & Description \\
+    \midrule
+    TopKey($Q$)    & return the key of the topmost queue item \\
+    Empty($Q$)     & return \textsc{true} if the queue is empty, \textsc{false} otherwise \\
+    Extract($Q$)   & remove (and return) the topmost item from the queue \\
+    Remove($Q, x$) & if $x\in Q$ then remove $x$ from queue, else ignore \\
+    Insert($Q, x$) & if $x\notin Q$ then insert it into the queue, else update $\key(x)$ and re-order the queue accordingly \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}
+  \centering
+  \begin{tabular}{@{}p{0.14\columnwidth}p{0.83\columnwidth}@{}}
+    \toprule
+    Notation & Meaning \\
+    \midrule
+    $x$       & a grid cell \\
+    $r$       & the cell containing the robot \\
+    $g$       & the goal cell \\
+    $Q$       & priority queue of cells to be expanded \\
+    $O$       & set of obstacle cells \\
+    $N(x)$    & neighbor set of cell $x$ \\
+    $c(x)$    & $=1/F$ where $F>0$ is the propagation speed; obstacles are handled specially \\
+    $v(x)$    & crossing-time value of cell $x$; elsewhere denoted $T_{ij}$, $g(x)$, $\Phi(x)$, \ldots \\
+    $\rhs(x)$ & one-step lookahead of $v(x)$; at the end, $v(x) = \rhs(x) \;\forall$ ``$x$ that matter'' \\
+    $\key(x)$ &  $= \min (v(x), \rhs(x))$; the queue is ordered by ascending key \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{document}

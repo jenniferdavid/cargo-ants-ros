@@ -1,0 +1,46 @@
+<!-- Launches rosbag play and visualization -->
+
+<launch>
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" /> 
+    <arg name="camera" default="true" /> 
+    <arg name="model" default="$(find at_description)/urdf/at_simple.xacro"/>
+
+	<!-- Set robot_description parameter in the parameter server-->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />    
+    
+	<!-- rosbag play -->
+	<node	
+		pkg="rosbag"
+		type="play"
+		name="rosbag"
+		args="--clock /home/andreu/Desktop/Cargo-ANTs/datasets/at_201510/rosbags/2015-11-02-15-32-08.bag"/>	
+		<param name="use_sim_time" value="true"/>
+    
+    <!--VISUALIZATION-->
+    <group if="$(arg rviz)">
+        <node name="rviz"
+            pkg="rviz"
+            type="rviz" 
+            args="-d $(find at_udp2ros)/config/at_udp.rviz" />
+    </group>
+
+	<!-- camera view -->
+	<group if="$(arg camera)">
+		<node 
+			name="image_view" 
+			pkg="image_view" 
+			type="image_view" 
+			respawn="false" 
+			output="screen">
+			<remap from="image" to="/usb_cam/image_raw"/>
+			<param name="autosize" value="true" />
+		</node>
+	</group>
+
+</launch>
+
+<!-- rosbag record command -->
+<!-- rosbag record -a -x "(.*)/compressed(.*)|(.*)/theora(.*)|(.*)/markers" -->
+

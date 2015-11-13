@@ -1,0 +1,23 @@
+# resolution 1.5
+# origin 0 0 0
+# obstacle 10
+# freespace 5
+# default 0
+# name expo
+
+# note that all lines get expanded by default value to the longest
+# line in order to get a rectangular grid
+
+# the axes lie according to "normal" screen layout, e.g.:
+#
+# (0,1) (1,1) (2,1)
+# (0,0) (1,0) (2,0)
+#
+# where (ix, iy) denotes the grid index
+
+ 0   1   2   3   4   5   0
+ 1   2   3   4   5   6  15
+ 8   9  10  11  12  13   0
+ 9  10  11  12  13  14  15
+10  11  12  13  14  15   0
+10   9   8   7   2   1   7

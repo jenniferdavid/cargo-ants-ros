@@ -1,0 +1,67 @@
+View ground-truth
+     Camera  acapulco
+     Drawing Robox_global_gldrawing
+     Drawing acapulco
+     Drawing Robox_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing Robox_drive
+     Drawing Robox_goaldrawing
+     Drawing Robox_trajectory
+     Drawing Robox_lidar_1
+     Drawing Robox_lidar_0
+     Window  0.0  0.0  0.5  0.5
+     Border  2
+
+View robox
+     Camera  Robox_true_zoom_camera
+     Drawing Robox_bbdrawing
+     Drawing acapulco
+     Drawing Robox_true_drawing
+     Drawing visitor1_true_drawing
+     Drawing visitor2_true_drawing
+     Drawing visitor3_true_drawing
+     Drawing Robox_drive
+     Drawing Robox_goaldrawing
+     Drawing Robox_lidar_1
+     Drawing Robox_lidar_0
+     Drawing Robox_odomdrawing
+     Window  0.5  0.0  1.0  0.5
+     Border  2
+
+View collision
+     Camera  Robox_collisioncamera
+     Drawing Robox_collisiondrawing
+     Window  0.5  0.5  1.0  1.0
+     Border  2
+
+#View nf1
+#     Camera Robox_glcamera
+#     Drawing Robox_gldrawing
+#     Window  0.5  0.0  1.0  0.2
+#     Border  2
+
+View dwa
+     Camera Robox_dwcamera
+     Drawing Robox_dwdrawing
+     Window 0.0  0.5  0.3  1.0
+     Border 2
+
+View do
+     Camera Robox_ocamera
+     Drawing Robox_dodrawing
+     Window 0.3  0.5  0.5  0.66
+     Border 2
+
+View ho
+     Camera Robox_ocamera
+     Drawing Robox_hodrawing
+     Window 0.3  0.66  0.5  0.82
+     Border 2
+
+View so
+     Camera Robox_ocamera
+     Drawing Robox_sodrawing
+     Window 0.3  0.82  0.5  1.0
+     Border 2

@@ -1,0 +1,45 @@
+/** \mainpage
+
+<h2>High-Level Abstractions</h2>
+
+These classes define the Sunflower architecture:
+
+<ul>
+  <li> Abstraction of robot hardware: sfl::HAL </li>
+  <li> (Laser) scanner: sfl::Scanner, sfl::Multiscanner </li>
+  <li> Deduced reckoning: sfl::Odometry </li>
+  <li> Main actuators: sfl::MotionController </li>
+  <li> Motion planning / execution interface: sfl::MotionPlanner </li>
+  <li> Geometric, kinematc, and dynamic model: sfl::RobotModel </li>
+</ul>
+
+And these classes are the main intrface to the motion planning and
+obstacle avoidance system included in <code>libsunflower</code>:
+
+<ul>
+ <li> High-level access: expo::MotionPlanner and expo_parameters </li>
+ <li> Adaptable path representation: sfl::BubbleBand </li>
+ <li> Simple grid-based global planning: sfl::NF1 </li>
+ <li> Collision avoidance: sfl::DynamicWindow </li>
+</ul>
+
+<h2>Utilities and Data Objects</h2>
+
+These classes define encapsulations of various "chunks" of data and
+associated utilities, or just other useful things:
+
+<ul>
+  <li> Goals with radial and angular tolerances: sfl::Goal </li>
+  <li> Time representation and utilities: sfl::Timestamp </li>
+  <li> Coordinate frames, position: sfl::Frame, sfl::Pose </li>
+  <li> Scanner data: sfl::Scan </li>
+  <li> Polygonal outlines as sets of convex hulls: sfl::Hull </li>
+  <li> Thread abstraction for "easy" multithreading: sfl::SimpleThread (more in Pthread.hpp) </li>
+  <li> Useful templates: sfl::vec2d< value_t > sfl::array2d< value_t > </li>
+</ul>
+
+<h2>README</h2>
+
+\verbinclude README
+
+*/

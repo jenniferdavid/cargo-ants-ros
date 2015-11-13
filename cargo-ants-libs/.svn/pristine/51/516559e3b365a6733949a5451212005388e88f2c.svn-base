@@ -1,0 +1,8 @@
+name world
+line   0.5   0    0    1
+line  20    20   60   20
+line  50    20   50   40
+line  20    40   20   60
+line  20    60   80   60
+line  80    20   80   60
+line  99.5  80  100   79.5

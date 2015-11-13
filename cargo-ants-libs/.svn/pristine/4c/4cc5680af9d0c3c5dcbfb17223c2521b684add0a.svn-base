@@ -1,0 +1,1 @@
+/usr/bin/cc  -g    CMakeFiles/test-drag.dir/src/test-drag.c.o  -o test-drag -rdynamic -lm -lfreetype -lgtk-x11-2.0 -lgdk-x11-2.0 -lcairo -lpango-1.0 -lpangocairo-1.0 -lpangoft2-1.0 -lpangoxft-1.0 -lgdk_pixbuf-2.0 -lgthread-2.0 -lgmodule-2.0 -lgio-2.0 -latk-1.0 -lgobject-2.0 -lglib-2.0 

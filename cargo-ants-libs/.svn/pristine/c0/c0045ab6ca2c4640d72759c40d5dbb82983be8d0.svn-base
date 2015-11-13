@@ -1,0 +1,74 @@
+cmake_minimum_required (VERSION 2.6)
+if (COMMAND cmake_policy)
+  cmake_policy (SET CMP0003 NEW)
+  cmake_policy (SET CMP0005 NEW)
+  if (POLICY CMP0011)
+    cmake_policy (SET CMP0011 NEW)
+  endif (POLICY CMP0011)
+  if (POLICY CMP0042)
+    cmake_policy (SET CMP0042 NEW)
+  endif (POLICY CMP0042)
+endif (COMMAND cmake_policy)
+
+##################################################
+# basic setup
+
+project (Estar2)
+set (CMAKE_VERBOSE_MAKEFILE ON)
+if (NOT BUILD_SHARED_LIBS)
+  set (BUILD_SHARED_LIBS True)
+endif (NOT BUILD_SHARED_LIBS)
+if (NOT CMAKE_BUILD_TYPE)
+  set (CMAKE_BUILD_TYPE Debug)
+endif (NOT CMAKE_BUILD_TYPE)
+
+##################################################
+# compiler flags (other than header and library paths)
+
+include (CheckCCompilerFlag)
+
+check_c_compiler_flag (-pipe C_FLAG_pipe)
+if (C_FLAG_pipe)
+  add_definitions (-pipe)
+endif (C_FLAG_pipe)
+check_c_compiler_flag (-Wall C_FLAG_Wall)
+if (C_FLAG_Wall)
+  add_definitions (-Wall)
+endif (C_FLAG_Wall)
+
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+  check_c_compiler_flag (-O0 C_FLAG_O0)
+  if (C_FLAG_O0)
+    add_definitions (-O0)
+  endif (C_FLAG_O0)
+endif (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+
+##################################################
+# configure-time checks
+
+include (FindGTK2)
+find_package (GTK2 2.24.23 COMPONENTS gtk)
+
+##################################################
+# build it already!
+
+include_directories (include)
+
+add_library (estar2 SHARED
+  src/cell.c
+  src/estar.c
+  src/grid.c
+  src/pqueue.c
+  )
+target_link_libraries (estar2 m)
+
+add_executable (test-pqueue src/test-pqueue.c)
+target_link_libraries (test-pqueue estar2 m)
+
+if (GTK2_FOUND)
+  include_directories (${GTK2_INCLUDE_DIRS})
+  add_executable (test-drag src/test-drag.c)
+  target_link_libraries (test-drag m ${GTK2_LIBRARIES})
+  add_executable (gestar2 src/gestar2.c)
+  target_link_libraries (gestar2 estar2 m ${GTK2_LIBRARIES})
+endif()

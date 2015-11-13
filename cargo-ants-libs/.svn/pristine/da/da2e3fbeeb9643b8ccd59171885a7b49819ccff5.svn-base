@@ -1,0 +1,25 @@
+View world
+     Camera  world
+     Drawing Ter_estar_value
+     Drawing Ter_estar_queue
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Window  0.0  0.0  0.5  1.0
+     Border  1
+
+View ter
+     Camera  Ter_true_zoom_camera
+     Drawing Ter_estar_meta
+     Drawing Ter_estar_queue
+     Drawing Ter_carrot
+     Drawing world
+     Drawing Ter_true_drawing
+     Drawing Ter_goaldrawing
+     Drawing Ter_trajectory
+     Drawing Ter_drive
+     Drawing Ter_lidar_0
+     Window  0.5  0.0  1.0  1.0
+     Border  1

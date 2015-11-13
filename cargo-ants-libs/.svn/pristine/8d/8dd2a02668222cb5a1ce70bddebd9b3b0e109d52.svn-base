@@ -1,0 +1,3 @@
+Factory and Parameter Parsing Library aims to be a simple and
+lightweight mechanism between your code and whatever configuration
+data format you want to use.

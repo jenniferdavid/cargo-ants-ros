@@ -1,0 +1,48 @@
+Robot smart Ter
+        Pose  0 0 0
+	Option goalmgr_filename goals.smart7
+
+#	Option estar_check_upwind false
+#	Option estar_check_local_consistency false
+#	Option estar_check_queue_key true
+#	Option estar_auto_reset false
+#	Option estar_auto_flush false
+	
+	Option m2d_grow_strategy        always
+	Option estar_grow_grid          true 
+	Option coarse_grid_ncells       20
+		
+	Option camera_zoom        10
+	Option front_channel       0
+        Option front_mount_x       0.65
+        Option front_mount_y       0.0
+        Option front_mount_theta   0.0
+        Option front_nscans      181
+        Option front_rhomax       10
+
+        Option model_wheelbase     0.96
+        Option model_axlewidth     0.677
+        Option model_wheelradius   0.135
+        Option model_phi_max       0.35
+        Option model_phid_max      1.0
+        Option model_sd_max        5.0
+        Option model_sdd_max       1.0
+
+	Option controller_name      tadpf
+        Option traversability_file  travmap.smart7
+        Option robot_radius         0.5
+        Option buffer_zone          1.0
+
+        Option carrot_distance     30
+        Option carrot_stepsize      0.4
+        Option carrot_maxnsteps   150
+        Option replan_distance      2
+        Option wavefront_buffer     2
+        Option estar_step         500
+
+        Option slow_drawing_enabled true
+        Option gradplot_frequency   5
+
+        Option planning_usecsleep  -10000
+        Option control_usecsleep    -1000
+        Option thread_statlen          50

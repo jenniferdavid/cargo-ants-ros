@@ -1,0 +1,11 @@
+# a_resolution 0.1
+# a_dimension 1000 1000
+# b_resolution 0.5
+# b_dimension 200 200
+# resolution 0.25
+# dimension 400 400
+# origin -10 -60 0
+# obstacle 127
+# freespace 0
+# default 0
+# name world

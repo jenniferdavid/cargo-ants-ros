@@ -1,0 +1,9 @@
+SynchronizedClock.Init ~
+SynchronizedClock.Run ~
+
+Sequencer.Init ~
+Sequencer.ClearSequence ~
+
+Sequencer.Add 0 FeedbackControl 3 3 3 3 ~
+
+Sequencer.Run ~

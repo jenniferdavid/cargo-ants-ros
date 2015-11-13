@@ -1,0 +1,75 @@
+README for nepumuk mobile robot simulator
+
+-------------------------------------------------------------------
+Copyright (C) 2004, Autonomous Systems Lab,
+                    Ecole Polytechnique Federale de Lausanne
+		    (Swiss Federal Institute of Technology).
+		    All rights reserved.
+
+Author: Roland Philippsen <roland dot philippsen at gmx dot net>
+
+This software is released under the GNU General Public License, see
+the file GPL.txt for more details.
+-------------------------------------------------------------------
+
+
+PREREQUISITES
+
+Nepumuk is a simple two-dimensional mobile robot simulator. At the
+time of writing, it compiles under Linux and Mac OS X, provided you
+have the following things installed on your computer:
+
+* The Automake build system <http://www.gnu.org/software/automake/>
+* The libtool suite <http://www.gnu.org/software/libtool/>
+* The development packages for OpenGL / Mesa3D and GLUT (the OpenGL
+  Utility Toolkit). Check your OS documentation to find out how to
+  install these.
+* The Sunflower Mobile Robot Library <http://libsunflower.sourceforge.net>
+
+
+BUILDING
+
+If all these things are installed, nepumuk can be built like this:
+
+$ ./bootstrap-buildsystem.sh
+$ mkdir build
+$ cd build
+$ ../configure
+$ make
+
+
+INSTALLING
+
+At the moment, make install won't really give you a neat install, so
+hand-craft something in the meantime:
+
+$ cd ../simul
+$ ln -s ../build/simul/nepumuk
+
+
+RUNNING
+
+Now you can run e.g. a demo of what ran during Expo.02 in Switzerland:
+
+$ ./expodemo.sh
+
+In the GL window, use 'c' for continuous mode, 'space' for
+step-by-step mode, and 'q' to exit the program. Some more keybindings
+exist, check the simul/Simulator.cpp code.
+
+
+OPTIONAL STUFF
+
+If you install the E* planner <http://estar.sourceforge.net/> then you
+can run nepumuk's configure script passing a '--with-estar' argument,
+which will add the code to run simul/estardemo.sh (beware though, E*
+is currently a fast moving target).
+
+The same goes for (Uni Bielefeld) people who work on Biron with XCF
+<http://xcf.sourceforge.net/>: You can use the '--with-xcf'
+parameter. If on top of that you have GenoM installed
+<http://softs.laas.fr/openrobots/> you can use '--with-xcfglue' for
+some really experimental stuff.
+
+
+==================================================

@@ -1,0 +1,94 @@
+- World:
+    lines:
+      - [ -5, -7,  5, -7 ]
+      - [  5, -7,  5,  7 ]
+      - [  5,  7, -5,  7 ]
+      - [ -5,  7, -5, -7 ]
+
+- Object:
+    name: a_base
+    parent: world
+    mount: [ -4.0, -4.0, -1.5 ]
+    lines:
+      - [ -0.2, -0.4,  0.4, -0.2 ]
+      - [ -0.2,  0.4,  0.4,  0.2 ]
+      - [  0.4, -0.2,  0.4,  0.2 ]
+      - [ -0.2,  0.4, -0.2, -0.4 ]
+- GenericDrive:
+    name: a_drive
+    parent: a_base
+- KinematicControl:
+    name: a_ctrl
+    drive: a_drive
+    goal: [ 2.5, 4.0, -1.5, 0.1, 0.1 ]
+
+- Object:
+    name: b_base
+    parent: world
+    mount: [ -3.5, -4.0, -1.5 ]
+    lines:
+      - [ -0.2, -0.4,  0.4, -0.2 ]
+      - [ -0.2,  0.4,  0.4,  0.2 ]
+      - [  0.4, -0.2,  0.4,  0.2 ]
+      - [ -0.2,  0.4, -0.2, -0.4 ]
+- GenericDrive:
+    name: b_drive
+    parent: b_base
+- KinematicControl:
+    name: b_ctrl
+    drive: b_drive
+    goal: [ 3.0, 4.0, -1.5, 0.1, 0.1 ]
+    vtrans_max: 0.3
+
+- Object:
+    name: c_base
+    parent: world
+    mount: [ -3.0, -4.0, -1.5 ]
+    lines:
+      - [ -0.2, -0.4,  0.4, -0.2 ]
+      - [ -0.2,  0.4,  0.4,  0.2 ]
+      - [  0.4, -0.2,  0.4,  0.2 ]
+      - [ -0.2,  0.4, -0.2, -0.4 ]
+- GenericDrive:
+    name: c_drive
+    parent: c_base
+- KinematicControl:
+    name: c_ctrl
+    drive: c_drive
+    goal: [ 3.5, 4.0, -1.5, 0.1, 0.1 ]
+    vrot_max: 0.3
+
+- Object:
+    name: d_base
+    parent: world
+    mount: [ -2.5, -4.0, -1.5 ]
+    lines:
+      - [ -0.2, -0.4,  0.4, -0.2 ]
+      - [ -0.2,  0.4,  0.4,  0.2 ]
+      - [  0.4, -0.2,  0.4,  0.2 ]
+      - [ -0.2,  0.4, -0.2, -0.4 ]
+- GenericDrive:
+    name: d_drive
+    parent: d_base
+- KinematicControl:
+    name: d_ctrl
+    drive: d_drive
+    goal: [ 4.0, 4.0, -1.5, 0.1, 0.1 ]
+    vtrans_max: 0.3
+    vrot_max: 0.3
+
+- Simulator:
+    timestep: 0.01
+    state: pause
+
+- ObjectCamera:
+    name: world_camera
+    object: world
+- ObjectDrawing:
+    name: world_drawing
+    object: world
+- View:
+    name: world_view
+    camera: world_camera
+    drawings:
+      - world_drawing

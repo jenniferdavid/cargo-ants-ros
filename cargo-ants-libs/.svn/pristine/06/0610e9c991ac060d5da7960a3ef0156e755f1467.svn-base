@@ -1,0 +1,5 @@
+name world
+line  0    0   0  60
+line  0   60  60  60
+line 60   60  60   0
+line 60    0   0   0

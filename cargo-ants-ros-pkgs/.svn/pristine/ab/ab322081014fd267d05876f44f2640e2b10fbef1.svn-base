@@ -1,0 +1,59 @@
+<!-- Launches udp2ros nodes for odom and ibeo and at model-->
+
+<launch>
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" /> 
+    
+    <!--UDP2ROS. SDF Message: Odometry and Tracks-->
+    <node name="at_udp2ros_sdf"
+        pkg="at_udp2ros"
+        type="at_udp2ros"
+        output="screen"
+        args="1">
+    </node>
+    
+    <!--UDP2ROS. IBEO LIDAR-->
+    <node name="at_udp2ros_ibeo"
+        pkg="at_udp2ros"
+        type="at_udp2ros"
+        output="screen"
+        args="2">
+    </node>
+    
+    <!--VEHICLE MODEL-->
+    <!-- model arguments -->
+    <arg name="model" default="$(find at_description)/urdf/at_simple.xacro"/>
+    
+    <!-- Set robot_description parameter in the parameter server-->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />    
+    
+    <!-- Run joint state publisher (Gets robot_description from parameter server)-->
+    <node pkg="joint_state_publisher"
+          type="joint_state_publisher"
+          name="at_joint_state_publisher" >
+    </node>
+
+    <!-- Run state publisher (Gets robot_description from parameter server)-->
+    <node pkg="robot_state_publisher"
+          type="robot_state_publisher"
+          name="at_state_publisher" >
+          <param name="~publish_frequency" value="20" />
+    </node>
+    
+    <!-- Webcam -->
+    <include file="$(find at_udp2ros)/launch/at_usb_camera.launch"/>
+    
+    <!--RESULTS VISUALIZATION-->
+    <group if="$(arg rviz)">
+        <node name="rviz"
+            pkg="rviz"
+            type="rviz" 
+            args="-d $(find at_udp2ros)/config/at_udp.rviz" />
+    </group>
+
+</launch>
+
+<!-- rosbag record command -->
+<!-- rosbag record -a -x "(.*)/compressed(.*)|(.*)/theora(.*)|(.*)/markers" -->
+

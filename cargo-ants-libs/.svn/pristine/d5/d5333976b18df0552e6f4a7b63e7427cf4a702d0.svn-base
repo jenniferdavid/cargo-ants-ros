@@ -1,0 +1,57 @@
+- Plugin:
+    name: abcd
+    search: abcd-plugin
+
+- World:
+    lines:
+      - [ -6, -5,  6, -5 ]
+      - [  6, -5,  6,  5 ]
+      - [  6,  5, -6,  5 ]
+      - [ -6,  5, -6, -5 ]
+
+- Object:
+    name: d_base
+    parent: world
+    mount: [ -2.5, -3.0, -1.5 ]
+    lines:
+      - [ -0.2, -0.4,  0.4, -0.2 ]
+      - [ -0.2,  0.4,  0.4,  0.2 ]
+      - [  0.4, -0.2,  0.4,  0.2 ]
+      - [ -0.2,  0.4, -0.2, -0.4 ]
+- GenericDrive:
+    name: d_drive
+    parent: d_base
+- KinematicControl:
+    name: d_ctrl
+    drive: d_drive
+    vtrans_max: 0.3
+    vrot_max: 0.3
+- DennisProcess:
+    name: dennis
+    control: d_ctrl
+    goals:
+      - [ -4, -4,  0 ]
+      - [ -3,  4,  0 ]
+      - [ -2, -4,  0 ]
+      - [ -1,  4,  0 ]
+      - [  0, -4,  0 ]
+      - [  1,  4,  0 ]
+      - [  2, -4,  0 ]
+      - [  3,  4,  0 ]
+      - [  4, -4,  0 ]
+
+- Simulator:
+    timestep: 0.1
+    state: pause
+
+- ObjectCamera:
+    name: world_camera
+    object: world
+- ObjectDrawing:
+    name: world_drawing
+    object: world
+- View:
+    name: world_view
+    camera: world_camera
+    drawings:
+      - world_drawing

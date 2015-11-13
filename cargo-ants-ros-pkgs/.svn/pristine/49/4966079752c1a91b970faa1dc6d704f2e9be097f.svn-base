@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package>
+	<name>at_udp2ros</name>
+	<version>0.0.0</version>
+	<description>
+			at_udp2ros
+	</description>
+
+	<!-- One maintainer tag required, multiple allowed, one person per tag --> 
+	<maintainer email="acoromin@iri.upc.edu">Andreu Corominas Murtra</maintainer>
+
+	<!-- One license tag required, multiple allowed, one license per tag -->
+	<license>BSD</license>
+
+	<!-- Url tags are optional, but mutiple are allowed, one per tag -->
+	<url type="website">https://github.com/cargo-ants-ros/udp2ros</url>
+
+	<!-- Author tags are optional, mutiple are allowed, one per tag -->
+	<author email="acoromin@iri.upc.edu">Andreu Corominas Murtra</author>
+
+	<!-- The *_depend tags are used to specify dependencies -->
+	<buildtool_depend>catkin</buildtool_depend>
+
+	<build_depend>roscpp</build_depend>
+	<build_depend>rospy</build_depend>
+	<build_depend>std_msgs</build_depend>  
+	<build_depend>nav_msgs</build_depend>
+	<build_depend>sensor_msgs</build_depend>
+	<build_depend>visualization_msgs</build_depend>
+	<build_depend>cargo_ants_msgs</build_depend>
+	<build_depend>tf</build_depend>
+		
+	<run_depend>roscpp</run_depend>
+	<run_depend>rospy</run_depend>
+	<run_depend>std_msgs</run_depend>
+	<run_depend>nav_msgs</run_depend>
+	<run_depend>sensor_msgs</run_depend>
+	<run_depend>visualization_msgs</run_depend>
+	<run_depend>cargo_ants_msgs</run_depend>
+	<run_depend>tf</run_depend>
+
+
+</package>
