@@ -5,4 +5,4 @@ This package subscribes to an existing trajectory in the format ReferenceTraject
     rostopic echo /trajectory                             //it echoes the trajectory developed by chomp
     rostopic pub -1 /path_planner cargo_ants_msgs/Path '{mode: 0, container: name , goals: [{gx: x0, gy: y0, gth: 0, dr: 0, dth: 0},{gx: x1, gy: g1, gth: 0, dr: 0, dth: 0}]}'                //Replace x0,y0 and x1,y1 (below) by coordinates of start and end points respectively.
 
-    ./devel/lib/at_ros2udp/at_ros2udp                    //This package subscribes the trajectory and sends it to the UDP port
+    rosrun at_ros2udp at_ros2udp                    //This package subscribes the trajectory and sends it to the UDP port

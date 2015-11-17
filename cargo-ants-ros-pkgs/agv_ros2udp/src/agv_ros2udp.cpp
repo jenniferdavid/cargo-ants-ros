@@ -74,7 +74,10 @@ int resolvehelper(const char* hostname, int family, const char* service, sockadd
 
     int x = N*9;
     double array[x];
-    for (int ii=0; ii < rosmsg->points.size(); ii++){
+
+    for (int ii = 0; ii < rosmsg->points.size(); ii++){
+       	array[ii * 9 + 0] = rosmsg->dt;
+	std::cout << array[ii * 9 + 0] << std::endl;
         array[ii * 9 + 1] = rosmsg->points[ii].xx;
 	std::cout << array[ii * 9 + 1] << std::endl;
         array[ii * 9 + 2] = rosmsg->points[ii].yy;
@@ -94,6 +97,7 @@ int resolvehelper(const char* hostname, int family, const char* service, sockadd
 	array[ii * 9 + 9] = rosmsg->points[ii].thdd;
 	std::cout << array[ii * 9 + 9] << std::endl;
 	std::cout << ".............................." << std::endl;
+
     }
     
     //double array1[648] = {1,2,3,4,5,6,7,8,9,0,1,2,3,4,53,212,72,55,89,6,6,3,4,5,6,7,8,9,12,14,23}; 
@@ -101,9 +105,11 @@ int resolvehelper(const char* hostname, int family, const char* service, sockadd
     //  size_t msg_length = sizeof(array);
 
       //     for (int i=0; i<10000000; i++){
-	 result = sendto(sock, array, sizeof(array), 0, (sockaddr*)&addrDest, sizeof(addrDest));
-	 // }
-    std::cout << result << " bytes sent" << std::endl;
+    //   result = sendto(sock, time, sizeof(time), 0, (sockaddr*)&addrDest, sizeof(addrDest));
+    //std::cout << result << "  bytes of integer sent.. It has time date" << std::endl;
+     result = sendto(sock, array, sizeof(array), 0, (sockaddr*)&addrDest, sizeof(addrDest));
+ // }
+    std::cout << result << " bytes of doubles sent.. It has trajectory info" << std::endl;
     
 }
 

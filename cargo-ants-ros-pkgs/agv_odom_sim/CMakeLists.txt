@@ -47,4 +47,3 @@ include_directories(${catkin_INCLUDE_DIRS})
 # build executable
 add_executable(agv_odom_sim src/agv_odom_sim_main.cpp ${SRCS_ROS_NODE})
 target_link_libraries(agv_odom_sim ${catkin_LIBRARIES})
-add_dependencies(agv_odom_sim ${catkin_EXPORTED_TARGETS})
