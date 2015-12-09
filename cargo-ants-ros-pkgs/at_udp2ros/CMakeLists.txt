@@ -44,3 +44,4 @@ include_directories(${catkin_INCLUDE_DIRS})
 # build executable
 add_executable(at_udp2ros src/udp2ros_main.cpp ${SRCS})
 target_link_libraries(at_udp2ros ${catkin_LIBRARIES})
+add_dependencies(at_udp2ros ${catkin_EXPORTED_TARGETS})

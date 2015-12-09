@@ -39,16 +39,12 @@ add_library (cargo_ants_udp SHARED
 
 add_executable (test_udp src/test_udp.cpp)
 target_link_libraries (test_udp cargo_ants_udp)
-add_dependencies(test_udp ${catkin_EXPORTED_TARGETS})
 
 add_executable (test_feed_udp2ros src/test_feed_udp2ros.cpp)
 target_link_libraries (test_feed_udp2ros cargo_ants_udp)
-add_dependencies(test_feed_udp2ros ${catkin_EXPORTED_TARGETS})
 
 add_executable (test_node_udp2ros src/test_node_udp2ros.cpp)
 target_link_libraries (test_node_udp2ros cargo_ants_udp ${catkin_LIBRARIES})
-add_dependencies(test_node_udp2ros ${catkin_EXPORTED_TARGETS})
 
 add_executable (test_node_ros2udp src/test_node_ros2udp.cpp)
 target_link_libraries (test_node_ros2udp cargo_ants_udp ${catkin_LIBRARIES})
-add_dependencies(test_node_ros2udp ${catkin_EXPORTED_TARGETS})

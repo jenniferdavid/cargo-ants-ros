@@ -1,0 +1,846 @@
+<?xml version="1.0"?>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    AT MODEL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Partner: HALMSTAD UNIVERSITY, Sweden
+    authors:  Jennifer David, jenniferdavid87@gmail.com
+    Description: This file describes geometry and simulation parameters for the VOLVO-AT FH16 truck, www.cargo-ants.eu
+    Units: [m], [rad] (SI)
+    Tutorials on urdf description: http://wiki.ros.org/urdf/Tutorials
+    Inertia of a standard shapes: http://en.wikipedia.org/wiki/List_of_moments_of_inertia 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- Robot name -->
+<robot name="at" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- Included URDF Files -->
+<xacro:include filename="$(find at_gazebo)/gazebo/at.gazebo" />    
+
+<!-- user input dimensions     -->
+<xacro:property name="robot"    value="at" />
+<xacro:property name="pi"       value="3.141592" />
+<xacro:property name="chassis_length"   value="5.25" />
+<xacro:property name="chassis_width"    value="2.495" />
+<xacro:property name="chassis_height"   value="0.4" />
+<xacro:property name="chassis_mass"   value="2300." />
+
+<xacro:property name="cabinet_length"   value="2.375" />
+<xacro:property name="cabinet_width"   value="${chassis_width}" />
+<xacro:property name="cabinet_height"   value="3.353" />
+<xacro:property name="cabinet_mass"   value="1000." />
+
+<xacro:property name="trailer_length"   value="6" />
+<xacro:property name="trailer_width"   value="${chassis_width}" />
+<xacro:property name="trailer_height"   value=".2" />
+<xacro:property name="trailer_mass"   value="2300." />
+
+<xacro:property name="wheel_width"    value="0.3" />
+<xacro:property name="wheel_radius"   value="0.882" />
+<xacro:property name="wheel_mass"   value="100" />
+
+<xacro:property name="trailer_wheel_width"    value="0.3" />
+<xacro:property name="trailer_wheel_radius"   value="0.882" />
+<xacro:property name="trailer_wheel_mass"   value="100" />
+
+<xacro:property name="lidar_mass"   value="1" />
+<xacro:property name="lidar_side"   value="0.15" />
+
+<xacro:property name="wheel_hinge_width"   value="0.1" />
+<xacro:property name="wheel_hinge_mass"   value="10" />
+
+<xacro:property name="camera_mass"   value="1" />
+<xacro:property name="camera_side"   value="0.15" />
+
+<!-- derived dimensions -->
+<xacro:property name="wheel_hinge_height"   value="${wheel_radius+0.1}" />
+<xacro:property name="chassis_floor_clearance"   value="${wheel_radius+wheel_hinge_height-chassis_height}" />
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~ chassis AND cabinet ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- AT Footprint Link (AT footprint on ground)-->
+<link name="${robot}_footprint">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.1 0.1 0.1"/>
+        </geometry>
+        <material name="white">
+            <color rgba="1 1 1 0.1"/>
+        </material>
+    </visual>
+</link>
+
+<!--    Comment collision below for normal mode: wheels on te ground -->    
+<!--    Uncomment collision below for "Podium" mode: Useful to check wheel control without moving at -->
+   <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.1 0.1 0.1"/>
+        </geometry>
+    </collision>
+</link>
+
+<!-- AT Base Link (AT chassis)-->
+<joint name="${robot}_footprint_2_base" type="fixed" >
+    <parent link="${robot}_footprint"/>
+    <child link="${robot}_chassis"/>
+    <origin xyz="0 0 ${chassis_floor_clearance+0.5*chassis_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_chassis">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+        </geometry>
+        <material name="reddish">
+            <color rgba="1 0.2 0.2 0.3"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
+        </geometry>
+    </collision>
+
+    <inertial>
+        <mass value="${chassis_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*chassis_mass*(chassis_width*chassis_width+chassis_height*chassis_height)}" 
+                 ixy="0.0" 
+                 ixz="0.0"
+                 iyy="${0.083*chassis_mass*(chassis_length*chassis_length+chassis_height*chassis_height)}"
+                 iyz="0.0"
+                 izz="${0.083*chassis_mass*(chassis_length*chassis_length+chassis_width*chassis_width)}"/>        
+    </inertial>
+</link>
+
+<!-- AT top cabinet-->
+<joint name="${robot}_base_2_platform" type="fixed" >
+    <parent link="${robot}_chassis"/>
+    <child link="${robot}_cabinet"/>
+    <origin xyz="${0.275*chassis_length} 0 ${0.5*chassis_height + 0.5*cabinet_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_cabinet">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${cabinet_length} ${cabinet_width} ${cabinet_height}"/>
+        </geometry>
+        <material name="yellow">
+            <color rgba="1.0 0.9 0.0 0.5"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${cabinet_length} ${cabinet_width} ${cabinet_height}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${chassis_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*cabinet_mass*(cabinet_width*cabinet_width+cabinet_height*cabinet_height)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*cabinet_mass*(cabinet_length*cabinet_length+cabinet_height*cabinet_height)}"
+                    iyz="0.0"
+                    izz="${0.083*cabinet_mass*(cabinet_length*cabinet_length+cabinet_width*cabinet_width)}" />        
+    </inertial>
+</link>
+
+
+<!-- AT trailer-->
+<joint name="${robot}_trailer" type="fixed" >
+    <parent link="${robot}_chassis"/>
+    <child link="${robot}_trailer"/>
+    <origin xyz="-${1.03*chassis_length} 0 0" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_trailer">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${trailer_length} ${trailer_width} ${trailer_height}"/>
+        </geometry>
+        <material name="yellow">
+            <color rgba="1.0 0.9 0.0 0.5"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${trailer_length} ${trailer_width} ${trailer_height}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${chassis_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*trailer_mass*(trailer_width*trailer_width+trailer_height*trailer_height)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*trailer_mass*(trailer_length*trailer_length+trailer_height*trailer_height)}"
+                    iyz="0.0"
+                    izz="${0.083*trailer_mass*(trailer_length*trailer_length+trailer_width*trailer_width)}" />        
+    </inertial>
+</link>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ WHEELS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- front left hinge-->
+<joint name="${robot}_fl_hinge" type="revolute" >
+    <parent link="${robot}_chassis"/>
+    <child link="${robot}_fl_hinge"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10000.0" lower="${-0.3*pi}" upper="${0.3*pi}" velocity="0.5"/>
+    <origin xyz="${0.5*chassis_length-wheel_radius} ${0.5*chassis_width+0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_fl_hinge">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${wheel_hinge_width} ${wheel_hinge_width} ${wheel_hinge_height}"/>
+        </geometry>
+        <material name="green2">
+            <color rgba="0.5 1 0.3 1"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${wheel_hinge_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*chassis_mass*(wheel_hinge_width*wheel_hinge_width+wheel_hinge_height*wheel_hinge_height)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*chassis_mass*(wheel_hinge_width*wheel_hinge_width+wheel_hinge_height*wheel_hinge_height)}"
+                    iyz="0.0"
+                    izz="${0.083*chassis_mass*(wheel_hinge_width*wheel_hinge_width+wheel_hinge_width*wheel_hinge_width)}" />        
+    </inertial>
+</link>
+
+<!-- front left wheel-->
+<joint name="${robot}_fl_wheel" type="continuous" >
+    <parent link="${robot}_fl_hinge"/>
+    <child link="${robot}_fl_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 ${0.5*wheel_hinge_width+0.5*wheel_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_fl_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>    
+</link>
+
+
+<!-- front right hinge-->
+<joint name="${robot}_fr_hinge" type="revolute" >
+    <parent link="${robot}_chassis"/>
+    <child link="${robot}_fr_hinge"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10000.0" lower="${-0.3*pi}" upper="${0.3*pi}" velocity="0.5"/>
+    <origin xyz="${0.5*chassis_length-wheel_radius} ${-0.5*chassis_width-0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_fr_hinge">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${wheel_hinge_width} ${wheel_hinge_width} ${wheel_hinge_height}"/>
+        </geometry>
+        <material name="green2">
+            <color rgba="0.5 1 0.3 1"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${wheel_hinge_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*chassis_mass*(wheel_hinge_width*wheel_hinge_width+wheel_hinge_height*wheel_hinge_height)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*chassis_mass*(wheel_hinge_width*wheel_hinge_width+wheel_hinge_height*wheel_hinge_height)}"
+                    iyz="0.0"
+                    izz="${0.083*chassis_mass*(wheel_hinge_width*wheel_hinge_width+wheel_hinge_width*wheel_hinge_width)}" />        
+    </inertial>
+    
+</link>
+
+<!-- front right wheel-->
+<joint name="${robot}_fr_wheel" type="continuous" >
+    <parent link="${robot}_fr_hinge"/>
+    <child link="${robot}_fr_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 ${-0.5*wheel_hinge_width-0.5*wheel_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_fr_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CHASSIS REAR WHEELS AND TRAILER WHEELS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!-- chassis left wheel-->
+<joint name="${robot}__rl_wheel" type="continuous" >
+    <parent link="${robot}_chassis"/>
+    <child link="${robot}_rl_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="${-0.2*chassis_length-wheel_radius} ${0.5*chassis_width+0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_rl_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+
+<!-- chassis right wheel-->
+<joint name="${robot}_rr_wheel" type="continuous" >
+    <parent link="${robot}_chassis"/>
+    <child link="${robot}_rr_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="${-0.2*chassis_length-wheel_radius} ${-0.5*chassis_width-0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+
+</joint>
+<link name="${robot}_rr_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+
+<!-- trailer left wheel-->
+<joint name="${robot}_trailer_fl_wheel" type="continuous" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_trailer_fl_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="${-0.2*trailer_length-wheel_radius} ${0.5*trailer_width+0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_trailer_fl_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+
+<!-- trailer right wheel-->
+<joint name="${robot}_trailer_fr_wheel" type="continuous" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_trailer_fr_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="${-0.2*trailer_length-wheel_radius} ${-0.5*trailer_width-0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_trailer_fr_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+
+<!-- trailer left wheel 2-->
+<joint name="${robot}_trailer_rl_wheel" type="continuous" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_trailer_rl_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="${-0.5*trailer_length-wheel_radius} ${0.5*trailer_width+0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_trailer_rl_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+
+<!-- trailer right wheel 2-->
+<joint name="${robot}_trailer_rr_wheel" type="continuous" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_trailer_rr_wheel"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="${-0.5*trailer_length-wheel_radius} ${-0.5*trailer_width-0.5*wheel_hinge_width} ${-0.5*wheel_hinge_height}" rpy="${0.5*pi} 0 0"/>
+</joint>
+<link name="${robot}_trailer_rr_wheel">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+        <material name="grey">
+            <color rgba="0.1 0.1 0.1 1"/>
+        </material>
+    </visual>
+    
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+        </geometry>
+    </collision>
+    
+    <inertial>
+        <mass value="${wheel_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}" 
+                    ixy="0.0" 
+                    ixz="0.0"
+                    iyy="${0.083*wheel_mass*(3*wheel_radius*wheel_radius*wheel_width)}"
+                    iyz="0.0"
+                    izz="${0.5*wheel_mass*wheel_radius*wheel_radius}" />        
+    </inertial>        
+</link>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SENSORS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- front left lidar-->
+<joint name="${robot}_fl_lidar" type="fixed" >
+    <parent link="${robot}_cabinet"/>
+    <child link="${robot}_fl_lidar"/>
+    <origin xyz="${0.3*cabinet_length} ${0.6*cabinet_width} ${-0.7*chassis_height}" rpy="0 0 ${pi}"/>
+</joint>
+<link name="${robot}_fl_lidar">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+<!-- front right lidar-->
+<joint name="${robot}_fr_lidar" type="fixed" >
+    <parent link="${robot}_cabinet"/>
+    <child link="${robot}_fr_lidar"/>
+    <origin xyz="${0.3*cabinet_length} ${-0.6*cabinet_width} ${-0.7*chassis_height}" rpy="0 0 -${pi}"/>
+</joint>
+<link name="${robot}_fr_lidar">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+<!-- rear left lidar-->
+<joint name="${robot}_rl_lidar" type="fixed" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_rl_lidar"/>
+    <origin xyz="${-0.5*trailer_length} ${0.6*trailer_width} ${-0.7*trailer_height}" rpy="0 0 ${pi}"/>
+</joint>
+<link name="${robot}_rl_lidar">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+<!-- rear right lidar-->
+<joint name="${robot}_rr_lidar" type="fixed" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_rr_lidar"/>
+    <origin xyz="${-0.5*trailer_length} ${-0.6*trailer_width} ${-0.7*chassis_height}" rpy="0 0 ${pi}"/>
+</joint>
+<link name="${robot}_rr_lidar">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+
+<!-- camera-->
+<joint name="${robot}_camera" type="fixed" >
+    <parent link="${robot}_cabinet"/>
+    <child link="${robot}_camera"/>
+    <origin xyz="${0.5*cabinet_length} 0 ${0.3*cabinet_height}" rpy="0 0 ${pi}"/>
+</joint>
+<link name="${robot}_camera">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${camera_side} ${camera_side} ${camera_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${camera_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*camera_mass*(2*camera_side*camera_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*camera_mass*(2*camera_side*camera_side)}"
+                iyz="0.0"
+                izz="${0.083*camera_mass*(2*camera_side*camera_side)}" />        
+    </inertial>
+</link>
+
+<!-- front lidar-->
+<joint name="${robot}_front_lidar" type="fixed" >
+    <parent link="${robot}_cabinet"/>
+    <child link="${robot}_front_lidar"/>
+    <origin xyz="${0.5*cabinet_length} 0 ${-0.5*cabinet_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_front_lidar">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+<!-- rear lidar-->
+<joint name="${robot}_rear_lidar" type="fixed" >
+    <parent link="${robot}_trailer"/>
+    <child link="${robot}_rear_lidar"/>
+    <origin xyz="${0.5*trailer_length} ${-0.5*trailer_width} ${-0.7*trailer_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_rear_lidar">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+<!-- front lidar 2-->
+<joint name="${robot}_front_lidar_2" type="fixed" >
+    <parent link="${robot}_cabinet"/>
+    <child link="${robot}_front_lidar_2"/>
+    <origin xyz="${0.5*cabinet_length} 0 ${-0.3*cabinet_height}" rpy="0 0 0"/>
+</joint>
+<link name="${robot}_front_lidar_2">
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+            <box size="${lidar_side} ${lidar_side} ${lidar_side}"/>
+        </geometry>
+        <material name="blue">
+            <color rgba="0.0 0.0 1. 0.8"/>
+        </material>
+    </visual>
+    
+    <inertial>
+        <mass value="${lidar_mass}" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" 
+                ixy="0.0" 
+                ixz="0.0"
+                iyy="${0.083*lidar_mass*(2*lidar_side*lidar_side)}"
+                iyz="0.0"
+                izz="${0.083*lidar_mass*(2*lidar_side*lidar_side)}" />        
+    </inertial>
+</link>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TRANSMISSIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- front left steering -->
+<transmission name="${robot}_fl_steer">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${robot}_fl_hinge">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${robot}_fl_steer_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+</transmission>
+
+<!-- front right steering -->
+<transmission name="${robot}_fr_steer">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${robot}_fr_hinge">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${robot}_fr_steer_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+</transmission>
+
+<!-- front left driving -->
+<transmission name="${robot}_fl_drive">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${robot}_fl_wheel">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${robot}_fl_drive_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+</transmission>
+
+<!-- front right driving -->
+<transmission name="${robot}_fr_drive">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${robot}_fr_wheel">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="${robot}_fr_drive_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+</transmission>
+
+</robot>
+

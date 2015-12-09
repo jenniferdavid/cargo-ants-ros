@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>at_path_adaptor</name>
+  <version>0.0.0</version>
+  <description>path adaptor for AT</description>
+  <maintainer email="jennifer.david@hh.se">JenniferDavid</maintainer>
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+ <build_depend>cargo_ants_msgs</build_depend> 
+  <run_depend>cargo_ants_msgs</run_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

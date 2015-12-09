@@ -4,11 +4,11 @@
 
     <!-- Enable/disable visualization -->
     <arg name="rviz"  default="False" />
-	<arg name="gazebo_gui"  default="True" />
+    <arg name="gazebo_gui"  default="True" />
 
 <!--     Launch a world file -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="worlds/ground_with_barrel.world"/> 
+        <arg name="world_name" value="worlds/harbour_like.world"/>
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="$(arg gazebo_gui)"/>
@@ -24,7 +24,7 @@
     <node name="spawn_urdf" 
           pkg="gazebo_ros" 
           type="spawn_model" 
-          args="-param robot_description -urdf -model at -x 0 -y 0 -z 0.01" >
+          args="-param robot_description -urdf -model at -x 10 -y 10 -z 0.01" >
     </node>
           
     <!-- Run rviz node -->

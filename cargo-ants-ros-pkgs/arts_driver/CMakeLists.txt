@@ -59,6 +59,7 @@ include_directories(${catkin_INCLUDE_DIRS})
 # build executable and link with libraries 
 add_executable(arts_driver ${SRCS_ROS_NODE})
 target_link_libraries(arts_driver ${catkin_LIBRARIES})
+add_dependencies(arts_driver ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(arts_driver ${my_library_LIBRARY} ${catkin_LIBRARIES})
 
 
