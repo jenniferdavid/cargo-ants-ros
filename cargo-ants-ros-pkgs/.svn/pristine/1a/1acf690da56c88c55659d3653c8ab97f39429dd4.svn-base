@@ -1,0 +1,103 @@
+<!-- Launches udp2ros nodes for odom and ibeo and at model-->
+
+<launch>
+	<!-- Replay of data  -->
+    <param name="/use_sim_time" value="false" />
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" /> 
+    <arg name="ivsp_installed" default="false" /> <!-- This starts the ivsp.sh script -->
+    <arg name="SINGLE_MACHINE" value="true" /> <!--all at one machine or multiple  -->	
+    <arg name="model" default="$(find agv_description)/urdf/tno_agv_ect.xacro"/>
+    	
+	<!-- Load machine settings -->
+    <include file="$(find agv_tests_ect)/config/machines/axiomtek.machine">
+		<arg name="SINGLE_MACHINE" value="$(arg SINGLE_MACHINE)" />
+	</include>
+    <include file="$(find agv_tests_ect)/config/machines/cargoants1.machine">
+		<arg name="SINGLE_MACHINE" value="$(arg SINGLE_MACHINE)" />
+	</include>
+    <include file="$(find agv_tests_ect)/config/machines/cargoants2.machine">
+		<arg name="SINGLE_MACHINE" value="$(arg SINGLE_MACHINE)" />
+	</include>
+    <include file="$(find agv_tests_ect)/config/machines/dev.machine">
+		<arg name="SINGLE_MACHINE" value="$(arg SINGLE_MACHINE)" />
+	</include>
+    
+    <group ns="agv">
+		<!-- Set robot_description parameter in the parameter server-->
+		<param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />    
+
+        <!-- Run joint state publisher (Gets robot_description from parameter server)-->
+        <node machine="axiomtek"
+			  pkg="joint_state_publisher"
+              type="joint_state_publisher"
+              name="agv_joint_state_publisher" >
+             <param name="use_gui" value="false"/>
+        </node>
+
+        <!-- Run state publisher (Gets robot_description from parameter server)-->
+        <node machine="axiomtek"
+			  pkg="robot_state_publisher"
+              type="robot_state_publisher"
+              name="agv_state_publisher" >
+              
+              <param name="~publish_frequency" value="20" />
+        </node>
+
+		<!-- IVSP -->
+		<group if="$(arg ivsp_installed)">
+				<node 
+					machine="axiomtek"
+					pkg="agv_tests_ect"
+					type="ivsp.sh"
+					name="ivsp" >
+				</node>
+		</group>
+
+        <!-- CSIC2IVSP Bridge (odom to ros, csick to ivsp) -->
+	<remap from="odom/odom" to="csic2ivsp_node/localization"/>
+        <include file="$(find agv_ivsp_bridge)/launch/ivsp_bridge.launch">
+		<!--	    <arg name="machine" value="axiomtek" />-->
+            <arg name="localization_topic" value="localization" />
+            <arg name="ivsp_send_port" value="9291" />
+	</include>
+        
+        <!-- Laserscanners
+        <node name="lmsg511_1" pkg="sicklms5xx" type="sicklms5xx" output="screen"
+			machine="cargoants1">
+			<param name="angle" value="0"/>
+			<param name="resolution" value="0.0"/>
+			<param name="ip" value="192.168.1.1"/>
+			<param name="port" value="2111" />
+		</node>
+		<node name="lmsg511_2" pkg="sicklms5xx" type="sicklms5xx" output="screen"
+			machine="cargoants1">
+			<param name="angle" value="0"/>
+			<param name="resolution" value="0.0"/>
+			<param name="ip" value="192.168.2.2"/>
+			<param name="port" value="2111" />
+		</node>
+		<node name="lmsg511_3" pkg="sicklms5xx" type="sicklms5xx" output="screen"
+			machine="cargoants2">
+			<param name="angle" value="0"/>
+			<param name="resolution" value="0.0"/>
+			<param name="ip" value="192.168.3.3"/>
+			<param name="port" value="2111" />
+		</node>   -->
+		
+		<!--RESULTS VISUALIZATION-->
+		<!-- THIS MUST BE STARTED AT VISUALIZATION LAPTOP (local!) -->
+		<group if="$(arg rviz)">
+        <node machine="dev" name="rviz"
+            pkg="rviz"
+            type="rviz"
+            args="-d $(find agv_tests_real)/config/agv_sensors.rviz" /> 
+		</group>
+    
+    </group> 
+</launch>
+
+<!-- rosbag record command -->
+<!-- rosbag record -a -x "(.*)/compressed(.*)|(.*)/theora(.*)|(.*)/markers" -->
+

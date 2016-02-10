@@ -1,0 +1,32 @@
+<!-- launches path planner and path adaptor -->
+
+<launch>
+	<node pkg="cargo_ants_agv_path_adaptor"
+		type="agv_path_adaptor"
+		name="agv_path_adaptor"
+		/>
+
+	<node pkg="agv_ros2udp"
+		type="agv_ros2udp"
+		name="agv_ros2udp"
+		/>
+
+	<node pkg="rostopic"
+		type="rostopic"
+		name="start_end_pub"
+		args='pub -1 /path_planner cargo_ants_msgs/Path  "{mode: 0, container: name, goals: [{gx: 0, gy: 0, gth: 0, dr:  0, dth: 0},{gx: 10, gy: 0, gth: 0, dr: 0, dth: 0}]}"'
+		/>
+
+
+	<group ns="laserscanner3">
+	<!--param name="tf_prefix" value="agv_lidar1" />-->
+	<node name="lmsg511_2" pkg="sicklms5xx" type="sicklms5xx" output="screen">
+		<param name="frame_id" type="string" value="agv_lidar5" />
+		<param name="angle" value="0"/>
+		<param name="resolution" value="0.0"/>
+		<param name="ip" value="192.168.3.3"/>
+		<param name="port" value="2111" />
+
+	</node>
+	</group>
+</launch>

@@ -1,0 +1,24 @@
+<!-- Launches at sensor acquisition -->
+
+<launch>
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" /> <!-- rviz visualization or not  -->
+    <arg name="truck" default="true" /> <!-- true->Real truck connected. false->Rosbag play  -->
+    
+    <!-- If truck=True, launch at_ros2udp/at_acquisition -->
+    <group if="$(arg truck)">
+        <include file="$(find at_udp2ros)/launch/at_acquisition.launch">
+            <arg name="rviz" value="$(arg rviz)"/> 
+        </include>
+    </group>
+    
+    <!-- If truck=False, launch at_ros2udp/at_rosbag_play -->
+    <group unless="$(arg truck)">
+        <include file="$(find at_udp2ros)/launch/at_rosbag_play.launch">
+            <arg name="rviz" value="$(arg rviz)"/> 
+        </include>
+    </group>
+
+</launch>
+

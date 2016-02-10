@@ -1,0 +1,5 @@
+#verbose mode. Trues/False
+verbose_mode: True
+
+# Algorithm loop rate [hz]
+mapping_rate: 10

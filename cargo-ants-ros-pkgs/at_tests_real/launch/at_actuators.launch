@@ -1,0 +1,17 @@
+<!-- Launches AT Actuators (send trajetory to AutoBox)-->
+
+<launch>
+
+ 
+    <!-- ROS2UDP node -->
+    <node   
+        name="at_ros2udp" 
+        pkg="at_ros2udp" 
+        type="at_ros2udp"
+        args=""
+        output="screen">
+
+    </node>
+
+</launch>
+

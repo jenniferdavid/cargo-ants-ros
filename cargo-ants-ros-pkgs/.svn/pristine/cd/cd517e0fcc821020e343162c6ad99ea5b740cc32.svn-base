@@ -1,0 +1,65 @@
+<!-- Launches local map from rosbag-->
+
+<launch>
+    <!-- Rosbag: laser + odometry -->
+    <node   
+        pkg="rosbag"
+        type="play"
+        name="rosbag"
+        args="-l --clock -s 50 /home/acoromin/datasets/cargo_ants/20141000_tno/rosbags/106_all.bag">
+                          <!-- /home/acoromin/datasets/cargo_ants/20141000_tno/rosbags/106_all.bag -->
+                          <!-- /home/andreu/Desktop/Cargo-ANTs/datasets/agv_201407/106_all.bag -->
+    </node>
+        
+    <!-- rviz configurated for local map -->
+    <node   
+        name="rviz" 
+        pkg="rviz" 
+        type="rviz"
+        args="-d $(find cargo_ants_local_mapping)/rviz/local_map.rviz">
+        <param 
+            name="~tf_prefix" 
+            value="/$(env ROBOT)" 
+            type="str"/>
+    </node>
+        
+    <!--    Launch local mapping node -->
+    <group ns="$(env ROBOT)">
+        
+        <node   
+            pkg="cargo_ants_local_mapping"
+            type="local_mapping"
+            name="local_mapping"
+            args=""
+            output="screen">
+            <remap 
+                from="/$(env ROBOT)/local_mapping/odometry"
+                to="/iri_ibeo_pointcloud_2_laserscan/odom_rel" />
+            <remap 
+                from="/$(env ROBOT)/local_mapping/laser0"
+                to="/iri_ibeo_pointcloud_2_laserscan/ibeo_1b_laserscan" />
+            <remap 
+                from="/$(env ROBOT)/local_mapping/laser1"
+                to="/iri_ibeo_pointcloud_2_laserscan/ibeo_2b_laserscan" />
+            <remap 
+                from="/$(env ROBOT)/local_mapping/laser2"
+                to="/iri_ibeo_pointcloud_2_laserscan/ibeo_3b_laserscan" />
+            <remap 
+                from="/$(env ROBOT)/local_mapping/laser3"
+                to="/iri_ibeo_pointcloud_2_laserscan/ibeo_4b_laserscan" />
+            <remap 
+                from="/$(env ROBOT)/local_mapping/laser4"
+                to="/iri_ibeo_pointcloud_2_laserscan/ibeo_5b_laserscan" />
+            <rosparam 
+                command="load" 
+                file="$(find cargo_ants_local_mapping)/config/local_mapping_params.yaml"/>
+            <param 
+                name="~tf_prefix" 
+                value="/$(env ROBOT)" 
+                type="str"/>
+        </node>
+        
+    </group>
+
+</launch>
+

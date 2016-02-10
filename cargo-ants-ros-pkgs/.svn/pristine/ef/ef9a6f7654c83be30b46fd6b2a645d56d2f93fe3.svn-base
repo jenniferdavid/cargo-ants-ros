@@ -1,0 +1,31 @@
+<!-- launches halmstad path planner (test) for agv -->
+
+<launch>
+	<!-- User Args -->
+	<arg name="host_ip" default="127.0.0.1" /> <!--host to send udp path to-->
+	<arg name="host_port" default="6000" /> <!-- port to send udp path to -->
+	<!--	<arg name="goal_rate" default="-r .2" /> <!- rate to publish static goal to--> 
+	<arg name="goal_rate" default="-r .05" />
+	<!-- AGV path adaptors -->
+	<node
+		pkg="cargo_ants_agv_path_adaptor"
+		type="agv_path_adaptor"
+		name="path_adaptor"
+		args=""
+		output="screen">
+	</node>
+
+	<!-- Ros2udp -->
+	<!-- doesn't listen to host or port" -->
+	<node
+		pkg="agv_ros2udp"
+		type="agv_ros2udp"
+		name="ros2udp"
+		args="$(arg host_ip) $(arg host_port)"
+		output="screen">
+		<remap from="/testros2udp"
+			to="/trajectory"/>
+	</node>
+
+	<!-- publish goal -> doesnt work in launch file!-->
+</launch>

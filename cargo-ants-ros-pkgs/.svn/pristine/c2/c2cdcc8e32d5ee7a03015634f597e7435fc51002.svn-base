@@ -1,0 +1,30 @@
+<!-- launches laser scanners 1 and 2, car description -->
+
+<launch>
+
+	<include file="$(find agv_tests_real)/launch/agv_sensors.launch"/>
+
+	<group ns="laserscanner1">
+	<!--param name="tf_prefix" value="agv_lidar0"/>-->
+	<node name="lmsg511_1" pkg="sicklms5xx" type="sicklms5xx" output="screen">
+		<param name="angle" value="0"/>
+		<param name="resolution" value="0.0"/>
+		<param name="ip" value="192.168.0.1"/>
+		<param name="port" value="2111" />
+		<param name="frame_id" type="string" value="agv_lidar0"/>
+	</node>
+	</group>
+
+	<group ns="laserscanner2">
+	<!--param name="tf_prefix" value="agv_lidar1" />-->
+	<node name="lmsg511_2" pkg="sicklms5xx" type="sicklms5xx" output="screen">
+		<param name="frame_id" type="string" value="agv_lidar1" />
+		<param name="angle" value="0"/>
+		<param name="resolution" value="0.0"/>
+		<param name="ip" value="192.168.2.2"/>
+		<param name="port" value="2111" />
+
+	</node>
+	</group>
+
+</launch>

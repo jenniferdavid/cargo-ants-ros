@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <name>at_tests_real</name>
+  <version>0.0.0</version>
+  <description>The at_tests_real package. Launch files to start-up different tests with the real AT vehicle</description>
+
+    <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+    <maintainer email="acorominas@iri.upc.edu">Andreu Corominas Murtra</maintainer>
+
+    <!-- One license tag required, multiple allowed, one license per tag -->
+    <license>BSD</license>
+
+    <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+    <url type="website">https://github.com/cargo-ants-ros/udp2ros</url>
+
+    <!-- Author tags are optional, mutiple are allowed, one per tag -->
+    <author email="acorominas@iri.upc.edu">Andreu Corominas Murtra</author>
+
+    <!-- The *_depend tags are used to specify dependencies -->
+    <buildtool_depend>catkin</buildtool_depend> 
+<!--     <build_depend>roscpp</build_depend> -->
+<!--     <build_depend>rospy</build_depend> -->
+    <run_depend>roscpp</run_depend>
+    <run_depend>rospy</run_depend>
+    <run_depend>at_description</run_depend>
+    <run_depend>at_udp2ros</run_depend>
+    <run_depend>cargo_ants_local_mapping</run_depend>
+
+</package>

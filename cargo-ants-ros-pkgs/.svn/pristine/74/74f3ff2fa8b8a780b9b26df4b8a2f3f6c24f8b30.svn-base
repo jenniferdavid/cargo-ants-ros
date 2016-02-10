@@ -1,0 +1,37 @@
+
+#GENERAL PARAMS
+#verbose mode. True/False
+verbose_mode: False
+
+# Algorithm loop rate [hz]
+mapping_rate: 10
+
+#Set to False, since AT publishes the twist part of the odom message
+is_odom_relative: False
+
+# number of planar laser scanners
+num_lasers: 1
+
+# number of radars
+num_radars: 0
+
+#base_link name as it is in the tf
+base_link_name: "agv_base_link"
+
+#laser link name as they are in the tf, without the laser id, which is assumed to be appened at the end, starting from laser_idx_offset up to laser_idx_offset+num_lasers-1
+#TODO Test laser links
+laser_idx_offset: 0 
+laser_link_name: "agv_fl_lidar"
+
+#GRID PARAMS
+grid_size_x: 40.0
+grid_size_y: 30.0
+grid_cell_size: 0.5
+grid_x_max: 30.0
+grid_y_max: 15.0
+
+#ALGORITHM TUNNING
+cell_occupancy_odom_th: 0.1
+cell_occupancy_cluster_th: 0.5
+cell_occupancy_decay: 0.8
+cell_lidar_hit: 0.5

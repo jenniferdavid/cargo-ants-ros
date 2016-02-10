@@ -1,0 +1,40 @@
+<!-- Launches agv local planning -->
+
+<launch>
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" />  <!-- rviz visualization or not  -->
+    <arg name="truck" default="true" /> <!-- true->Real truck connected. false->Rosbag play  -->
+    
+    <!-- AGV Local Mapping without rviz -->
+    <include file="$(find agv_tests_ect)/launch/agv_local_mapping.launch">
+        <arg name="rviz" value="true"/>
+        <arg name="truck" value="$(arg truck)"/> 
+    </include>
+    
+    
+    <!-- AGV Path Adaptor -->
+    <node   
+        name="agv_path_adaptor" 
+        pkg="cargo_ants_agv_path_adaptor" 
+        type="agv_path_adaptor"
+        args=""
+        output="screen">
+        <remap 
+            from="/obstacles"
+            to= "/$(env ROBOT)/local_mapping/obstacle_map"/>
+    </node>
+     
+     <!-- Send a goal (for testing) -->
+     <node pkg="rostopic" type="rostopic" name="GoalPublisher"
+        args="pub -1 /path_planner cargo_ants_msgs/Path '{mode: 0, container: name , goals: [{gx: 0, gy: 0, gth: 0, dr: 0, dth: 0},{gx: 15, gy: 0, gth: 0, dr: 0, dth: 0}]}'" 
+        output="screen">   
+     </node>  
+     
+    <!-- AGV Actuators TODO B&R -->
+    <include file="$(find agv_tests_ect)/launch/agv_actuators.launch">
+    </include>
+     
+     
+</launch>
+

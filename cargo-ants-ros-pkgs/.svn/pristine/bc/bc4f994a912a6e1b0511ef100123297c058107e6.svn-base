@@ -1,0 +1,51 @@
+<!-- Launches agv local mapping -->
+
+<launch>
+
+    <!-- User Args  -->
+    <arg name="rviz" default="true" />  <!-- rviz visualization or not  -->
+    <!--    <arg name="truck" default="true" />--> <!-- true->Real truck connected. false->Rosbag play  -->
+    
+    <!-- AGV sensors without rviz -->
+    <include file="$(find agv_tests_ect)/launch/agv_sensors.launch">
+        <arg name="rviz" value="false"/>
+    </include>
+
+    <!-- Local mapping node, within ROBOT namespace -->
+    <group ns="$(env ROBOT)">
+        <node
+            pkg="cargo_ants_local_mapping"
+            type="local_mapping"
+            name="local_mapping"
+            args=""
+            output="screen">
+            <remap
+                from="/$(env ROBOT)/local_mapping/odometry"
+                to="/agv_odom_node/odom" />
+            <remap
+                from="/$(env ROBOT)/local_mapping/laser0"
+				to="/$(env ROBOT)/laserscanner1/laserscan"/>
+            <rosparam 
+                command="load" 
+                file="$(find agv_tests_ect)/config/agv_local_mapping.yaml"/>
+            <param 
+                name="~tf_prefix" 
+                value="/$(env ROBOT)" 
+                type="str"/>
+        </node>      
+    </group>
+    
+    <!-- rviz configurated for local map -->
+    <node   
+        name="rviz" 
+        pkg="rviz" 
+        type="rviz"
+        args="-d $(find agv_tests_ect)/rviz/agv_local_mapping.rviz">
+        <param 
+            name="~tf_prefix" 
+            value="/$(env ROBOT)" 
+            type="str"/>
+    </node>
+       
+</launch>
+

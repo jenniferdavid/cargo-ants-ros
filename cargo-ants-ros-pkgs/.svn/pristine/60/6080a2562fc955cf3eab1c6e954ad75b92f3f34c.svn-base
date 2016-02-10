@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+PACKAGE='cargo_ants_local_mapping'
+from dynamic_reconfigure.parameter_generator_catkin import *
+gen = ParameterGenerator()
+
+#       Name                       Type       Reconfiguration levexl            Description                       Default   Min   Max
+# general params
+gen.add("verbose_mode", bool_t,  -1 , "verbose mode [t/f]", False)
+gen.add("mapping_rate", double_t, -1, "mapping rate [hz]", 10.0, 2.0, 20.0 )
+gen.add("is_odom_relative", bool_t,  -1 , "True: Rleative Odom. False: Twist Odom [t/f]", True)
+gen.add("num_lasers", int_t,  -1 , "number of laser devices [#]",  1, 0, 10)
+gen.add("num_radars", int_t,  -1 , "number of radar devices [#]",  0, 0, 10)
+gen.add("base_link_name", str_t, 0, "Name of the vehicle base link", "agv_base_link")
+gen.add("laser_idx_offset", int_t,  -1 , "Starting index to name laser frames [#]",  0, 0, 10)
+gen.add("laser_link_name", str_t, 0, "Name of the laser device frames, without laser id", "agv_lidar")
+
+# grid params
+gen.add("grid_size_x", double_t, -1, "grid size in x [m]", 30.0, 1.0, 60.0 )
+gen.add("grid_size_y", double_t, -1, "grid size in y [m]", 20.0, 1.0, 60.0 )
+gen.add("grid_cell_size", double_t, -1, "cell size [m]", 0.5, 0.1, 1.0 )
+gen.add("grid_x_max", double_t, -1, "grid top left corner, x coordinate [m]", 30.0, 10.0, 60.0 )
+gen.add("grid_y_max", double_t, -1, "grid top left corner, y coordinate [m]", 10.0, 10.0, 60.0 )
+
+# algorithm tunning
+gen.add("cell_occupancy_odom_th", double_t, -1, "threshold for occupied cell. Used in odom prediction", 0.1, 0.1, 0.5 )
+gen.add("cell_occupancy_cluster_th", double_t, -1, "threshold for occupied cell. Used in clustering", 0.5, 0.1, 0.5 )
+gen.add("cell_occupancy_decay", double_t, -1, "factor", 0.8, 0.1, 0.9 )
+gen.add("cell_lidar_hit", double_t, -1, "factor", 0.5, 0.1, 0.9 )
+
+# autogenerate class
+exit(gen.generate(PACKAGE, "local_mapping", "cargo_ants_local_mapping_"))

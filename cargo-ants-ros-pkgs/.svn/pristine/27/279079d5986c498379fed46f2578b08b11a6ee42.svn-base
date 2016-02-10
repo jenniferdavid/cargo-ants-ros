@@ -1,0 +1,9 @@
+<launch>
+	<arg name="SINGLE_MACHINE" default="true" /> 
+	<group unless="$(arg SINGLE_MACHINE)">
+		<machine name="cargoants1" address="10.10.172.101" default="never" user="cargoants" env-loader="/home/cargoants/.ros-bash-and-run.sh"/>
+	</group>
+	<group if="$(arg SINGLE_MACHINE)">
+		<machine name="cargoants1" address="localhost"/>
+	</group>
+</launch>
