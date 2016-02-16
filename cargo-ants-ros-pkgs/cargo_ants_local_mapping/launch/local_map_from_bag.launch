@@ -6,7 +6,7 @@
         pkg="rosbag"
         type="play"
         name="rosbag"
-        args="-l --clock -s 50 /home/andreu/Desktop/Cargo-ANTs/datasets/agv_201407/106_all.bag">
+        args="-l --clock -s 50 /home/acoromin/datasets/cargo_ants/20141000_tno/rosbags/106_all.bag">
                           <!-- /home/acoromin/datasets/cargo_ants/20141000_tno/rosbags/106_all.bag -->
                           <!-- /home/andreu/Desktop/Cargo-ANTs/datasets/agv_201407/106_all.bag -->
     </node>

@@ -139,7 +139,7 @@ void loadObstacles(Matrix &obs) {
 	for (size_t ii = 0; ii < obstacleMap.obstacles.size() ; ++ii) {
 	Vector cr(2), dc(4); 
 	Matrix dcr(2,4); //corners
-	cr << 0, 0; //centroid (x,y) wrt agv_base_link
+	cr << 0, 0; //centroid (x,y) wrt at_base_link
 	for (size_t pii = 0; pii < 4 ; ++pii) {
 			dcr.col(pii) << obstacleMap.obstacles[ii].polylines[0].points[pii].px,
 		 								obstacleMap.obstacles[ii].polylines[0].points[pii].py;			 								
@@ -186,7 +186,7 @@ int main(int argc, char **argv)
     ros::Publisher pub_marker = node.advertise<visualization_msgs::MarkerArray>("chompTrajectory", 100);
 	
 	ros::Rate loop_rate (10);	
-	ROS_INFO("AGV_Path_Adaptor Started!");
+	ROS_INFO("AT_Path_Adaptor Started!");
 	while ( ros::ok() ){
 		ros::spinOnce();
 		//<<<<<<< .mine

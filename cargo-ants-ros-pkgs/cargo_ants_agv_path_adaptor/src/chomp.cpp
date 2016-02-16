@@ -1,18 +1,27 @@
-/* ROS-CHOMP.
- *
- * Copyright (C) 2015 Jafar Qutteineh. All rights reserved.
- * License (3-Cluase BSD): https://github.com/j3sq/ROS-CHOMP/blob/master/LICENSE
- *
+/* CHOMP.
+ * 
+ * Copyright (C) 2015 Rafael Valencia, Jennifer David. All rights reserved.
+ * Based on code by 
+ * 
  * This code uses and is based on code from:
- *   Project: trychomp https://github.com/poftwaresatent/trychomp
+ *   
+ *   Copyright (C) 2015 Jafar Qutteineh. All rights reserved.
+ *   License (3-Cluase BSD): https://github.com/j3sq/ROS-CHOMP/blob/master/LICENSE
+ *    
  *   Copyright (C) 2014 Roland Philippsen. All rights reserved.
  *   License (3-Clause BSD) : https://github.com/poftwaresatent/trychomp
+ *  
+ * 
  * **
  * \file chomp.cpp
- *
+ * 
  * CHOMP for point vehicles (x,y) moving holonomously in the plane. It will
  * plan a trajectory (xi) connecting start point (qs) to end point (qe) while
  * avoiding obstacles (obs)
+ * 
+ * ROS support for chomp path adaptor for Cargo-ANTS project http://cargo-ants.eu/
+ *
+ *
  */
 #include <iostream>
 #include <Eigen/Dense>
@@ -31,11 +40,11 @@ namespace chomp {
 // trajectory etc
 
 
-static size_t const nq(198);             // number of q stacked into xi
+static size_t const nq(20);             // number of q stacked into xi
 static size_t const cdim(2);            // dimension of config space
 static size_t const xidim(nq *cdim);    // dimension of trajectory, xidim = nq * cdim
 static size_t const iteration_limit(10000);
-static double const dt(0.1);            // time step
+static double const dt(1.0);            // time step
 static double const eta(100.0);         // >= 1, regularization factor for gradient descent
 static double const lambda(1.0);        // weight of smoothness objective
 
@@ -115,8 +124,9 @@ static double chomp_iteration(Vector const &qs, Vector const &qe, Vector  &xi, M
 		// (but  we only use one body point) to make subsequent extension
 		// easier.
 		//
-		Vector const & xx(qq);
-		Vector const & xd(qd);
+		//Vector const & xx(qq);
+		Vector const  xx(xi.block(iq * cdim, 0, 2, 1));
+		Vector const  xd(qd);
 		Matrix const JJ(Matrix::Identity(2, 2));        // a little silly here, as noted above.
 		double const vel(xd.norm());
 		if (vel < 1.0e-3)                               // avoid div by zero further down
@@ -128,14 +138,23 @@ static double chomp_iteration(Vector const &qs, Vector const &qe, Vector  &xi, M
 
 
 		for (int ii = 0; ii < obs.cols(); ii++) {
-			Vector delta(xx - obs.block(0, ii, cdim, 1));
+			
+			
+			//Vector delta(xx - obs.block(0, ii, cdim, 1));
+			Vector delta(xx - obs.block(0, ii, 2, 1));
 			double const dist(delta.norm());
-			if ((dist >= obs(2, ii)) || (dist < 1e-9))
-				continue;
-			static double const gain(10.0);                                                 // hardcoded param
+			
+			//if ((dist >= obs(2, ii)) || (dist < 1e-9))
+			if ((dist >= 3) || (dist < 1e-9))
+				continue;				
+		 
+			//static double const gain(10.0);                                                 // hardcoded param
+			static double const gain(5.0);                                                 // hardcoded param
 			double const cost(gain * obs(2, ii) * pow(1.0 - dist / obs(2, ii), 3.0) / 3.0); // hardcoded param
 			delta *= -gain *pow(1.0 - dist / obs(2, ii), 2.0) / dist;                       // hardcoded param
 			nabla_obs.block(iq * cdim, 0, cdim, 1) += JJ.transpose() * vel * (prj * delta - cost * kappa);
+				 
+			
 		}
 	}
 

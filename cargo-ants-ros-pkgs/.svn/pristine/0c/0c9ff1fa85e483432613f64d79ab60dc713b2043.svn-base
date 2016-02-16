@@ -183,8 +183,8 @@ void LocalMapNode::process()
         //  }
         //
         
-	// unsigned int nL = laserscanutils::extractLinesHough( grid_->laser_points_, hough_params_, line_list_);
-        //std::cout << "process(): extractLinesHough() found " << nL << " lines" << std::endl;
+        unsigned int nL = laserscanutils::extractLinesHough( grid_->laser_points_, hough_params_, line_list_);
+        std::cout << "process(): extractLinesHough() found " << nL << " lines" << std::endl;
         //for (std::list<laserscanutils::Line>::iterator iiL = line_list_.begin(); iiL != line_list_.end(); iiL++ ) iiL->print(); 
     }
     
