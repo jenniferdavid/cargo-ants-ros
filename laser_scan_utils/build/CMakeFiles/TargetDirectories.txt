@@ -1,0 +1,5 @@
+/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles/distclean.dir
+/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles/doc.dir
+/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src/CMakeFiles/laser_scan_utils.dir
+/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src/examples/CMakeFiles/test_corner_aperture.dir
+/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles/uninstall.dir

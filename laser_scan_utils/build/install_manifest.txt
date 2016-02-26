@@ -1,0 +1,9 @@
+/usr/local/lib/iri-algorithms/liblaser_scan_utils.so
+/usr/local/include/iri-algorithms/laser_scan_utils/laser_scan_utils.h
+/usr/local/include/iri-algorithms/laser_scan_utils/corner_detector.h
+/usr/local/include/iri-algorithms/laser_scan_utils/entities.h
+/usr/local/include/iri-algorithms/laser_scan_utils/line_detector.h
+/usr/local/include/iri-algorithms/laser_scan_utils/scan_basics.h
+/usr/local/include/iri-algorithms/laser_scan_utils/clustering.h
+/usr/local/include/iri-algorithms/laser_scan_utils/object_detector.h
+/usr/share/cmake-2.8/Modules/Findlaser_scan_utils.cmake

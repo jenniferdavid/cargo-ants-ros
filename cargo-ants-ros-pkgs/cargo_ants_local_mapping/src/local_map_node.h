@@ -27,8 +27,13 @@
 #include "grid_2d.h"
 
 //laserscanutils
-#include "laser_scan_utils/line_detector.h"
-#include "laser_scan_utils/entities.h"
+#include "laser_scan_utils/src/laser_scan.h"
+#include "laser_scan_utils/src/line_finder_hough.h"
+
+//OLD laserscanutils
+#include "laser_scan_utils/src/line_detector.h"
+#include "laser_scan_utils/src/entities.h"
+
 
 /** \brief Wrapper class to Wolf library objects
  *
@@ -88,7 +93,7 @@ class LocalMapNode
         //name of the base_link as published by tf
         std::string base_link_name_; 
 
-        //Grid tunning
+        //Grid tunning //TODO: grid at laserscanutils and this params part of GridParams struct there
         double cell_occupancy_odom_th_; 
         double cell_occupancy_cluster_th_; 
         double cell_occupancy_decay_;
@@ -101,9 +106,16 @@ class LocalMapNode
         //Associates laser_link_name with index in vectors: grid_->laser_points_, laser_subscribers_ and laser_mounting_points_
          std::map<std::string, unsigned int> laser_link_id_map_;
          
-        //laserscanutils Hough params
-        laserscanutils::ExtractLineParamsHough hough_params_;
-        std::list<laserscanutils::Line> line_list_;
+        //laserscanutils
+        std::vector<laserscanutils::LaserScan> laser_data_; 
+        std::list<laserscanutils::LineSegment> line_list_;
+        std::list<laserscanutils::ScanSegment> segment_list_;
+        laserscanutils::LineFinderHoughParams hough_params_; 
+        laserscanutils::LineFinderHough line_finder_; 
+         
+        //OLD laserscanutils Hough params.
+        laserscanutils::ExtractLinesHoughParams hough_params_old_;
+        std::list<laserscanutils::Line> line_list_old_;
         
     public:
         /** \brief Default constructor

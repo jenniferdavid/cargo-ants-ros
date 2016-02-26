@@ -1,0 +1,164 @@
+#ifndef iri_laser_corners_node_H
+#define iri_laser_corners_node_H
+
+//Eigen includes
+#include <eigen3/Eigen/Dense>
+#include <eigen3/Eigen/Geometry>
+#include <eigen3/Eigen/StdVector> //required to std::vector<Eigen::Matrix4d> . See http://eigen.tuxfamily.org/dox-devel/group__TopicStlContainers.html 
+
+//std includes
+#include <iostream>
+#include <sstream>
+#include <map>
+
+//ROS includes
+#include <ros/ros.h>
+#include <nav_msgs/Odometry.h>
+#include <sensor_msgs/LaserScan.h>
+#include <nav_msgs/OccupancyGrid.h>
+#include <visualization_msgs/MarkerArray.h>
+#include <tf/transform_listener.h>
+#include <cargo_ants_msgs/ObstacleMap.h>
+
+//ROS dynamic configure
+#include <cargo_ants_local_mapping/cargo_ants_local_mapping_Config.h>
+
+//this package includes
+#include "grid_2d.h"
+
+//laserscanutils
+#include "laser_scan_utils/laser_scan.h"
+#include "laser_scan_utils/line_finder_hough.h"
+
+//OLD laserscanutils
+#include "laser_scan_utils/line_detector.h"
+#include "laser_scan_utils/entities.h"
+
+
+/** \brief Wrapper class to Wolf library objects
+ *
+ * Wrapper class to Wolf library objects
+ * 
+ */
+class LocalMapNode
+{
+    protected: 
+        //ros node handle
+        ros::NodeHandle nh_;
+               
+        //odometry subscriber
+        ros::Subscriber odometry_subscriber_;
+        
+        //sensor subscribers
+        //ros::Subscriber front_laser_subscriber_;
+        std::vector<ros::Subscriber> laser_subscribers_;
+        //std::vector<ros::Subscriber> radar_subscribers_;
+        
+        //Occupancy grid publisher and message 
+        ros::Publisher grid_publisher_;      
+        nav_msgs::OccupancyGrid grid_msg_;
+        
+        //marker publisher and message
+        ros::Publisher marker_publisher_;   
+        visualization_msgs::MarkerArray marker_msg_;
+		
+		//local map custom message publisher
+        ros::Publisher obstacle_map_publisher_;   
+        cargo_ants_msgs::ObstacleMap obstacle_map_msg_;	
+        
+        //grid object
+        Grid2D* grid_;
+       
+        //verbose flag
+        bool verbose_; 
+        
+        //extract lines flag
+        bool extract_lines_;
+        
+        //whished update rate at the main loop, [hz]        
+        double rate_;
+               
+        //indicates wheter odom received as relative poses (True), or twist par is filled (False)
+        bool is_odom_relative_;
+        
+        //Current and past timestamps for odometry updates
+        ros::Time ts_current_, ts_past_;
+        
+        //number of lasers
+        unsigned int num_lasers_;
+        
+        //number of lidars
+        unsigned int num_radars_;
+        
+        //name of the base_link as published by tf
+        std::string base_link_name_; 
+
+        //Grid tunning //TODO: grid at laserscanutils and this params part of GridParams struct there
+        double cell_occupancy_odom_th_; 
+        double cell_occupancy_cluster_th_; 
+        double cell_occupancy_decay_;
+        double cell_lidar_hit_;
+        
+        //sensor mounting points
+        std::vector<Eigen::Matrix4d,Eigen::aligned_allocator<Eigen::Matrix4d> > laser_mounting_points_;
+        //std::vector<Eigen::Matrix4d> radar_mounting_points_;
+        
+        //Associates laser_link_name with index in vectors: grid_->laser_points_, laser_subscribers_ and laser_mounting_points_
+         std::map<std::string, unsigned int> laser_link_id_map_;
+         
+        //laserscanutils
+        std::vector<laserscanutils::LaserScan> laser_data_; 
+        std::list<laserscanutils::LineSegment> line_list_;
+        std::list<laserscanutils::ScanSegment> segment_list_;
+        laserscanutils::LineFinderHoughParams hough_params_; 
+        laserscanutils::LineFinderHough line_finder_; 
+         
+        //OLD laserscanutils Hough params.
+        laserscanutils::ExtractLinesHoughParams hough_params_old_;
+        std::list<laserscanutils::Line> line_list_old_;
+        
+    public:
+        /** \brief Default constructor
+        * 
+        * This constructor initializes the node. 
+        * 
+        */
+        LocalMapNode();
+
+        /** \brief Destructor
+        * 
+        * This destructor frees all necessary dynamic memory allocated within this class.
+        */
+        ~LocalMapNode();
+        
+        /** \brief Returns rate_
+         * 
+         * Returns rate_
+         * 
+         **/
+        double getRate() const; 
+
+        /** \brief Main process 
+        * 
+        * Main process flow
+        * 
+        **/
+        void process();
+                    
+        /** \brief Fill output messages
+        * 
+        * Fills main output and debug messages
+        */
+        void publish();
+        
+    protected: 
+        // odometry subscriber callback
+        void odometryCallback(const nav_msgs::Odometry::ConstPtr& _msg);
+        
+        // lidar subscriber callback
+        void laserCallback(const sensor_msgs::LaserScan::ConstPtr& _msg);        
+        
+};
+#endif
+
+

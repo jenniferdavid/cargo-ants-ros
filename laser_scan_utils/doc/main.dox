@@ -1,0 +1,258 @@
+// EDIT CAPS TEXTS
+/*! \mainpage WOLF
+
+    \section Description
+    
+    WOLF (Windowed Localization Frames) is a software library ...
+
+    \section Main Main Features
+    
+    - Uses Eigen3.2. as an algebra engine
+    - Suited for Filtering and Optimization approaches
+    - Allows different state spaces configurations
+    - Minimizes read/write of state vectors and matrix to memory
+
+    \section Contents
+
+    - \link Installation Installation       \endlink
+    - \link how_to       How To             \endlink
+    - \link Performance  Performance		\endlink
+    - \link faq          FAQ                \endlink
+    - \link todo         To Do              \endlink
+    - \link other        OTHER STUFF FTW 	\endlink
+  .
+
+
+  \section Authors
+    Joan Solà (jsola (_at_) iri.upc.edu)
+  
+    Andreu Corominas (acorominas (_at_) iri.upc.edu)
+
+    Faust Terrado  (fterrado (_at_) iri.upc.edu)
+    
+    Àngel Santamaria  (asantamaria (_at_) iri.upc.edu)
+
+    Joan Vallvé  (jvallve (_at_) iri.upc.edu)
+   
+    \section License
+
+    TO BE DISCUSSED :
+    This package is licensed under a
+    <a href="http://www.gnu.org/licenses/lgpl.html" target=”_blank”>
+    LGPL 3.0 License</a>.
+
+    \section Disclaimer
+
+    This is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    \section References References and External Documentation
+    
+    ... Nothing written here yet ...
+
+*/
+
+
+
+// HERE STARTS THE FUN (THE DIFFERENT PAGES)
+
+// TITLE
+// MINI PAGES MENU
+// CONTENT (SECTIONS...)
+
+// ADDING PAGES:
+//  - add the new page in the menus of each page
+//  - current page is bold "\b", not a \link!
+
+
+/*! \page Installation Installation
+\b Installation | \link how_to How To \endlink | \link Performance \endlink | \link faq FAQ \endlink | \link todo To Do \endlink | \link other OTHER STUFF FTW \endlink
+
+
+To install the WOLF library, please follow the steps below: 
+
+\section Download
+
+Checkout the source code from the IRI public repository
+\code
+cd <your_developing_folder>
+svn checkout https://devel.iri.upc.edu/labrobotica/algorithms/wolf wolf
+\endcode
+
+\section Compilation
+
+After downloading, change directory to wolf/build and execute cmake, 
+\code
+cd build
+cmake ..
+\endcode
+compile the shared library (wolf.so) and the example programs, 
+\code
+make
+\endcode
+
+<!--
+The <em>cmake</em> only need to be executed once (make will automatically call
+<em>cmake</em> if you modify one of the <em>CMakeList.txt</em> files).
+-->
+
+Optionally, if you want to generate this documentation in your local machine (uses doxygen default style type), 
+\code
+make doc
+\endcode <!--OTHER-->
+<!-- 
+- To generate this documentation with IRI-DOC style type
+\code
+cd doc
+svn checkout https://devel.iri.upc.edu/labrobotica/tools/iri_doc
+cd ../build; rm -rf *; cmake ..; make; make doc
+\endcode
+-->
+
+Please note that the files in the <em>build</em> directory are genetated by <em>cmake</em>
+and <em>make</em> and can be safely removed.
+After doing so you will need to call cmake manually again.
+
+\section Installing_subsec Installing 
+
+In order to be able to use the library, it is necessary to copy it into the system.
+To do that, execute, from the build directory
+\code
+sudo make install
+\endcode
+
+as root and the shared libraries will be copied to <em>/usr/local/lib/iridrivers</em> directory
+and the header files will be copied to <em>/usr/local/include/iridrivers</em> dierctory. At
+this point, the library may be used by any user.
+
+To remove the library from the system, execute
+\code
+sudo make uninstall
+\endcode
+as root, and all the associated files will be removed from the system.
+OTHER
+
+\section Configuration
+
+The default build mode is DEBUG. That is, objects and executables
+include debug information.
+
+The RELEASE build mode optimizes for speed. To build in this mode
+execute
+\code
+cmake .. -DCMAKE_BUILD_TYPE=RELEASE
+\endcode
+The release mode will be kept until next time cmake is executed.
+
+*/
+
+
+
+/*! \page how_to How to use this library
+\link Installation \endlink | \b How \b To | \link Performance \endlink | \link faq FAQ \endlink | \link todo To Do \endlink | \link other OTHER STUFF FTW \endlink
+
+You can use only the functions provided by the library after \link Installation install this library \endlink.
+
+If you need to use this library in your code, you'll have to add these lines into your CMakeLists.txt file.
+
+- first it is necessary to locate if required libraries have been installed or not using the following command (TO DO)
+\code
+FIND_PACKAGE(wolf REQUIRED)
+\endcode
+- In the case that the packages are present, it is necessary to add the header files directory to
+the include directory path by using
+\code
+INCLUDE_DIRECTORIES(${wolf_INCLUDE_DIR})
+\endcode
+- Finally, it is also necessary to link with the desired libraries by using the following command
+\code
+TARGET_LINK_LIBRARIES(<executable name> ${wolf_LIBRARY})
+\endcode
+.
+
+<!-- 
+All these steps are automatically done when the new project is created following the instructions
+in <A href="http://wikiri.upc.es/index.php/Create_a_new_development_project" target=”_blank”>here</a>
+-->
+
+From the programming point of view the following example illustrates how to use wolf:
+\code
+#include "state_pvq.h"
+int main()
+{
+    VectorXd storage(20);
+    unsigned int index = 0, bsize = 4;
+
+    //set storage vector
+    storage << 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19;
+
+    VectorXd vec_pvq(StatePVQ::SIZE_);
+    vec_pvq << 20, 21, 22, 23, 24, 25, 26, 27, 28, 29;
+
+    StatePVQ pvq(storage, index + bsize, vec_pvq);
+    cout << "storage   : " << storage.transpose() << endl;
+    cout << "pvq  state: " << pvq.x().transpose() << endl;
+    cout << "pvq  pos  : " << pvq.p().transpose() << endl;
+    cout << "pvq  vel  : " << pvq.v().transpose() << endl;
+    cout << "pvq  quat : " << pvq.q().coeffs().transpose() << endl;
+
+    VectorXd vec_pvq2(StatePVQ::SIZE_);
+    vec_pvq2 << 30, 31, 32, 33, 34, 35, 36, 37, 38, 39;
+    pvq.x(vec_pvq2);
+    cout << "storage   : " << storage.transpose() << endl;
+    cout << "pvq  state: " << pvq.x().transpose() << endl;
+
+
+    return 0;
+}
+\endcode
+
+For further code examples, please see the files at src/examples where there are some "main()" instances that make use of the library in different useful ways.
+
+*/
+
+/*! \page Performance Performance
+\link Installation \endlink | \link how_to How To \endlink | \b Performance | \link faq FAQ \endlink | \link todo To Do \endlink | \link other OTHER STUFF FTW \endlink
+
+The following plot shows the processing time spent to compute ...
+
+ <!-- \image html "images/xxx.png" -->
+*/ 
+
+/*! \page faq Frequently Asked Questions
+\link Installation \endlink | \link how_to How To \endlink | \link Performance \endlink | \b FAQ | \link todo To Do \endlink | \link other OTHER STUFF FTW \endlink
+
+Do I need some extra libraries to compile WOLF ?
+- Yes, please take a look at the \link Installation \endlink page.
+
+*/
+
+
+// THIS IS SHOWN BEFORE THE TO DO AUTOMATIC PAGE
+
+/*! \page todo To Do
+\link Installation \endlink | \link how_to How To \endlink | \link Performance \endlink | \link faq FAQ \endlink| \b To \b Do | \link other OTHER STUFF FTW \endlink
+- some to do 
+- another to do
+*/
+
+
+
+
+/*! \page other OTHER STUFF FTW
+\link Installation \endlink | \link how_to How To \endlink | \link Performance \endlink | \link faq FAQ \endlink | \link todo To Do \endlink | \b OTHER \b STUFF \b FTW
+
+HERE IS YOUR CONTENT FOR THE WIN
+
+
+*/
