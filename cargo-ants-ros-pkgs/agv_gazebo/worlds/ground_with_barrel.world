@@ -10,12 +10,12 @@
             <uri>model://sun</uri>
         </include>
         
-        <include>
+     <!--   <include>
             <uri>model://construction_barrel</uri>
             <name>construction_barrel_0</name>
             <pose>12.0 2.0 0 0 0 0</pose>
             <static>false</static>
-        </include>
+        </include>  -->
         
         <include>
             <uri>model://construction_barrel</uri>
@@ -23,18 +23,24 @@
             <pose>-2.0 5.0 0 0 0 0</pose>
         </include>
 
-        <include>
+       <include>
             <uri>model://construction_barrel</uri>
             <name>construction_barrel_2</name>
             <pose>3.0 -6.0 0 0 0 0</pose>
+        </include> 
+
+       <include>
+            <uri>model://container40</uri>
+            <name>container40_0</name>
+            <pose>17.0 3.0 0 0 0 1.4</pose>
         </include>
 
         <include>
             <uri>model://container40</uri>
             <name>container40_0</name>
-            <pose>17.0 -3.0 0 0 0 1.4</pose>
-        </include>
-
+            <pose>23.0 -5.0 0 0 0 1.4</pose>
+        </include>        
+        
 <!--        <include>
             <uri>model://cube_20k</uri>
             <name>cube_20k_0</name>

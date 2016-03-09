@@ -27,12 +27,12 @@
 #include "grid_2d.h"
 
 //laserscanutils
-#include "laser_scan_utils/laser_scan.h"
-#include "laser_scan_utils/line_finder_hough.h"
+//#include "laser_scan_utils/src/laser_scan.h"
+//#include "laser_scan_utils/src/line_finder_hough.h"
 
 //OLD laserscanutils
-#include "laser_scan_utils/line_detector.h"
-#include "laser_scan_utils/entities.h"
+#include "laser_scan_utils/src/line_detector.h"
+#include "laser_scan_utils/src/entities.h"
 
 
 /** \brief Wrapper class to Wolf library objects

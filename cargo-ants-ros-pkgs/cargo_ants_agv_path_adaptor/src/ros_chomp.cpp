@@ -141,9 +141,8 @@ void loadObstacles(Matrix &obs) {
 	Matrix dcr(2,4); //corners
 	cr << 0, 0; //centroid (x,y) wrt agv_base_link
 	for (size_t pii = 0; pii < 4 ; ++pii) {
-			dcr.col(pii) << obstacleMap.obstacles[ii].polylines[0].points[pii].px,
-		 								obstacleMap.obstacles[ii].polylines[0].points[pii].py;			 								
-		 	cr << cr(0) + obstacleMap.obstacles[ii].polylines[0].points[pii].px, cr(1) + obstacleMap.obstacles[ii].polylines[0].points[pii].py;							
+	  dcr.col(pii) << obstacleMap.obstacles[ii].polylines[0].points[pii].px, obstacleMap.obstacles[ii].polylines[0].points[pii].py;			 						      
+	  cr << cr(0) + obstacleMap.obstacles[ii].polylines[0].points[pii].px, cr(1) + obstacleMap.obstacles[ii].polylines[0].points[pii].py;							
 		}
 	cr = 0.25 * cr;
 	Matrix Cr(2,4);
@@ -197,7 +196,7 @@ int main(int argc, char **argv)
 			cr << 0, 0;
 			for (size_t pii = 0; pii < 4 ; ++pii) {
 				dcr.col(pii) << obstacleMap.obstacles[ii].polylines[0].points[pii].px,
-			 								obstacleMap.obstacles[ii].polylines[0].points[pii].py;			 								
+			 			obstacleMap.obstacles[ii].polylines[0].points[pii].py;			 								
 			 	cr << cr(0) + obstacleMap.obstacles[ii].polylines[0].points[pii].px, cr(1) + obstacleMap.obstacles[ii].polylines[0].points[pii].py;							
 			}
 			cr = 0.25 * cr;  //1/4 sides
@@ -214,11 +213,9 @@ int main(int argc, char **argv)
 			//cout << "radius:" << rr << endl;  
 			obs.col(ii) << cr(0), cr(1),  rr;																								
 		}
-		//=======
-		//	Matrix obs;				
+				
         loadObstacles(obs);	// Load obstacles        
-	//>>>>>>> .r614
-		chomp::generatePath(qs, qe, xi, obs);
+	chomp::generatePath(qs, qe, xi, obs);
 		trajectory = generateTrajectory(xi);
 		marker_array_msg = generateMarkers(trajectory);
 		trajectory_pub.publish(trajectory);  //publish CHOMP's trajectory with our custom defined msg
