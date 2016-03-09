@@ -204,8 +204,8 @@ unsigned int laserscanutils::extractLines(const laserscanutils::ScanParams & _pa
 }
 
 
-unsigned int laserscanutils::extractLinesHough( const std::vector<Eigen::MatrixXd> & _laser_cloud,
-                                                const ExtractLineParamsHough & _alg_params, 
+unsigned int laserscanutils::extractLinesHough( const Eigen::MatrixXd & _points,
+                                                const ExtractLinesHoughParams & _alg_params, 
                                                 std::list<laserscanutils::Line> & _line_list )
 {
     double theta, range; 
@@ -215,17 +215,19 @@ unsigned int laserscanutils::extractLinesHough( const std::vector<Eigen::MatrixX
     
     //A 2D array of lists. Each cell is a (r,theta) discretization in the line parameter space.
     //Each list keeps the laser point coordinates that support that cell
-    std::vector<std::vector<std::list<std::pair<double,double> > > > hough_grid; 
+    std::vector<std::vector<std::list<std::pair<double,double> > > > hough_grid; //TODO: to be created/sized outside and required as a param
     std::list<std::pair<double,double> >::iterator pt_it; //iterator over the points of a given cell list
-    
-    //clear line list 
-    _line_list.clear(); //TODO: TO BE DONE OUTSIDE!!
     
     //resize hough_grid according range and theta steps and bounds
     unsigned int hough_grid_rows = (unsigned int)ceil(M_PI/_alg_params.theta_step_);//[0,PI]
     unsigned int hough_grid_rows_half = (unsigned int)ceil(0.5*M_PI/_alg_params.theta_step_);//middle row index
     unsigned int hough_grid_cols = (unsigned int)ceil(2*_alg_params.range_max_/_alg_params.range_step_);//[-rmax,+rmax]
     unsigned int hough_grid_cols_half = (unsigned int)ceil(_alg_params.range_max_/_alg_params.range_step_);//middle col index
+    
+    //clear line list 
+    //_line_list.clear(); //TODO: TO BE DONE OUTSIDE!!
+    
+    //Set grid dimensions
     hough_grid.resize(hough_grid_rows);
     for (unsigned int ii = 0; ii < hough_grid_rows; ii++)
     {
@@ -233,122 +235,91 @@ unsigned int laserscanutils::extractLinesHough( const std::vector<Eigen::MatrixX
     }
     
     //For each input point, register all the supports to the hough_grid
-    for (unsigned int laser_id = 0; laser_id < _laser_cloud.size(); laser_id++) //loop on the laser devices
+//     for (unsigned int laser_id = 0; laser_id < _points.size(); laser_id++) //loop on the laser devices
+//     {
+    //for (unsigned int ipt = 0; ipt < _points.at(laser_id).cols(); ipt++) //loop over all points of laser_id
+    for (unsigned int ipt = 0; ipt < _points.cols(); ipt++) //loop over all points
     {
-        for (unsigned int ipt = 0; ipt < _laser_cloud.at(laser_id).cols(); ipt++) //loop over all points of laser_id
+        for (unsigned int jth = 0; jth < hough_grid_rows; jth++) //loop over all theta values in the grid
         {
-            for (unsigned int jth = 0; jth < hough_grid_rows; jth++) //loop over all theta values in the grid
+            //compute Real values of theta and range
+            theta = jth*_alg_params.theta_step_;
+            range = _points(0,ipt)*cos(theta) + _points(1,ipt)*sin(theta); //r=xcos(th)+ysin(th)
+            
+            //discretize range
+            kr = (int)floor(range/_alg_params.range_step_) + (int)hough_grid_cols_half ;
+            
+            //check validity of the discretized values
+            if( ( kr >= 0 ) && ( kr < hough_grid_cols ) )
             {
-                //compute Real values of theta and range
-                theta = jth*_alg_params.theta_step_;
-                range = _laser_cloud.at(laser_id)(0,ipt)*cos(theta) + _laser_cloud.at(laser_id)(1,ipt)*sin(theta); //r=xcos(th)+ysin(th)
-                
-                //discretize range
-                kr = (int)floor(range/_alg_params.range_step_) + (int)hough_grid_cols_half ;
-                
-                //check validity of the dicretized values
-                if( ( kr >= 0 ) && ( kr < hough_grid_cols ) )
-                {
-                    //Add support to cell(jth,kr), by pushing back the point coordinates
-                    hough_grid.at(jth).at(kr).push_back( std::pair<double,double>(_laser_cloud.at(laser_id)(0,ipt),_laser_cloud.at(laser_id)(1,ipt)) );
-                }
+                //Add support to cell(jth,kr), by pushing back the point coordinates
+                //hough_grid.at(jth).at(kr).push_back( std::pair<double,double>(_points.at(laser_id)(0,ipt),_points.at(laser_id)(1,ipt)) );
+                hough_grid.at(jth).at(kr).push_back( std::pair<double,double>(_points(0,ipt),_points(1,ipt)) );
             }
         }
     }
+//     }
     
-    //Check cells having a list with  >= min_supports_ members
-    for (unsigned int ii = 0; ii < hough_grid_rows; ii++)
+    //Find cells having a peak of at least min_supports_ points supporting them
+    for (unsigned int ii = 1; ii < hough_grid_rows-1; ii++)
     {
-        for (unsigned int jj = 0; jj < hough_grid_cols; jj++)
+        for (unsigned int jj = 1; jj < hough_grid_cols-1; jj++)
         {
-            if( hough_grid.at(ii).at(jj).size() >= _alg_params.min_supports_ )
+            //check min supports
+            unsigned int cell_supports = hough_grid.at(ii).at(jj).size();
+            if( cell_supports >= _alg_params.min_supports_ )
             {
-                //set the line hough params
-                line.np_ = hough_grid.at(ii).at(jj).size(); //supporters
-                line.theta_ = ii*_alg_params.theta_step_; //theta
-                line.range_ = jj*_alg_params.range_step_; //range
+                //check if cell ii,jj is a peak ( 8 neighboring cells should be below in number of supports)
+                if ( ( cell_supports >= hough_grid.at(ii-1).at(jj-1).size() ) &&
+                     ( cell_supports >= hough_grid.at(ii-1).at(jj).size() ) &&  
+                     ( cell_supports >= hough_grid.at(ii-1).at(jj+1).size() ) &&
+                     ( cell_supports >= hough_grid.at(ii).at(jj-1).size() ) && 
+                     ( cell_supports >= hough_grid.at(ii).at(jj+1).size() ) &&
+                     ( cell_supports >= hough_grid.at(ii+1).at(jj-1).size() ) &&
+                     ( cell_supports >= hough_grid.at(ii+1).at(jj).size() ) &&
+                     ( cell_supports >= hough_grid.at(ii+1).at(jj+1).size() ) )
+                {                    
+                    //find best fitting line with the supporting points
+                    //TODO //run over supporters indexes of the ii,jj cell, and build a Eigen::Matrix3s
+                    //Eigen::Matrix3s supporters; 
+                    //supporters.resize(3,...)
+                    //supporters << fill with point data
+                    //call fitLine(supporters, line); 
+                 
+                    //set the line hough params TODO: Compute them from fitLine result, not from the Grid !!
+                    line.np_ = hough_grid.at(ii).at(jj).size(); //supporters
+                    line.theta_ = ii*_alg_params.theta_step_; //theta
+                    line.range_ = jj*_alg_params.range_step_; //range
 
-                //find xmax, xmin, ymax, ymin
-                xmax=-100; xmin=100; ymax=-100; ymin=100; 
-                for (pt_it = hough_grid.at(ii).at(jj).begin(); pt_it != hough_grid.at(ii).at(jj).end(); pt_it++)
-                {
-                    if (pt_it->first > xmax) xmax = pt_it->first; 
-                    if (pt_it->second > ymax) ymax = pt_it->second; 
-                    if (pt_it->first < xmin) xmin = pt_it->first; 
-                    if (pt_it->second < ymin) ymin = pt_it->second; 
-                }
-                
-                //set the limiting points of the line
-                if (ii < hough_grid_rows_half) //first and third quartile
-                {
-                    line.point_first_ << xmin,ymax,1;
-                    line.point_last_ << xmax,ymin,1;
+                    //set starting and ending points of the line TODO: Set the projection of min max points to the fitLine line                    
+                    xmax=-100; xmin=100; ymax=-100; ymin=100; 
+                    for (pt_it = hough_grid.at(ii).at(jj).begin(); pt_it != hough_grid.at(ii).at(jj).end(); pt_it++)
+                    {
+                        //find xmax, xmin, ymax, ymin
+                        if (pt_it->first > xmax) xmax = pt_it->first; 
+                        if (pt_it->second > ymax) ymax = pt_it->second; 
+                        if (pt_it->first < xmin) xmin = pt_it->first; 
+                        if (pt_it->second < ymin) ymin = pt_it->second; 
+                    }
+                    if (ii < hough_grid_rows_half) //first and third quartile of r-theta plane
+                    {
+                        line.point_first_ << xmin,ymax,1;
+                        line.point_last_ << xmax,ymin,1;
+                        
+                    }
+                    else //second and fourth quartile of r-theta plane
+                    {
+                        line.point_first_ << xmin,ymin,1;
+                        line.point_last_ << xmax,ymax,1;                    
+                    }
                     
+                    //push back the line to the list
+                    _line_list.push_back(line);
                 }
-                else //second and fourth quartile
-                {
-                    line.point_first_ << xmin,ymin,1;
-                    line.point_last_ << xmax,ymax,1;                    
-                }
-                
-                //push back the line to the list
-                _line_list.push_back(line);
             }
         }
     }
 
-    //Check cells having a list with  >= min_supports_ members
-//     std::list<std::pair<unsigned int,unsigned int> > best_cells; //list of the indexes corresponding to the cells above the threshold
-//     for (unsigned int ii = 0; ii < hough_grid_rows; ii++)
-//     {
-//         for (unsigned int jj = 0; jj < hough_grid_cols; jj++)
-//         {
-//             if( hough_grid.at(ii).at(jj).size() >= _alg_params.min_supports_ )
-//             {
-//                 //push ii,jj pair as candidate
-//                 best_cells.push_back( std::pair<unsigned int,unsigned int>(ii,jj) );
-//             }
-//         }
-//     }
-    
-    //clustering over candidates
-//     std::list<std::pair<unsigned int,unsigned int> >::iterator it_best_cells;
-//     for (it_best_cells = best_cells.begin(); it_best_cells != best_cells.end(); it_best_cells++)
-//     {
-//         
-//     }
-
-    //get the 10 most supported lines
-//     std::list<unsigned int> peak_values; //list of the ten highest peak values in the hough_grid. Last the highest.
-//     std::list<std::pair<unsigned int,unsigned int> > peak_indexes; //list of the indexes corresponding to the list above
-//     std::list<unsigned int>::iterator it_peak_values; 
-//     std::list<std::pair<unsigned int,unsigned int> >::iterator it_peak_indexes;
-//     
-//     for (unsigned int ii = 0; ii < hough_grid_rows; ii++) //loop over all theta values
-//     {
-//         for (unsigned int jj = 0; jj < hough_grid_cols; jj++) //loop over all range values
-//         {
-//             //set iterators at the beginning of the lists
-//             it_peak_values = peak_values.begin(); 
-//             it_peak_indexes = peak_indexes.begin(); 
-// 
-//             //fins if cell ii,jj has mor support that others in the peak_values list
-//             if( hough_grid.at(ii).at(jj).size() >= _alg_params.min_supports_ )
-//             {
-//                 //set the line params
-//                 line.np_ = hough_grid.at(ii).at(jj).size();
-//                 line.theta_ = ii*_alg_params.theta_step_;
-//                 line.range_ = jj*_alg_params.range_step_;
-//                 //line.point_first_ << ;
-//                 //line.point_last_ << ;
-//                 
-//                 //push back the line to the list
-//                 _line_list.push_back(line);
-//             }
-//         }
-//     }
-    
-    
     //return the number of lines detected
     return _line_list.size(); 
 }

@@ -39,6 +39,8 @@ eigen3/Eigen/Dense
 -
 eigen3/Eigen/Geometry
 -
+eigen3/Eigen/Sparse
+-
 
 ../src/./line_detector.h
 laser_scan_utils.h

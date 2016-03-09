@@ -14,7 +14,7 @@ namespace laserscanutils
      * Set of tunning parameters for line extraction
      * 
      */
-    struct ExtractLineParams
+    struct ExtractLineParams //TODO rename to ExtractLinesParams
     {
         //members
         ScalarT jump_dist_ut_; //Upper threshold in consecutive ranges to consider a jump
@@ -34,7 +34,7 @@ namespace laserscanutils
      * set of tunning parameters for the Hough transform line detection
      * 
      **/
-    struct ExtractLineParamsHough
+    struct ExtractLinesHoughParams
     {
         double range_max_; //maximum allowed range for lines
         double range_step_; //range step in the voting grid
@@ -45,7 +45,12 @@ namespace laserscanutils
     /** \brief Find the best fittig line given a set of points
      * 
      * Find the best fittig line given a set of points
-     * Input points at each column of _points matrix
+     * 
+     * \Requires:
+     * \param _points: 3xN matrix, set of points. Each column is a 2D point in homogeneous (x,y,1). Ordering is not required.
+     * 
+     * \Provides:
+     * \param _line: a laserscanutils::Line object of the best fitting line in the Least Squares sense
      * 
      **/
     void fitLine(const Eigen::MatrixXs & _points, Line & _line);
@@ -66,24 +71,23 @@ namespace laserscanutils
                               const std::vector<float> & _ranges, 
                               std::list<laserscanutils::Line> & _line_list);
 
-    /** \brief Extract lines using Hough transform. Result as a list of Line
+    /** \brief Extract lines using Hough transform. Result as a list of Line's
      *
      * Extract lines from a set of scans.
      * Returns Lines as a std::list<laserscanutils::Line>
-     * Requires: 
-     *    \param _laser_cloud Each component of std::vector is the 2D point data corresponding to one laser device, alreday in vehicle base coordinates.
-     *    \param _laser_data TODO: list of pairs, each one grouping ScanParams and a vector of ranges
-     * Provides: 
-     *    \param _line_list output lines extracted from the scan
+     * 
+     * \Requires: 
+     *    \param _points: 3xN matrix, set of points. Each column is a 2D point in homogeneous (x,y,1). Ordering is not required.
+     *    \param _alg_params Hough transform parameters
+     * 
+     * \Provides: 
+     *    \param _line_list set of lines extracted from _points
      *    \return Number of lines extracted.
      * 
      *
      */
-//     unsigned int extractLinesHough(const std::list<std::pair<laserscanutils::ScanParams,const std::vector<float> > > _laser_data,
-//                               const ExtractLineParamsHough & _alg_params, 
-//                               std::list<laserscanutils::Line> & _line_list);
-    unsigned int extractLinesHough( const std::vector<Eigen::MatrixXd> & _laser_cloud,
-                                    const ExtractLineParamsHough & _alg_params, 
+    unsigned int extractLinesHough( const Eigen::MatrixXd & _points,
+                                    const ExtractLinesHoughParams & _alg_params, 
                                     std::list<laserscanutils::Line> & _line_list);
 
     

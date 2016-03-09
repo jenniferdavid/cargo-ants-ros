@@ -5,6 +5,7 @@
 //includes from Eigen lib
 #include <eigen3/Eigen/Dense>
 #include <eigen3/Eigen/Geometry>
+#include <eigen3/Eigen/Sparse>
 
 //namespace laserscanutils;
 

@@ -245,6 +245,30 @@ entities.cpp.s:
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/entities.cpp.s
 .PHONY : entities.cpp.s
 
+laser_scan.o: laser_scan.cpp.o
+.PHONY : laser_scan.o
+
+# target to build an object file
+laser_scan.cpp.o:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o
+.PHONY : laser_scan.cpp.o
+
+laser_scan.i: laser_scan.cpp.i
+.PHONY : laser_scan.i
+
+# target to preprocess a source file
+laser_scan.cpp.i:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.i
+.PHONY : laser_scan.cpp.i
+
+laser_scan.s: laser_scan.cpp.s
+.PHONY : laser_scan.s
+
+# target to generate assembly for a file
+laser_scan.cpp.s:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.s
+.PHONY : laser_scan.cpp.s
+
 line_detector.o: line_detector.cpp.o
 .PHONY : line_detector.o
 
@@ -268,6 +292,102 @@ line_detector.s: line_detector.cpp.s
 line_detector.cpp.s:
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.s
 .PHONY : line_detector.cpp.s
+
+line_finder.o: line_finder.cpp.o
+.PHONY : line_finder.o
+
+# target to build an object file
+line_finder.cpp.o:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o
+.PHONY : line_finder.cpp.o
+
+line_finder.i: line_finder.cpp.i
+.PHONY : line_finder.i
+
+# target to preprocess a source file
+line_finder.cpp.i:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.i
+.PHONY : line_finder.cpp.i
+
+line_finder.s: line_finder.cpp.s
+.PHONY : line_finder.s
+
+# target to generate assembly for a file
+line_finder.cpp.s:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.s
+.PHONY : line_finder.cpp.s
+
+line_finder_hough.o: line_finder_hough.cpp.o
+.PHONY : line_finder_hough.o
+
+# target to build an object file
+line_finder_hough.cpp.o:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o
+.PHONY : line_finder_hough.cpp.o
+
+line_finder_hough.i: line_finder_hough.cpp.i
+.PHONY : line_finder_hough.i
+
+# target to preprocess a source file
+line_finder_hough.cpp.i:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.i
+.PHONY : line_finder_hough.cpp.i
+
+line_finder_hough.s: line_finder_hough.cpp.s
+.PHONY : line_finder_hough.s
+
+# target to generate assembly for a file
+line_finder_hough.cpp.s:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.s
+.PHONY : line_finder_hough.cpp.s
+
+line_finder_jump_fit.o: line_finder_jump_fit.cpp.o
+.PHONY : line_finder_jump_fit.o
+
+# target to build an object file
+line_finder_jump_fit.cpp.o:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o
+.PHONY : line_finder_jump_fit.cpp.o
+
+line_finder_jump_fit.i: line_finder_jump_fit.cpp.i
+.PHONY : line_finder_jump_fit.i
+
+# target to preprocess a source file
+line_finder_jump_fit.cpp.i:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.i
+.PHONY : line_finder_jump_fit.cpp.i
+
+line_finder_jump_fit.s: line_finder_jump_fit.cpp.s
+.PHONY : line_finder_jump_fit.s
+
+# target to generate assembly for a file
+line_finder_jump_fit.cpp.s:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.s
+.PHONY : line_finder_jump_fit.cpp.s
+
+line_segment.o: line_segment.cpp.o
+.PHONY : line_segment.o
+
+# target to build an object file
+line_segment.cpp.o:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o
+.PHONY : line_segment.cpp.o
+
+line_segment.i: line_segment.cpp.i
+.PHONY : line_segment.i
+
+# target to preprocess a source file
+line_segment.cpp.i:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.i
+.PHONY : line_segment.cpp.i
+
+line_segment.s: line_segment.cpp.s
+.PHONY : line_segment.s
+
+# target to generate assembly for a file
+line_segment.cpp.s:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.s
+.PHONY : line_segment.cpp.s
 
 object_detector.o: object_detector.cpp.o
 .PHONY : object_detector.o
@@ -317,6 +437,30 @@ scan_basics.cpp.s:
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.s
 .PHONY : scan_basics.cpp.s
 
+scan_segment.o: scan_segment.cpp.o
+.PHONY : scan_segment.o
+
+# target to build an object file
+scan_segment.cpp.o:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o
+.PHONY : scan_segment.cpp.o
+
+scan_segment.i: scan_segment.cpp.i
+.PHONY : scan_segment.i
+
+# target to preprocess a source file
+scan_segment.cpp.i:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.i
+.PHONY : scan_segment.cpp.i
+
+scan_segment.s: scan_segment.cpp.s
+.PHONY : scan_segment.s
+
+# target to generate assembly for a file
+scan_segment.cpp.s:
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build && $(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.s
+.PHONY : scan_segment.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -341,15 +485,33 @@ help:
 	@echo "... entities.o"
 	@echo "... entities.i"
 	@echo "... entities.s"
+	@echo "... laser_scan.o"
+	@echo "... laser_scan.i"
+	@echo "... laser_scan.s"
 	@echo "... line_detector.o"
 	@echo "... line_detector.i"
 	@echo "... line_detector.s"
+	@echo "... line_finder.o"
+	@echo "... line_finder.i"
+	@echo "... line_finder.s"
+	@echo "... line_finder_hough.o"
+	@echo "... line_finder_hough.i"
+	@echo "... line_finder_hough.s"
+	@echo "... line_finder_jump_fit.o"
+	@echo "... line_finder_jump_fit.i"
+	@echo "... line_finder_jump_fit.s"
+	@echo "... line_segment.o"
+	@echo "... line_segment.i"
+	@echo "... line_segment.s"
 	@echo "... object_detector.o"
 	@echo "... object_detector.i"
 	@echo "... object_detector.s"
 	@echo "... scan_basics.o"
 	@echo "... scan_basics.i"
 	@echo "... scan_basics.s"
+	@echo "... scan_segment.o"
+	@echo "... scan_segment.i"
+	@echo "... scan_segment.s"
 .PHONY : help
 
 

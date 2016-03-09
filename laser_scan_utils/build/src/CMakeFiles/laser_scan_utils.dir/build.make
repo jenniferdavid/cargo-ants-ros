@@ -95,9 +95,32 @@ src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o.provides: src/CMakeFiles/lase
 
 src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o
 
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o: ../src/laser_scan.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/laser_scan.cpp
+
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.i"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/laser_scan.cpp > CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.i
+
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.s"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/laser_scan.cpp -o CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.s
+
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.requires:
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.requires
+
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.provides: src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.provides.build
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.provides
+
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o
+
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: ../src/line_detector.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o"
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_detector.cpp
 
@@ -118,9 +141,101 @@ src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o.provides: src/CMakeFiles
 
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o
 
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o: ../src/line_finder.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder.cpp
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/laser_scan_utils.dir/line_finder.cpp.i"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder.cpp > CMakeFiles/laser_scan_utils.dir/line_finder.cpp.i
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/laser_scan_utils.dir/line_finder.cpp.s"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder.cpp -o CMakeFiles/laser_scan_utils.dir/line_finder.cpp.s
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.requires:
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.requires
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.provides: src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.provides.build
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.provides
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: ../src/line_finder_hough.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_hough.cpp
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.i"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_hough.cpp > CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.i
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.s"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_hough.cpp -o CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.s
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.requires:
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.requires
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.provides: src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.provides.build
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.provides
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: ../src/line_finder_jump_fit.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_jump_fit.cpp
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.i"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_jump_fit.cpp > CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.i
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.s"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_jump_fit.cpp -o CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.s
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.requires:
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.requires
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.provides: src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.provides.build
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.provides
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o: ../src/line_segment.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_segment.cpp
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/laser_scan_utils.dir/line_segment.cpp.i"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_segment.cpp > CMakeFiles/laser_scan_utils.dir/line_segment.cpp.i
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/laser_scan_utils.dir/line_segment.cpp.s"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_segment.cpp -o CMakeFiles/laser_scan_utils.dir/line_segment.cpp.s
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.requires:
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.requires
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.provides: src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.provides.build
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.provides
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o
+
 src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
 src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o: ../src/scan_basics.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o"
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/scan_basics.cpp
 
@@ -141,9 +256,32 @@ src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o.provides: src/CMakeFiles/l
 
 src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o
 
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o: ../src/scan_segment.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/scan_segment.cpp
+
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.i"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/scan_segment.cpp > CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.i
+
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.s"
+	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/scan_segment.cpp -o CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.s
+
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.requires:
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.requires
+
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.provides: src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/laser_scan_utils.dir/build.make src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.provides.build
+.PHONY : src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.provides
+
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.provides.build: src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o
+
 src/CMakeFiles/laser_scan_utils.dir/clustering.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
 src/CMakeFiles/laser_scan_utils.dir/clustering.cpp.o: ../src/clustering.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/clustering.cpp.o"
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/clustering.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/clustering.cpp
 
@@ -166,7 +304,7 @@ src/CMakeFiles/laser_scan_utils.dir/clustering.cpp.o.provides.build: src/CMakeFi
 
 src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o: src/CMakeFiles/laser_scan_utils.dir/flags.make
 src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o: ../src/object_detector.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o"
 	cd /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o -c /home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/object_detector.cpp
 
@@ -191,8 +329,14 @@ src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o.provides.build: src/CM
 laser_scan_utils_OBJECTS = \
 "CMakeFiles/laser_scan_utils.dir/corner_detector.cpp.o" \
 "CMakeFiles/laser_scan_utils.dir/entities.cpp.o" \
+"CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o" \
 "CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o" \
+"CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o" \
+"CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o" \
+"CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o" \
+"CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o" \
 "CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o" \
+"CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o" \
 "CMakeFiles/laser_scan_utils.dir/clustering.cpp.o" \
 "CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o"
 
@@ -201,8 +345,14 @@ laser_scan_utils_EXTERNAL_OBJECTS =
 
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/corner_detector.cpp.o
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o
+../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o
+../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o
+../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o
+../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o
+../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o
+../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/clustering.cpp.o
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o
 ../lib/liblaser_scan_utils.so: src/CMakeFiles/laser_scan_utils.dir/build.make
@@ -216,8 +366,14 @@ src/CMakeFiles/laser_scan_utils.dir/build: ../lib/liblaser_scan_utils.so
 
 src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/corner_detector.cpp.o.requires
 src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o.requires
+src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o.requires
 src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o.requires
+src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o.requires
+src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o.requires
+src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o.requires
+src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o.requires
 src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o.requires
+src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o.requires
 src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/clustering.cpp.o.requires
 src/CMakeFiles/laser_scan_utils.dir/requires: src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o.requires
 .PHONY : src/CMakeFiles/laser_scan_utils.dir/requires

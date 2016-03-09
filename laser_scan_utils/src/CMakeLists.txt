@@ -26,8 +26,14 @@ SET(HDRS_BASE
 SET(HDRS
     corner_detector.h
     entities.h
+    laser_scan.h
     line_detector.h
+    line_finder.h
+    line_finder_hough.h
+    line_finder_jump_fit.h
+    line_segment.h
     scan_basics.h
+    scan_segment.h
     clustering.h
     object_detector.h)
 
@@ -35,8 +41,14 @@ SET(HDRS
 SET(SRCS
     corner_detector.cpp
     entities.cpp
+    laser_scan.cpp
     line_detector.cpp
+    line_finder.cpp
+    line_finder_hough.cpp
+    line_finder_jump_fit.cpp
+    line_segment.cpp
     scan_basics.cpp
+    scan_segment.cpp
     clustering.cpp
     object_detector.cpp)
     

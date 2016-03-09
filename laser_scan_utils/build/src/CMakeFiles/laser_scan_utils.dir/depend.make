@@ -20,11 +20,37 @@ src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o: ../src/entities.cpp
 src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o: ../src/entities.h
 src/CMakeFiles/laser_scan_utils.dir/entities.cpp.o: ../src/laser_scan_utils.h
 
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o: ../src/laser_scan.cpp
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o: ../src/laser_scan.h
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o: ../src/laser_scan_utils.h
+src/CMakeFiles/laser_scan_utils.dir/laser_scan.cpp.o: ../src/scan_segment.h
+
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: ../src/entities.h
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: ../src/laser_scan_utils.h
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: ../src/line_detector.cpp
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: ../src/line_detector.h
 src/CMakeFiles/laser_scan_utils.dir/line_detector.cpp.o: ../src/scan_basics.h
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o: ../src/laser_scan_utils.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o: ../src/line_finder.cpp
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o: ../src/line_finder.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder.cpp.o: ../src/line_segment.h
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: ../src/laser_scan_utils.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: ../src/line_finder.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: ../src/line_finder_hough.cpp
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: ../src/line_finder_hough.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder_hough.cpp.o: ../src/line_segment.h
+
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: ../src/laser_scan_utils.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: ../src/line_finder.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: ../src/line_finder_jump_fit.cpp
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: ../src/line_finder_jump_fit.h
+src/CMakeFiles/laser_scan_utils.dir/line_finder_jump_fit.cpp.o: ../src/line_segment.h
+
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o: ../src/laser_scan_utils.h
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o: ../src/line_segment.cpp
+src/CMakeFiles/laser_scan_utils.dir/line_segment.cpp.o: ../src/line_segment.h
 
 src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o: ../src/corner_detector.h
 src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o: ../src/entities.h
@@ -37,4 +63,8 @@ src/CMakeFiles/laser_scan_utils.dir/object_detector.cpp.o: ../src/scan_basics.h
 src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o: ../src/laser_scan_utils.h
 src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o: ../src/scan_basics.cpp
 src/CMakeFiles/laser_scan_utils.dir/scan_basics.cpp.o: ../src/scan_basics.h
+
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o: ../src/laser_scan_utils.h
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o: ../src/scan_segment.cpp
+src/CMakeFiles/laser_scan_utils.dir/scan_segment.cpp.o: ../src/scan_segment.h
 

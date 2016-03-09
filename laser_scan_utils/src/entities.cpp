@@ -12,9 +12,9 @@ void laserscanutils::Line::print() const
 //               << "   first,last: " << first_ << " , " << last_ << std::endl
 //               << "   first point: " << point_first_.transpose() << std::endl
 //               << "   last point: " << point_last_.transpose() << std::endl
-              << "   number of points: " << np_ << std::endl
-              << "   range: " << range_ << std::endl
-              << "   theta: " << theta_ << std::endl;
+              << "\tnumber of points: " << np_ << std::endl
+              << "\trange: " << range_ << std::endl
+              << "\ttheta: " << theta_ << std::endl;
 }
 
 float laserscanutils::Line::length()

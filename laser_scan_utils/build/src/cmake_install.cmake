@@ -56,8 +56,14 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/iri-algorithms/laser_scan_utils" TYPE FILE FILES
     "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/corner_detector.h"
     "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/entities.h"
+    "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/laser_scan.h"
     "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_detector.h"
+    "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder.h"
+    "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_hough.h"
+    "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_finder_jump_fit.h"
+    "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/line_segment.h"
     "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/scan_basics.h"
+    "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/scan_segment.h"
     "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/clustering.h"
     "/home/cargoants/Documents/poftwaresatent_hhcoaching/hhcoaching/Jenni/catkin_ws/src/laser_scan_utils/src/object_detector.h"
     )

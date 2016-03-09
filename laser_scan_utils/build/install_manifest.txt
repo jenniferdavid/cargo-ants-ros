@@ -2,8 +2,14 @@
 /usr/local/include/iri-algorithms/laser_scan_utils/laser_scan_utils.h
 /usr/local/include/iri-algorithms/laser_scan_utils/corner_detector.h
 /usr/local/include/iri-algorithms/laser_scan_utils/entities.h
+/usr/local/include/iri-algorithms/laser_scan_utils/laser_scan.h
 /usr/local/include/iri-algorithms/laser_scan_utils/line_detector.h
+/usr/local/include/iri-algorithms/laser_scan_utils/line_finder.h
+/usr/local/include/iri-algorithms/laser_scan_utils/line_finder_hough.h
+/usr/local/include/iri-algorithms/laser_scan_utils/line_finder_jump_fit.h
+/usr/local/include/iri-algorithms/laser_scan_utils/line_segment.h
 /usr/local/include/iri-algorithms/laser_scan_utils/scan_basics.h
+/usr/local/include/iri-algorithms/laser_scan_utils/scan_segment.h
 /usr/local/include/iri-algorithms/laser_scan_utils/clustering.h
 /usr/local/include/iri-algorithms/laser_scan_utils/object_detector.h
 /usr/share/cmake-2.8/Modules/Findlaser_scan_utils.cmake

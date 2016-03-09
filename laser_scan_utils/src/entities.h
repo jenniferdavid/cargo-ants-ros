@@ -5,24 +5,30 @@
 //laserscanutils
 #include "laser_scan_utils.h"
 
+//std 
 #include <iostream>
 #include <list>
 
-//TODO: .cpp with print() functions per each entity
 namespace laserscanutils
 {
+    /** \brief Line entity represents straight segments on the plane
+     * 
+     * Line entity represents straight segments on the plane
+     * Several parameterizations can coexist, but no coherency check between them is performed. 
+     * Not all parameterizations are required. 
+     * 
+     **/
     struct Line
     {
-        Eigen::Vector3s vector_; //homogeneous parameterization of the line: (a,b,c)^T -> ax+by+c=0
-        ScalarT error_; //sum of all distances from used points to line
-        unsigned int first_; //index of the range vector of the first point used
-        unsigned int last_; //index of the range vector of the last point used
+        Eigen::Vector3s vector_; //homogeneous parameterization of the line: (a,b,c)^T -> ax+by+c=0 TODO: rename to abc_
+        unsigned int first_; //corresponding index to the scan ranges of the first point used TODO: rename to idx_first_
+        unsigned int last_; //corresponding index to the scan ranges of the last point used TODO: rename to idx_last_
+        ScalarT error_; //sum of all distances from used points to line when fitting
         Eigen::Vector3s point_first_; //homogeneous coordinates of the starting 2D point
         Eigen::Vector3s point_last_; //homogeneous coordinates of the ending 2D point
-        unsigned int np_; // number of points of the line
-        double range_; //range component in polar coordinates
-        double theta_; //theta component in polar coordinates
-        //TODO: add an Eigen::Map to the supporting points ... but who ensures memory allocation of such points ???
+        unsigned int np_; // number of scan points supporting this line (through fitting, Hough voting, ...)
+        ScalarT range_; //range component in polar parameterization.
+        ScalarT theta_; //theta component in polar parameterization.
 
         //just a print method
         void print() const;
