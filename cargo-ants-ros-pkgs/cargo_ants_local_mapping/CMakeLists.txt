@@ -19,7 +19,7 @@ endif()
 INCLUDE_DIRECTORIES("/usr/include/eigen3")
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS 
+find_package( catkin REQUIRED COMPONENTS 
     roscpp
     rospy
     std_msgs
@@ -31,8 +31,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 #Find other required libs
 find_package(laser_scan_utils REQUIRED)
-find_package(cmake_modules REQUIRED)
-
+    
 #SRCS files. ROS node
 SET(SRCS_ROS_NODE 
 	  src/cluster.cpp
@@ -44,7 +43,7 @@ SET(SRCS_ROS_NODE
 generate_dynamic_reconfigure_options(cfg/cargo_ants_local_mapping.cfg)
 
 ## The catkin_package macro generates cmake config files for your package
-catkin_package (CATKIN_DEPENDS 
+catkin_package ( CATKIN_DEPENDS 
         roscpp 
         rospy 
         std_msgs 
@@ -52,7 +51,7 @@ catkin_package (CATKIN_DEPENDS
         sensor_msgs
         dynamic_reconfigure
         tf 
-        cargo_ants_msgs)
+        cargo_ants_msgs )
 
 # add to include path
 include_directories(${catkin_INCLUDE_DIRS} ${laser_scan_utils_INCLUDE_DIRS})

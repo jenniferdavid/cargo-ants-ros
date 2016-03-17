@@ -6,7 +6,7 @@
     <arg name="plots" default="false" />
     <arg name="rviz" default="false" />
     <arg name="gazebo_gui" default="false" />
-    <arg name="world_model"  default="ground_with_barrel" />
+    <arg name="world_model"  default="empty" />
     <arg name="robot_model"  default="agv_iri" />
     
     <!-- test 03: gazebo world, agv description, controllers, odometry, driver and local mapping -->
@@ -30,7 +30,7 @@
      
      <!-- Send a goal (for testing) -->
     <node pkg="rostopic" type="rostopic" name="GoalPublisher"
-        args="pub --once /path_planner cargo_ants_msgs/Path '{mode: 0, container: name , goals: [{gx: 0, gy: 0, gth: 0, dr: 0, dth: 0},{gx: 15, gy: 10, gth: 0, dr: 0, dth: 0}]}'" 
+        args="pub --once /path_planner cargo_ants_msgs/Path '{mode: 0, container: name , goals: [{gx: 0, gy: 0, gth: 0, dr: 0, dth: 0},{gx: 15, gy: 0, gth: 0, dr: 0, dth: 0}]}'" 
         output="screen">   
     </node> 
     

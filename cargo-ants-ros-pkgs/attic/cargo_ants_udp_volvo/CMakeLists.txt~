@@ -44,5 +44,5 @@ target_link_libraries (udp2ros cargo_ants_udp_volvo ${catkin_LIBRARIES})
 add_executable (ros2udp src/ros2udp.cpp)
 target_link_libraries (ros2udp cargo_ants_udp_volvo ${catkin_LIBRARIES})
 
-add_executable (rostoudp src/rostoudp.cpp)
-target_link_libraries (rostoudp cargo_ants_udp_volvo ${catkin_LIBRARIES})
+add_executable (jjjj src/jjjj.cpp)
+target_link_libraries (jjjj cargo_ants_udp_volvo ${catkin_LIBRARIES})

@@ -89,7 +89,7 @@ void AgvDriveNode::invKinematics(const Eigen::Vector3d & _pt)
     double xdot, thdot; //auxiliar variables for linear and rotational rate commands
 
     //get absolute valued vehicle translational and rotational speeds
-    xdot = fabs( _pt(0) );//these are the reference points for the control
+    xdot = fabs( _pt(0) );
     thdot = fabs( _pt(2) );
     
     //non-null displacement, null steering case

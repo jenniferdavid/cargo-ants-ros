@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<package>
+  <name>cargo_ants_slam</name>
+  <version>0.0.0</version>
+  <description>The wolf_ros package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+  <maintainer email="jvallve@iri.upc.edu">Joan Vallvé</maintainer>
+  <maintainer email="acoromin@iri.upc.edu">Andreu Corominas</maintainer>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <license>???</license>
+
+  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+  <url type="website">http://www.cargo-ants.eu</url>
+
+  <!-- Author tags are optional, mutiple are allowed, one per tag -->
+  <author email="jvallve@iri.upc.edu">Joan Vallvé</author>
+  <author email="acoromin@iri.upc.edu">Andreu Corominas</author>
+
+
+  <!-- The *_depend tags are used to specify dependencies -->
+  <!-- Dependencies can be catkin packages or system dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>iri_base_algorithm</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>iri_common_drivers_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>iri_common_drivers_msgs</build_depend>
+
+  <run_depend>iri_base_algorithm</run_depend>
+  <run_depend>visualization_msgs</run_depend>
+  <run_depend>iri_common_drivers_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>iri_common_drivers_msgs</run_depend>
+
+</package>

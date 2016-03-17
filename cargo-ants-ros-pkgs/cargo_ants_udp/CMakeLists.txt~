@@ -20,7 +20,7 @@ find_package (catkin REQUIRED COMPONENTS
 
 catkin_package (
   INCLUDE_DIRS include
-  LIBRARIES cargo_ants_udp_volvo
+  LIBRARIES cargo_ants_udp
   CATKIN_DEPENDS cargo_ants_msgs roscpp
   #  DEPENDS system_lib
 )
@@ -30,7 +30,7 @@ include_directories (
   ${catkin_INCLUDE_DIRS}
   )
 
-add_library (cargo_ants_udp_volvo SHARED
+add_library (cargo_ants_udp SHARED
   src/UDPMessage.cpp
   src/UDPClient.cpp
   src/UDPServer.cpp
@@ -38,11 +38,5 @@ add_library (cargo_ants_udp_volvo SHARED
 #target_link_libraries ()
 
 
-add_executable (udp2ros src/udp2ros.cpp)
-target_link_libraries (udp2ros cargo_ants_udp_volvo ${catkin_LIBRARIES})
-
-add_executable (ros2udp src/ros2udp.cpp)
-target_link_libraries (ros2udp cargo_ants_udp_volvo ${catkin_LIBRARIES})
-
 add_executable (rostoudp src/rostoudp.cpp)
-target_link_libraries (rostoudp cargo_ants_udp_volvo ${catkin_LIBRARIES})
+target_link_libraries (rostoudp cargo_ants_udp ${catkin_LIBRARIES})

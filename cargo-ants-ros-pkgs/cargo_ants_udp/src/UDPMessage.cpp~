@@ -30,55 +30,51 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef CARGO_ANTS_UDP_MESSAGE_HPP
-#define CARGO_ANTS_UDP_MESSAGE_HPP
-
-#include <vector>
-#include <sstream>
-#include <string>
+#include "cargo_ants_udp/UDPMessage.hpp"
+#include <iostream>
 
 
-
-namespace cargo_ants_udp {
-  
-  using namespace std;
-  
-  typedef int msg_int_t;
-  typedef double msg_double_t;
+using namespace cargo_ants_udp;
   
   
-  class UDPMessage
+  UDPMessage::UDPMessage (size_t n_doubles)
   {
-  public:
-    UDPMessage (cargo_ants_udp::size_t n_doubles);
-    
-    void resize (size_t n_doubles);
-
-  private:
-    //  msg_int_t & _typeID () { return *reinterpret_cast<msg_int_t*>(&buf_[                   0]); }
-     msg_int_t & _nInts ()  { return *reinterpret_cast<msg_int_t*>(&buf_[  sizeof (msg_int_t)]); }
-    msg_int_t & _nDoubles () { return *reinterpret_cast<msg_int_t*>(&buf_[2*sizeof (msg_int_t)]); }
-    
-  public:
-    // msg_int_t const & typeID () const { return const_cast<UDPMessage*>(this)->_typeID(); }
-    msg_int_t const & nInts () const  { return const_cast<UDPMessage*>(this)->_nInts(); }
-    msg_int_t const & nDoubles () const { return const_cast<UDPMessage*>(this)->_nDoubles(); }
-    
-    // msg_int_t * ints ()   { return reinterpret_cast<msg_int_t*>(&buf_[3 * sizeof (msg_int_t)]); }
-    msg_double_t * doubles () { return reinterpret_cast<msg_double_t*>(&buf_[(3 + nInts()) * sizeof (msg_int_t)]); }
-    
-    void * buf ()
-    { return &buf_[0]; }
-    
-    int buflen ()
-    { return buf_.size(); }
-    
-    void dump (ostream & os);
-    
-   private:
-    vector <int> buf_;
-  };
+    resize (n_doubles);
+   // _typeID() = type_id;
+  }
   
-}
+  
+  void UDPMessage::
+  resize (size_t n_doubles)
+  {
+    buf_.resize (//(3 + n_ints) * sizeof (msg_int_t) + 
+    n_doubles * sizeof (msg_double_t), 0);
+  //  _nInts() = n_ints;
+    _nDoubles() = n_doubles;
+   // std::cerr << "resize " << n_ints << " " << n_doubles << " -- " << nInts() << " " << nDoubles() << "\n";
+  }
+  
+  
+  void UDPMessage::
+  dump (ostream & os)
+  {
+    //os << "type_id: " << typeID() << "\n"
+  //  os << "  n_ints: " << nInts() << "\n"
+    os << "  n_doubles: " << nDoubles() << "\n";
+   // if (0 != nInts()) {
+     // os << "  ints:";
+     // for (int ii (0); ii < nInts(); ++ii) {
+	//os << "  " << ints()[ii];
+      //}
+      //os << "\n";
+    //}
+    if (0 != nDoubles()) {
+      os << "  doubles:";
+      for (int ii (0); ii < nDoubles(); ++ii) {
+	os << "  " << doubles()[ii];
+      }
+      os << "\n";
+    }
+  }
+  
 
-#endif // CARGO_ANTS_UDP_MESSAGE_HPP

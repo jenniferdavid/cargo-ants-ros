@@ -123,7 +123,7 @@ add_dependencies(gmap ${catkin_EXPORTED_TARGETS})
   ${catkin_LIBRARIES}
  )
 
- target_link_libraries(gmap
+ target_link_libraries(gazebo
   ${Eigen_LIBRARIES}
   ${catkin_LIBRARIES}
  )
