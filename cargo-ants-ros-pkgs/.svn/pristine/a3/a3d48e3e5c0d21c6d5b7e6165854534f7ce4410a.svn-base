@@ -1,0 +1,67 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(cargo_ants_local_mapping)
+
+#Set compiler according C++11 support
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+if(COMPILER_SUPPORTS_CXX11)
+        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++11 support.")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+elseif(COMPILER_SUPPORTS_CXX0X)
+        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has C++0x support.")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+else()
+        message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+endif()
+
+#Add eigen3 includes. Required when eigen *.h files call other eigen *.h file. TODO: generalize that to machine though some "find" macro
+INCLUDE_DIRECTORIES("/usr/include/eigen3")
+
+## Find catkin macros and libraries
+find_package( catkin REQUIRED COMPONENTS 
+    roscpp
+    rospy
+    std_msgs
+    nav_msgs
+    sensor_msgs
+    dynamic_reconfigure 
+    tf 
+    cargo_ants_msgs)
+
+#Find other required libs
+find_package(laser_scan_utils REQUIRED)
+    
+#SRCS files. ROS node
+SET(SRCS_ROS_NODE 
+	  src/cluster.cpp
+      src/grid_2d.cpp
+      src/local_map_node.cpp
+)
+
+#dynamic reconfigure cfg file
+generate_dynamic_reconfigure_options(cfg/cargo_ants_local_mapping.cfg)
+
+## The catkin_package macro generates cmake config files for your package
+catkin_package ( CATKIN_DEPENDS 
+        roscpp 
+        rospy 
+        std_msgs 
+        nav_msgs
+        sensor_msgs
+        dynamic_reconfigure
+        tf 
+        cargo_ants_msgs )
+
+# add to include path
+include_directories(${catkin_INCLUDE_DIRS} ${laser_scan_utils_INCLUDE_DIRS})
+
+# build executable
+add_executable(local_mapping src/local_map_main.cpp ${SRCS_ROS_NODE})
+target_link_libraries(local_mapping ${catkin_LIBRARIES} ${laser_scan_utils_LIBRARY})
+add_dependencies(local_mapping ${catkin_EXPORTED_TARGETS})
+
+# build tests
+add_executable(test_odometry_update src/tests/test_odometry_update.cpp ${SRCS_ROS_NODE})
+target_link_libraries(test_odometry_update ${catkin_LIBRARIES} ${laser_scan_utils_LIBRARY})
+add_dependencies(test_odometry_update ${catkin_EXPORTED_TARGETS})

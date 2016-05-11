@@ -1,0 +1,12 @@
+#time start
+float32 dt
+
+Header header
+
+string child_frame_id
+
+uint8 NEW=1
+uint8 OLD=0
+uint8 ID
+
+ReferenceTrajectoryPoint[] points

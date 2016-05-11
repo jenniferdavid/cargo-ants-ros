@@ -1,0 +1,33 @@
+<package>
+  <name>chomp_nav</name>
+  <version>2.2.0</version>
+  <description>Launchers for Gazebo demo of turtlebot chomp based navigation stack</description>
+  <maintainer email="jafar.qutteineh@gmail.com">Jafar Qutteineh</maintainer>
+  <license>BSD</license>
+  <url type="website">http://</url>
+  <url type="repository">https://github.com/j3sq/pf_controller</url>
+  <url type="bugtracker">https://</url>
+  <author email="jafar.qutteineh@gmail.com">Jafar Qutteineh</author>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <run_depend>yocs_cmd_vel_mux</run_depend>
+<!--  <run_depend>create_gazebo_plugins</run_depend> disable irobot create due to the compile error in plugin-->
+  <run_depend>diagnostic_aggregator</run_depend>
+  <run_depend>depthimage_to_laserscan</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <run_depend>kobuki_gazebo_plugins</run_depend>
+  <run_depend>robot_pose_ekf</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>turtlebot_bringup</run_depend>
+  <run_depend>turtlebot_description</run_depend>
+  <run_depend>turtlebot_navigation</run_depend>
+  <run_depend>xacro</run_depend>
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+ <build_depend>cargo_ants_msgs</build_depend> 
+  <run_depend>cargo_ants_msgs</run_depend>
+</package>

@@ -31,6 +31,8 @@ find_package( catkin REQUIRED COMPONENTS
 
 #Find other required libs
 find_package(laser_scan_utils REQUIRED)
+find_package(cmake_modules REQUIRED)
+find_package(Eigen REQUIRED)
     
 #SRCS files. ROS node
 SET(SRCS_ROS_NODE 
@@ -51,15 +53,20 @@ catkin_package ( CATKIN_DEPENDS
         sensor_msgs
         dynamic_reconfigure
         tf 
-        cargo_ants_msgs )
+        cargo_ants_msgs
+	 DEPENDS Eigen
+	 DEPENDS laser_scan_utils
+ )
 
 # add to include path
-include_directories(${catkin_INCLUDE_DIRS} ${laser_scan_utils_INCLUDE_DIRS})
+include_directories(${catkin_INCLUDE_DIRS} ${laser_scan_utils_INCLUDE_DIRS}${Eigen_INCLUDE_DIRS})
 
 # build executable
 add_executable(local_mapping src/local_map_main.cpp ${SRCS_ROS_NODE})
 target_link_libraries(local_mapping ${catkin_LIBRARIES} ${laser_scan_utils_LIBRARY})
+add_dependencies(local_mapping ${catkin_EXPORTED_TARGETS})
 
 # build tests
 add_executable(test_odometry_update src/tests/test_odometry_update.cpp ${SRCS_ROS_NODE})
 target_link_libraries(test_odometry_update ${catkin_LIBRARIES} ${laser_scan_utils_LIBRARY})
+add_dependencies(test_odometry_update ${catkin_EXPORTED_TARGETS})

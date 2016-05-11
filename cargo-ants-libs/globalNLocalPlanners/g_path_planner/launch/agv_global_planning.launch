@@ -1,0 +1,51 @@
+<launch>
+ 
+ <!-- include file="$(find agv_tests_sim)/launch/agv_sim_01_drive.launch">
+	   <arg name="rviz" value="false" />
+	   <arg name="gazebo_gui" value="true" /> 
+ </include -->  
+ 
+ <!-- path to map file and frame names -->
+ <arg name="map_file" default="$(find g_path_planner)/maps/agv_map2.yaml"/>
+ <arg name="base_frame_id"   default="agv_base_link"/>
+ <arg name="global_frame_id" default="map"/>  
+    
+ <!-- Map server -->
+ <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  
+  
+ <!-- Publish TF -->  
+ <node pkg="tf" type="static_transform_publisher" name="map2odom" args="0 0 0 0 0 0 /map /odom 100"/> 
+ <node pkg="tf" type="static_transform_publisher" name="baselink" args="0 0 0 0 0 0 /agv_base_link base_link 100"/> 
+ 
+ <!-- Publish TF to test without Gazebo simulator -->
+ <node pkg="tf" type="static_transform_publisher" name="map2odom2" args="0 0 0 0 0 0 /odom /agv_base_link 100"/>  
+
+ <!-- Move base (but we will use only Global Planner) -->
+ <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find g_path_planner)/launch/params/agv_costmap_common_params.yaml" command="load" ns="global_costmap" />   
+    <rosparam file="$(find g_path_planner)/launch/params/agv_global_costmap_params.yaml" command="load" />    
+    <param name="global_costmap/global_frame" value="$(arg global_frame_id)"/>
+    <param name="global_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
+    <rosparam file="$(find g_path_planner)/launch/params/agv_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find g_path_planner)/launch/params/agv_move_base_params.yaml" command="load" />    
+ </node>
+ 
+ 
+ 
+ <!-- Move base (but we will use only Global Planner)   to use our plugin instead, i.e. our path planner
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<param name="base_global_planner" value="RAstar_planner/RAstarPlannerROS"/>  
+    <rosparam file="$(find g_path_planner)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" />   
+    <rosparam file="$(find g_path_planner)/launch/global_costmap_params.yaml" command="load" />        
+    <param name="global_costmap/global_frame" value="map"/>
+    <param name="global_costmap/robot_base_frame" value="base_link"/>
+  </node>   -->
+ 
+ 
+ 
+ 
+ <!-- Launch Rviz -->
+ <node name="RViz" pkg="rviz" type="rviz" output="screen" args="-d $(find g_path_planner)/launch/rviz-agv-gplanner.rviz" />
+ 
+</launch>

@@ -52,17 +52,17 @@ namespace cargo_ants_udp {
   public:
     UDPMessage (cargo_ants_udp::size_t n_doubles);
     
-    void resize (size_t n_doubles);
+     void resize (size_t n_doubles);
 
   private:
     //  msg_int_t & _typeID () { return *reinterpret_cast<msg_int_t*>(&buf_[                   0]); }
-     msg_int_t & _nInts ()  { return *reinterpret_cast<msg_int_t*>(&buf_[  sizeof (msg_int_t)]); }
+    msg_int_t & _nInts ()  { return *reinterpret_cast<msg_int_t*>(&buf_[  sizeof (msg_int_t)]); }
     msg_int_t & _nDoubles () { return *reinterpret_cast<msg_int_t*>(&buf_[2*sizeof (msg_int_t)]); }
     
   public:
     // msg_int_t const & typeID () const { return const_cast<UDPMessage*>(this)->_typeID(); }
-    msg_int_t const & nInts () const  { return const_cast<UDPMessage*>(this)->_nInts(); }
-    msg_int_t const & nDoubles () const { return const_cast<UDPMessage*>(this)->_nDoubles(); }
+   msg_int_t const & nInts () const  { return const_cast<UDPMessage*>(this)->_nInts(); }
+   msg_int_t const & nDoubles () const { return const_cast<UDPMessage*>(this)->_nDoubles(); }
     
     // msg_int_t * ints ()   { return reinterpret_cast<msg_int_t*>(&buf_[3 * sizeof (msg_int_t)]); }
     msg_double_t * doubles () { return reinterpret_cast<msg_double_t*>(&buf_[(3 + nInts()) * sizeof (msg_int_t)]); }
@@ -73,7 +73,7 @@ namespace cargo_ants_udp {
     int buflen ()
     { return buf_.size(); }
     
-    void dump (ostream & os);
+    void dump (ostream & os); 
     
    private:
     vector <int> buf_;

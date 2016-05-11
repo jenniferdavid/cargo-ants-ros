@@ -19,7 +19,7 @@
         type="at_udp2ros"
         output="screen"
         args="2">
-    </node>
+    </node>  
     
     <!--VEHICLE MODEL-->
     <!-- model arguments -->
@@ -41,10 +41,10 @@
           <param name="~publish_frequency" value="20" />
     </node>
     
-    <!-- Webcam -->
+    <!-- Webcam-->
     <include file="$(find at_udp2ros)/launch/at_usb_camera.launch">
         <arg name="viz" value="$(arg rviz)"/> 
-    </include>
+    </include> 
     
     <!--RESULTS VISUALIZATION-->
     <group if="$(arg rviz)">

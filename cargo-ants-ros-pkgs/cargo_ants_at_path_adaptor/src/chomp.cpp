@@ -61,6 +61,8 @@ static void init_chomp(Vector const &qs, Vector const &qe, Vector  &xi)
 {
 	if (xi.rows() == xidim) {
 		//do nothing. Use existing trajectory
+            cout << xi << "xi values";
+            
 	} else {
 		//initalize a new trajectory based on a direct line connecting qs to qe
 		xi = Vector::Zero(xidim);
@@ -75,6 +77,8 @@ static void init_chomp(Vector const &qs, Vector const &qe, Vector  &xi)
 		 * xi.block (cdim * ii, 0, cdim, 1) = qs;
 		 * }
 		 */
+                //cout << xi << "xi values";
+                
 	}
 	AA = Matrix::Zero(xidim, xidim);
 	for (size_t ii(0); ii < nq; ++ii) {

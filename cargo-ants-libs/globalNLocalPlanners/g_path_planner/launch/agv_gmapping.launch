@@ -1,0 +1,13 @@
+<launch>
+ 
+ <include file="$(find agv_tests_sim)/launch/agv_sim_01_drive.launch">
+	   <arg name="rviz" value="true" />
+	   <arg name="gazebo_gui" value="true" /> 
+ </include>  
+ 
+ <include file="$(find g_path_planner)/launch/includes/gmapping.launch.xml"/>
+
+ <!-- Move the AGV: roslaunch agv_tests_sim agv_sim_02_tele_op.launch-->
+ <!-- SAVE THE MAP: rosrun map_server map_saver -f /home/rvalencia/ros-cargo-ants/src/cargo-ants-ros-pkgs/g_path_planner/maps/agv_map -->
+ 
+</launch>

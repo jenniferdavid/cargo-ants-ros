@@ -1,0 +1,23 @@
+<launch>
+  <arg name="map_file" default="$(find g_path_planner)/maps/turtleMap2.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <!-- Publish starting position wrt map-->
+  <!-- Static_transform_publisher 0 0 0 0 0 0 /map base_link 100 -->
+  <node pkg="tf" type="static_transform_publisher" name="map2baselink" args="0 0 0 0 0 0 /map base_link 100"/> 
+  <include file="$(find g_path_planner)/launch/example.launch"></include>
+  <node name="RViz" pkg="rviz" type="rviz" output="screen" args="-d $(find g_path_planner)/launch/rviz-gplanner.rviz" />/>
+  
+  <!-- node pkg="cargo_ants_global_planner" type="navfn_node" respawn="true" name="navfn_node" output="screen">
+    <remap from="/navfn_node/costmap/costmap" to="/costmap_node/costmap/costmap"/>
+    <remap from="/navfn_node/goal" to="/move_base_simple/goal"/>
+    <remap from="/navfn_node/costmap/footprint" to="/costmap_node/costmap/footprint/polygon"/>
+    <remap from="/navfn_node/costmap/costmap_updates" to="/costmap_node/costmap/costmap_updates"/>
+    <remap from="/navfn_node/costmap/inflation_layer/parameter_descriptions" to="/costmap_node/costmap/inflation_layer/parameter_descriptions"/>
+    <remap from="/navfn_node/costmap/inflation_layer/parameter_updates" to="/costmap_node/costmap/inflation_layer/parameter_updates"/>
+    <remap from="/navfn_node/costmap/obstacle_layer/parameter_descriptions" to="/costmap_node/costmap/obstacle_layer/parameter_descriptions"/>
+    <remap from="/navfn_node/costmap/obstacle_layer/parameter_updates" to="/costmap_node/costmap/obstacle_layer/parameter_updates"/>
+    <remap from="/navfn_node/costmap/parameter_descriptions" to="/costmap_node/costmap/parameter_descriptions"/>
+    <remap from="/navfn_node/costmap/parameter_updates" to="/costmap_node/costmap/parameter_updates"/>    
+  </node -->
+  
+</launch>

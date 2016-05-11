@@ -1,0 +1,64 @@
+<!-- Test AGV reactive behavior: local planner and local mapping, on a simulated environment -->
+<!-- export ROBOT variable first-->
+<launch>
+
+    <!-- Setting Args -->
+    <arg name="plots" default="false" />
+    <arg name="rviz" default="false" />
+    <arg name="gazebo_gui" default="true" />
+    <!-- arg name="world_model"  default="empty" / -->
+    <arg name="world_model"  default="ground_with_barrel" />
+    <arg name="robot_model"  default="agv_iri" />    
+    <arg name="map_file" default="$(find g_path_planner)/maps/agv_map.yaml"/>
+    <arg name="base_frame_id"   default="agv_base_link"/>
+    <arg name="global_frame_id" default="map"/> 
+    
+    
+    <!--GAZEBO: test 03: Gazebo world, agv description, controllers, odometry, driver and local mapping -->
+    <include file="$(find agv_tests_sim)/launch/agv_sim_03_local_mapping.launch">
+            <arg name="gazebo_gui" value="$(arg gazebo_gui)"/> 
+            <arg name="world_model" value="$(arg world_model)"/>
+            <arg name="robot_model" value="$(arg robot_model)"/> 
+    </include>
+
+    <!-- AGV Path Adaptor -->
+    <node   
+        name="path_adaptor" 
+        pkg="path_adaptor" 
+        type="path_adaptor"
+        args=""
+        output="screen">
+        <remap 
+            from="/obstacles"
+            to= "/$(env ROBOT)/local_mapping/obstacle_map"/>
+    </node>
+    
+    
+   <!-- Map server -->
+   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  
+  
+   <!-- Publish TF (to be be removed when a localization process is running, i.e. when map to odom TF is already published) -->  
+   <node pkg="tf" type="static_transform_publisher" name="map2odom" args="0 0 0 0 0 0 /map /odom 100"/> 
+   <node pkg="tf" type="static_transform_publisher" name="baselink" args="0 0 0 0 0 0 /agv_base_link base_link 100"/> 
+ 
+ 
+
+   <!-- Move base (but we will use only Global Planner) -->
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+		<rosparam file="$(find g_path_planner)/launch/params/agv_costmap_common_params.yaml" command="load" ns="global_costmap" />   
+		<rosparam file="$(find g_path_planner)/launch/params/agv_global_costmap_params.yaml" command="load" />    
+		<param name="global_costmap/global_frame" value="$(arg global_frame_id)"/>
+		<param name="global_costmap/robot_base_frame" value="$(arg base_frame_id)"/>
+		<rosparam file="$(find g_path_planner)/launch/params/agv_global_planner_params.yaml" command="load" />
+		<rosparam file="$(find g_path_planner)/launch/params/agv_move_base_params.yaml" command="load" />    
+   </node>
+ 
+  
+ 
+   <!-- Launch Rviz -->
+   <node name="RViz" pkg="rviz" type="rviz" output="screen" args="-d $(find g_path_planner)/launch/rviz-gnav.rviz" />
+ 
+    
+    
+</launch>

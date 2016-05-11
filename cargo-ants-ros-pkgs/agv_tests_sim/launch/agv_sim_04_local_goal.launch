@@ -30,7 +30,7 @@
      
      <!-- Send a goal (for testing) -->
     <node pkg="rostopic" type="rostopic" name="GoalPublisher"
-        args="pub --once /path_planner cargo_ants_msgs/Path '{mode: 0, container: name , goals: [{gx: 0, gy: 0, gth: 0, dr: 0, dth: 0},{gx: 15, gy: 0, gth: 0, dr: 0, dth: 0}]}'" 
+        args="pub --once /path_planner cargo_ants_msgs/Path '{mode: 0, container: name , goals: [{gx: 0, gy: 0, gth: 0, dr: 0, dth: 0},{gx: 15, gy: 15, gth: 0, dr: 0, dth: 0}]}'" 
         output="screen">   
     </node> 
     

@@ -38,5 +38,26 @@ add_library (cargo_ants_udp SHARED
 #target_link_libraries ()
 
 
+add_executable (rostoudp_odom src/rostoudp_odom.cpp)
+add_dependencies(rostoudp_odom ${catkin_EXPORTED_TARGETS})
+target_link_libraries (rostoudp_odom cargo_ants_udp ${catkin_LIBRARIES})
+
+
+add_executable (rostoudp_traj src/rostoudp_traj.cpp)
+add_dependencies(rostoudp_traj ${catkin_EXPORTED_TARGETS})
+target_link_libraries (rostoudp_traj cargo_ants_udp ${catkin_LIBRARIES})
+
+
 add_executable (rostoudp src/rostoudp.cpp)
+add_dependencies(rostoudp ${catkin_EXPORTED_TARGETS})
 target_link_libraries (rostoudp cargo_ants_udp ${catkin_LIBRARIES})
+
+
+add_executable (client src/client.cpp)
+add_dependencies(client ${catkin_EXPORTED_TARGETS})
+target_link_libraries (client cargo_ants_udp ${catkin_LIBRARIES})
+
+
+add_executable (server src/server.cpp)
+add_dependencies(server ${catkin_EXPORTED_TARGETS})
+target_link_libraries (server cargo_ants_udp ${catkin_LIBRARIES})

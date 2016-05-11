@@ -1,0 +1,61 @@
+<!-- Starts at drive node, assuming controllers are already there -->
+
+<launch>
+
+    <!-- Enable/disable visualization -->
+    <arg name="plots" default="False" />
+
+    <!-- Run at_drive_sim, and remaps outputs-->
+    <node   pkg="at_drive_sim"
+            type="at_drive_sim"
+            name="at_drive_sim"
+            args=""
+            output="screen">
+            <remap 
+                from="/at_drive_sim/trajectory"
+                to="/trajectory" />
+            <remap 
+                from="/at_drive_sim/fl_steer"
+                to="/at/at_fl_steer_controller/command"/>
+            <remap 
+                from="/at_drive_sim/fr_steer"
+                to="/at/at_fr_steer_controller/command"/>
+            <remap 
+                from="/at_drive_sim/bl_steer"
+                to="/at/at_bl_steer_controller/command"/>
+            <remap 
+                from="/at_drive_sim/br_steer"
+                to="/at/at_br_steer_controller/command"/>                
+            <remap 
+                from="/at_drive_sim/fl_wheel_rate"
+                to="/at/at_fl_drive_controller/command"/>                
+            <remap 
+                from="/at_drive_sim/fr_wheel_rate"
+                to="/at/at_fr_drive_controller/command"/>                
+            <remap 
+                from="/at_drive_sim/bl_wheel_rate"
+                to="/at/at_bl_drive_controller/command"/>                
+            <remap 
+                from="/at_drive_sim/br_wheel_rate"
+                to="/at/at_br_drive_controller/command"/>                
+                
+    </node>
+    
+    <group if="$(arg plots)">
+        <node 
+            name="fl_steer_plot"
+            pkg="rqt_plot"
+            type="rqt_plot"
+            args="/at/at_fl_steer_controller/command /at/joint_states/position[6]">
+        </node>
+
+        <node 
+            name="fr_steer_plot"
+            pkg="rqt_plot"
+            type="rqt_plot"
+            args="/at/at_fr_steer_controller/command /at/joint_states/position[7]">
+        </node>
+    </group>        
+    
+    
+</launch>

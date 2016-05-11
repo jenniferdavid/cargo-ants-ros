@@ -53,7 +53,7 @@ void model_states_callback(const gazebo_msgs::ModelStates::ConstPtr &msg)//publi
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "chomp_scene_descriptor_gazebo");
+  ros::init(argc, argv, "gazebo_global_map");
   ros::NodeHandle node;
   ros::Publisher obs_pub = node.advertise<cargo_ants_msgs::ObstacleMap> ("/obstacles", 1);
   ros::Publisher path_pub = node.advertise<cargo_ants_msgs::Path> ("/path_planner", 100);
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
   //ros::Subscriber goal_idx_sub = node.subscribe("/pf_controller/current_goal_idx",1000, model_states_callback);//this is not used 
   ros::Rate loop_rate(CONTROL_LOOP_RATE);
 
-	ROS_INFO("CHOMP Scene Descriptor started");
+	ROS_INFO("Gazebo global map started");
 
 
   size_t last_goal_idx = 0;

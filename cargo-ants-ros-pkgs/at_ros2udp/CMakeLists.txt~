@@ -31,5 +31,16 @@ include_directories (
   )
 
 
+add_executable (at_ros2udp_odom src/at_ros2udp_odom.cpp)
+target_link_libraries (at_ros2udp_odom ${catkin_LIBRARIES})
+add_dependencies(at_ros2udp_odom ${catkin_EXPORTED_TARGETS})
+
+
+add_executable (at_ros2udp_traj src/at_ros2udp_traj.cpp)
+target_link_libraries (at_ros2udp_traj ${catkin_LIBRARIES})
+add_dependencies(at_ros2udp_traj ${catkin_EXPORTED_TARGETS})
+
+
 add_executable (at_ros2udp src/at_ros2udp.cpp)
 target_link_libraries (at_ros2udp ${catkin_LIBRARIES})
+add_dependencies(at_ros2udp ${catkin_EXPORTED_TARGETS})

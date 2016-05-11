@@ -121,9 +121,13 @@ void pathPlannerCallback(const cargo_ants_msgs::Path::ConstPtr &msg)
 		ROS_INFO("At least 2 goal points are required, received %lu", goals.size());
 		return;
 	}
-	for (size_t ii = 0; ii < goals.size() - 1; ii++) {
-		qs << goals[ii].gx, goals[ii].gy;
-		qe << goals[ii + 1].gx, goals[ii + 1].gy;
+	int n = goals.size();
+        qs << goals[0].gx, goals[0].gy;
+        qe << goals[n].gx, goals[n].gy;
+        xi[0] = goals[0].gx;
+	for (size_t ii = 0; ii < goals.size() + 1; ii++) {
+		xi[ii * 2 + 1] = goals[ii].gy;
+                xi[ii * 2 + 2] = goals[ii + 1].gx;
 	}
 }
 

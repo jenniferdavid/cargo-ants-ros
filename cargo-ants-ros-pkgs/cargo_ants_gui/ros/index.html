@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+body{
+	margin:0px;
+	padding:0px;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#header{
+	width:100vw;
+	height:10%;
+	background-color:#eee;
+	position:absolute;
+	top:0px;
+}
+
+#dashboard{
+	width:100vw;
+	height:83%;
+	background-color:#e1e1e1;
+	position:absolute;
+	top:10%;
+}
+
+#statusbar{
+	width:100vw;
+	height:7%;
+	background-color:#eee;
+	position:absolute;
+	top:93%;
+}
+
+#logo{
+	width:160px;
+	position:relative;
+	top:30%;
+	left:5%;
+	float:left;
+}
+
+#title{
+	width:18%;
+	font-size:1.3em;
+	font-weight:700;
+	color:#515151;
+	float:left;
+	position:relative;
+	left:70%;
+	top:38%;
+}
+
+#dashone{
+	width:40vw;
+	height:40%;
+	background-color:#e0e0e0;
+	position:absolute;
+	top:5%;
+	left:4%;
+	border-bottom:1px solid #252525;
+}
+
+#dashonesone{
+	width:50%;
+	height:85%;
+	background-color:#fff;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+	float:left;
+}
+
+#dashonestwo{
+	width:50%;
+	height:85%;
+	background-color:#fff;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+	float:left;
+}
+
+#dashonebutn{
+	width:100%;
+	height:15%;
+	background:#e1e1e1;
+	position:absolute;
+	top:85%;
+}
+
+#d1butn1{
+	width:33.3%;
+	height:100%;
+	background-color:#DDDDDD;
+   float:left;
+   text-align:center;
+   cursor:pointer;
+}
+
+#d1butn2{
+	width:33.4%;
+	height:100%;
+	background-color:#e1e1e1;
+   float:left;
+   text-align:center;
+   cursor:pointer;
+}
+
+#d1butn3{
+	width:33.3%;
+	height:100%;
+	background-color:#dd6d6b;
+text-align:center;
+   float:left;
+   font-weight:600;
+   cursor:pointer;
+}
+
+#d1butn3:hover,#d1butn2:hover,#d1butn1:hover{
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+}
+
+#dashtwo{
+	width:40vw;
+	height:40%;
+	background-color:#e0e0e0;
+	position:absolute;
+	top:5%;
+	left:54%;
+	border-bottom:1px solid #252525;
+}
+
+#dashtwos{
+	width:100%;
+	height:94.5%;
+	background-color:#fff;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+	float:left;
+}
+
+#dashthree{
+	width:40vw;
+	height:40%;
+	background-color:#e0e0e0;
+	position:absolute;
+	top:55%;
+	left:4%;
+	border-bottom:1px solid #252525;
+}
+
+#dashthrees{
+	width:100%;
+	height:94.5%;
+	background-color:#fff;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+	float:left;
+}
+
+#dashfour{
+	width:40vw;
+	height:40%;
+	background-color:#e0e0e0;
+	position:absolute;
+	top:55%;
+	left:54%;
+	border-bottom:1px solid #252525;
+}
+
+#dashfours{
+	width:100%;
+	height:94.5%;
+	background-color:#fff;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+	float:left;
+}
+
+#sbutn1{
+	width:15%;
+	height:70%;
+	background-color:#252525;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+   float:left;
+   margin-left:35%;
+   position:relative;
+	top:15%;
+	text-align:center;
+	font-weight:700;
+	color:#c33c3a;
+}
+
+#sbutn2{
+	width:15%;
+	height:70%;
+	background-color:#252525;
+	-moz-box-shadow:    inset 0 0 4px #A2A2A2;
+   -webkit-box-shadow: inset 0 0 4px #A2A2A2;
+   box-shadow:         inset 0 0 4px #A2A2A2;
+   float:left;
+   margin-left:2%;
+	position:relative;
+	top:15%;
+	text-align:center;
+	font-weight:700;
+	color:#c33c3a;
+}
+
+#scenter{
+	position:relative;
+	top:33%;
+	
+}
+</style>
+
+</head>
+
+<body>
+<div id="header">
+<div id="logo">
+<img src="logo.png" style="width:100%;height:100%;"/>
+</div><!--logo-->
+<div id="title">
+Navigation Module Dashboard
+</div><!--title-->
+</div><!--header-->
+<div id="dashboard">
+<div id="dashone">
+Task Scheduler
+<br>
+<div id="dashonesone"></div>
+<div id="dashonestwo"></div>
+<div id="dashonebutn">
+<div id="d1butn1"><span id="scenter">Vehicle Info</span></div>
+<div id="d1butn2"><span id="scenter">Container Info</span></div>
+<div id="d1butn3"><span id="scenter">Task Schedule</span></div>
+</div>
+</div><!--dashone-->
+<div id="dashtwo">
+Console
+<br>
+<div id="dashtwos"></div>
+</div><!--dashtwo-->
+<div id="dashthree">
+Site Map
+<br>
+<div id="dashthrees"></div>
+<div id="dashonebutn">
+<div id="d1butn3"><span id="scenter">Refresh</span></div>
+</div>
+</div><!--dashthree-->
+<div id="dashfour">
+Schedule
+<br>
+<div id="dashfours"></div>
+<div id="dashonebutn">
+<div id="d1butn3"><span id="scenter">Refresh</span></div>
+</div>
+</div><!--dashfour-->
+</div><!--dashboard-->
+<div id="statusbar">
+<div id="sbutn1"><span id="scenter">Emergency Stop</span></div>
+<div id="sbutn2"><span id="scenter">Quit</span></div>
+</div><!--statusbar-->
+</body>
+</html>

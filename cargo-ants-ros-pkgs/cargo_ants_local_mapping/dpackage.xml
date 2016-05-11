@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<package>
+    <name>cargo_ants_local_mapping</name>
+    <version>1.0.0</version>
+    <description>
+        The cargo_ants_local_mapping package mainatins a vehicle centerd map, updated by lidar, radar and odometry. 
+        At least, either lidar OR radar inputs AND odometry are required. 
+    </description>
+
+    <!-- One maintainer tag required, multiple allowed, one person per tag --> 
+    <maintainer email="acoromin@iri.upc.edu">Andreu Corominas Murtra</maintainer>
+
+    <!-- One license tag required, multiple allowed, one license per tag -->
+    <license>BSD</license>
+
+    <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+    <url type="website">http://wiki.ros.org/iri_laser_corners</url>
+
+    <!-- Author tags are optional, mutiple are allowed, one per tag -->
+    <author email="acoromin@iri.upc.edu">Andreu Corominas Murtra</author>
+
+    <!-- The *_depend tags are used to specify dependencies -->
+    <buildtool_depend>catkin</buildtool_depend>
+    <build_depend>roscpp</build_depend>
+    <build_depend>rospy</build_depend>
+    <build_depend>message_generation</build_depend>  
+    <build_depend>std_msgs</build_depend>  
+    <build_depend>nav_msgs</build_depend>
+    <build_depend>sensor_msgs</build_depend>
+    <build_depend>dynamic_reconfigure</build_depend>
+    <build_depend>tf</build_depend>
+	<build_depend>cargo_ants_msgs</build_depend>
+    
+    <run_depend>roscpp</run_depend>
+    <run_depend>rospy</run_depend>
+    <run_depend>message_runtime</run_depend>
+    <run_depend>std_msgs</run_depend>
+    <run_depend>nav_msgs</run_depend>
+    <run_depend>sensor_msgs</run_depend>
+    <run_depend>dynamic_reconfigure</run_depend>
+    <run_depend>tf</run_depend>
+	<run_depend>cargo_ants_msgs</run_depend>
+    
+</package>

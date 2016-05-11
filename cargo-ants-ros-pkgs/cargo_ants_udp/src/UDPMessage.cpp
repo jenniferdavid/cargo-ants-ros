@@ -56,7 +56,7 @@ using namespace cargo_ants_udp;
   //  _nInts() = n_ints;
     _nDoubles() = n_doubles;
    // std::cerr << "resize " << n_ints << " " << n_doubles << " -- " << nInts() << " " << nDoubles() << "\n";
-  }
+  } 
   
   
   void UDPMessage::
